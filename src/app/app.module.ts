@@ -32,6 +32,7 @@ import {MatStepperModule} from '@angular/material/stepper';
 import { ReceptionsComponent } from './pages/receptions/receptions.component';
 import { EditreceptionsComponent } from './pages/editreceptions/editreceptions.component';
 import { AddreceptionComponent } from './pages/addreception/addreception.component';
+import { AddObservationComponent } from './pages/add-observation/add-observation.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { AddreceptionComponent } from './pages/addreception/addreception.compone
     ReceptionsComponent,
     EditreceptionsComponent,
     AddreceptionComponent,
+    AddObservationComponent,
 
   ],
   imports: [

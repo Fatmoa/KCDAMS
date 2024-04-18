@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { StepperOrientation } from '@angular/material/stepper';
-import { Observable, map } from 'rxjs';
-import {AsyncPipe} from '@angular/common';
-import { BreakpointObserver } from '@angular/cdk/layout';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-addreception',
@@ -20,9 +16,12 @@ export class AddreceptionComponent implements OnInit{
     secondCtrl: ['', Validators.required],
   });
 
-  constructor(private _formBuilder: FormBuilder) {}
+  constructor(private _formBuilder: FormBuilder,private router: Router) {}
   ngOnInit(): void {
 
+  }
+  onBack(){
+   this.router.navigateByUrl('receptions')
   }
 
 

@@ -15,6 +15,7 @@ import { RoleComponent } from './pages/role/role.component';
 import { UserMgtComponent } from './pages/user-mgt/user-mgt.component';
 import { DoctorComponent } from './pages/doctor/doctor.component';
 import { AddreceptionComponent } from './pages/addreception/addreception.component';
+import { AddObservationComponent } from './pages/add-observation/add-observation.component';
 
 const routes: Routes = [
   {
@@ -77,6 +78,10 @@ const routes: Routes = [
       {
         path:'add-reception',
         component:AddreceptionComponent
+      },
+      {
+        path:'add-observation',
+        component:AddObservationComponent
       },
 
 

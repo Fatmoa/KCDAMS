@@ -12,16 +12,44 @@
       </div>
       <div class="content-header-right col-md-6 col-12">
         <div class="btn-group float-md-right" role="group">
-          <button class="btn btn-info btn-min-width btn-glow mr-1 mb-1">Back</button>
+          <button class="btn btn-info btn-min-width btn-glow mr-1 mb-1" (click)="onBack()">Back</button>
         </div>
       </div>
     </div>
     <div class="content-body">
       <mat-stepper #stepper>
+        <!-- First step -->
         <mat-step [stepControl]="firstFormGroup" errorMessage="Name is required.">
           <form [formGroup]="firstFormGroup">
-            <ng-template matStepLabel>Patient Information</ng-template>
+            <ng-template matStepLabel>Taarifa za Usajili</ng-template>
             <br>
+
+            <div class="row">
+              <div class="col-md-3">
+                <mat-form-field appearance="outline">
+                  <mat-label>Name</mat-label>
+                  <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+                </mat-form-field>
+              </div>
+              <div class="col-md-3">
+                <mat-form-field appearance="outline">
+                  <mat-label>Name</mat-label>
+                  <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+                </mat-form-field>
+              </div>
+              <div class="col-md-3">
+                <mat-form-field appearance="outline">
+                  <mat-label>Name</mat-label>
+                  <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+                </mat-form-field>
+              </div>
+              <div class="col-md-3">
+                <mat-form-field appearance="outline">
+                  <mat-label>Name</mat-label>
+                  <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+                </mat-form-field>
+              </div>
+            </div>
 
             <div class="row">
               <div class="col-md-3">
@@ -56,44 +84,75 @@
             </div>
           </form>
         </mat-step>
+        <!-- Second step -->
         <mat-step [stepControl]="secondFormGroup" errorMessage="Address is required.">
           <form [formGroup]="secondFormGroup">
-            <ng-template matStepLabel>Fill out your address</ng-template>
+            <ng-template matStepLabel>Mtoa Rufaa</ng-template>
             <mat-form-field>
               <mat-label>Address</mat-label>
               <input matInput placeholder="Ex. 1 Main St, New York, NY" formControlName="secondCtrl"
                      required>
             </mat-form-field>
             <div>
-              <p>Go to a different step to see the error state</p>
+
               <button mat-button matStepperPrevious>Back</button>
               <button mat-button matStepperNext>Next</button>
             </div>
           </form>
         </mat-step>
 
+        <!-- Third step -->
         <mat-step [stepControl]="secondFormGroup" errorMessage="Address is required.">
           <form [formGroup]="secondFormGroup">
-            <ng-template matStepLabel>Fill out your address</ng-template>
+            <ng-template matStepLabel>Mawasiliano ya Dharura</ng-template>
             <mat-form-field>
               <mat-label>Address</mat-label>
               <input matInput placeholder="Ex. 1 Main St, New York, NY" formControlName="secondCtrl"
                      required>
             </mat-form-field>
             <div>
-              <p>Go to a different step to see the error state</p>
+
               <button mat-button matStepperPrevious>Back</button>
               <button mat-button matStepperNext>Next</button>
             </div>
           </form>
         </mat-step>
         <mat-step>
-          <ng-template matStepLabel>Done</ng-template>
-          <p>You are now done.</p>
+          <ng-template matStepLabel>Msajili</ng-template>
+          <div class="row">
+            <div class="col-md-3">
+              <mat-form-field appearance="outline">
+                <mat-label>Name</mat-label>
+                <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+              </mat-form-field>
+            </div>
+            <div class="col-md-3">
+              <mat-form-field appearance="outline">
+                <mat-label>Name</mat-label>
+                <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+              </mat-form-field>
+            </div>
+            <div class="col-md-3">
+              <mat-form-field appearance="outline">
+                <mat-label>Name</mat-label>
+                <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+              </mat-form-field>
+            </div>
+            <div class="col-md-3">
+              <mat-form-field appearance="outline">
+                <mat-label>Name</mat-label>
+                <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+              </mat-form-field>
+            </div>
+          </div>
           <div>
             <button mat-button matStepperPrevious>Back</button>
             <button mat-button (click)="stepper.reset()">Reset</button>
+            <div class="btn-group float-md-right" role="group">
+              <button class="btn btn-info btn-min-width btn-glow mr-1 mb-1" >Submit</button>
+            </div>
           </div>
+
         </mat-step>
       </mat-stepper>
 
