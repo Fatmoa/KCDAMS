@@ -33,6 +33,10 @@ import { ReceptionsComponent } from './pages/receptions/receptions.component';
 import { EditreceptionsComponent } from './pages/editreceptions/editreceptions.component';
 import { AddreceptionComponent } from './pages/addreception/addreception.component';
 import { AddObservationComponent } from './pages/add-observation/add-observation.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatRadioModule} from '@angular/material/radio';
+
+
 
 @NgModule({
   declarations: [
@@ -58,6 +62,7 @@ import { AddObservationComponent } from './pages/add-observation/add-observation
     AddreceptionComponent,
     AddObservationComponent,
 
+
   ],
   imports: [
     BrowserModule,
@@ -72,7 +77,10 @@ import { AddObservationComponent } from './pages/add-observation/add-observation
     ReactiveFormsModule,
     MatDialogModule,
     MatButtonModule,
-    MatStepperModule
+    MatStepperModule,
+    
+
+
 
 
   ],

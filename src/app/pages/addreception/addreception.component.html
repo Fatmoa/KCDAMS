@@ -23,25 +23,22 @@
           <form [formGroup]="firstFormGroup">
             <ng-template matStepLabel>Taarifa za Usajili</ng-template>
             <br>
-
             <div class="row">
               <div class="col-md-3">
                 <mat-form-field appearance="outline">
-                  <mat-label>Name</mat-label>
-                  <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+                  <mat-label>Jina</mat-label>
+                  <input matInput placeholder="Jina kamili" formControlName="firstCtrl" required>
                 </mat-form-field>
               </div>
               <div class="col-md-3">
                 <mat-form-field appearance="outline">
-                  <mat-label>Name</mat-label>
-                  <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+                  <mat-label>Tarehe ya kuzaliwa</mat-label>
+                  <input type="date" matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
                 </mat-form-field>
               </div>
               <div class="col-md-3">
-                <mat-form-field appearance="outline">
-                  <mat-label>Name</mat-label>
-                  <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
-                </mat-form-field>
+                <label for="gender">Jinsia</label><br>
+
               </div>
               <div class="col-md-3">
                 <mat-form-field appearance="outline">
@@ -50,7 +47,6 @@
                 </mat-form-field>
               </div>
             </div>
-
             <div class="row">
               <div class="col-md-3">
                 <mat-form-field appearance="outline">
@@ -85,63 +81,123 @@
           </form>
         </mat-step>
         <!-- Second step -->
-        <mat-step [stepControl]="secondFormGroup" errorMessage="Address is required.">
+        <mat-step [stepControl]="secondFormGroup" errorMessage="">
           <form [formGroup]="secondFormGroup">
             <ng-template matStepLabel>Mtoa Rufaa</ng-template>
-            <mat-form-field>
-              <mat-label>Address</mat-label>
-              <input matInput placeholder="Ex. 1 Main St, New York, NY" formControlName="secondCtrl"
-                     required>
-            </mat-form-field>
-            <div>
-
-              <button mat-button matStepperPrevious>Back</button>
-              <button mat-button matStepperNext>Next</button>
+            <br>
+            <div class="row">
+            <div class="col-md-3">
+              <mat-form-field appearance="outline">
+                <mat-label>Jina</mat-label>
+                <input matInput placeholder="la kwanza,la ukoo" formControlName="secondCtrl" required>
+              </mat-form-field>
             </div>
+            <div class="col-md-3">
+              <mat-form-field appearance="outline">
+                <mat-label>Cheo</mat-label>
+                <input matInput placeholder="Cheo" formControlName="secondCtrl" required>
+              </mat-form-field>
+            </div>
+            <div class="col-md-3">
+              <mat-form-field appearance="outline">
+                <mat-label>Nmbari ya simu</mat-label>
+                <input matInput placeholder="Nambari ya simu" formControlName="secondCtrl" required>
+              </mat-form-field>
+            </div>
+          </div>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
           </form>
         </mat-step>
 
         <!-- Third step -->
-        <mat-step [stepControl]="secondFormGroup" errorMessage="Address is required.">
-          <form [formGroup]="secondFormGroup">
+        <mat-step [stepControl]="thirdFormGroup" errorMessage="">
+          <form [formGroup]="thirdFormGroup">
             <ng-template matStepLabel>Mawasiliano ya Dharura</ng-template>
-            <mat-form-field>
-              <mat-label>Address</mat-label>
-              <input matInput placeholder="Ex. 1 Main St, New York, NY" formControlName="secondCtrl"
-                     required>
-            </mat-form-field>
+            <br>
+            <p>Ndugu/Jamaa 1</p>
+            <div class="row">
+            <div class="col-md-3">
+              <mat-form-field appearance="outline">
+                <mat-label>Jina</mat-label>
+                <input matInput placeholder="la kwanza, ukoo" formControlName="thirdCtrl" required>
+              </mat-form-field>
+            </div>
+            <div class="col-md-3">
+              <mat-form-field appearance="outline">
+                <mat-label>Mahusiano</mat-label>
+                <input matInput placeholder="Mahusiano" formControlName="thirdCtrl" required>
+              </mat-form-field>
+            </div>
+            <div class="col-md-3">
+              <mat-form-field appearance="outline">
+                <mat-label>Makaazi</mat-label>
+                <input matInput placeholder="Makaazi" formControlName="thirdCtrl" required>
+              </mat-form-field>
+            </div>
+            <div class="col-md-3">
+              <mat-form-field appearance="outline">
+                <mat-label>Nambari ya simu</mat-label>
+                <input matInput placeholder="Last name, First name" formControlName="thirdCtrl" required>
+              </mat-form-field>
+            </div>
+          </div>
+          <p>Ndugu/Jamaa 2</p>
+          <div class="row">
+            <div class="col-md-3">
+              <mat-form-field appearance="outline">
+                <mat-label>Jina</mat-label>
+                <input matInput placeholder="la kwanza,ukoo" formControlName="thirdCtrl" required >
+              </mat-form-field>
+            </div>
+            <div class="col-md-3">
+              <mat-form-field appearance="outline">
+                <mat-label>Mahusiano</mat-label>
+                <input matInput placeholder="Mahusiano" formControlName="thirdCtrl" required>
+              </mat-form-field>
+            </div>
+            <div class="col-md-3">
+              <mat-form-field appearance="outline">
+                <mat-label>Makaazi</mat-label>
+                <input matInput placeholder="Makaazi" formControlName="thirdCtrl" required>
+              </mat-form-field>
+            </div>
+            <div class="col-md-3">
+              <mat-form-field appearance="outline">
+                <mat-label>Makaazi</mat-label>
+                <input matInput placeholder="Makaazi" formControlName="thirdCtrl" required>
+              </mat-form-field>
+            </div>
+        </div>
             <div>
-
               <button mat-button matStepperPrevious>Back</button>
               <button mat-button matStepperNext>Next</button>
             </div>
           </form>
         </mat-step>
-        <mat-step>
+        <!-- Done -->
+        <mat-step [stepControl]="fourthFormGroup" errorMessage="">
           <ng-template matStepLabel>Msajili</ng-template>
+          <br>
           <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-4">
               <mat-form-field appearance="outline">
-                <mat-label>Name</mat-label>
-                <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+                <mat-label>Jina la Msajili</mat-label>
+                <input matInput placeholder="jina la kwanza,na la ukoo" formControlName="fourthCtrl" required >
               </mat-form-field>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
               <mat-form-field appearance="outline">
-                <mat-label>Name</mat-label>
-                <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+                <mat-label>Numberi ya Simu</mat-label>
+                <input matInput placeholder="Nambari ya simu" formControlName="fourthCtrl" required>
               </mat-form-field>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
               <mat-form-field appearance="outline">
                 <mat-label>Name</mat-label>
-                <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
-              </mat-form-field>
-            </div>
-            <div class="col-md-3">
-              <mat-form-field appearance="outline">
-                <mat-label>Name</mat-label>
-                <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+                <input matInput placeholder="" formControlName="fourthCtrl" required>
               </mat-form-field>
             </div>
           </div>
