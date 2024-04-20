@@ -69,7 +69,6 @@ export class PsychologistComponent implements OnInit{
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
-
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -78,8 +77,19 @@ export class PsychologistComponent implements OnInit{
       this.dataSource.paginator.firstPage();
     }
   }
-
-
+  onClient(){
+    // let dialogRef = this.dialog.open(this.distributionDialog, {
+    //   width: '650px',
+    // });
+    // dialogRef.afterClosed().subscribe(result => {
+    //   if (result !== undefined) {
+    //     if (result !== 'no') {
+    //       const enabled = "Y"
+    //     } else if (result === 'no') {
+    //     }
+    //   }
+    // })
+  }
 }
 function createNewUser(id: number): UserData {
   const name =

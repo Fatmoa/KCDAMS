@@ -12,7 +12,7 @@
       </div>
       <div class="content-header-right col-md-6 col-12">
         <div class="btn-group float-md-right" role="group" >
-        <button type="button" class="btn btn-info btn-min-width btn-glow mr-1 mb-1">Add Client</button>
+        <button type="button" class="btn btn-info btn-min-width btn-glow mr-1 mb-1" (click)="onClient()">Add Client</button>
         </div>
       </div>
     </div>
@@ -69,18 +69,39 @@
       <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
     </div>
 </div>
-
-<!-- <div class="card-content collapse show">
-  <div class="card-body overflow-hidden row">
-    <div class="col-md-9 col-sm-12 border-right-grey border-right-lighten-2">
-      <div id="invoice-total-recievables" class="height-20"></div>
-    </div>
-  </div>
-</div> -->
 </div>
 </section>
 
     </div>
   </div>
 </div>
+
+<ng-template #distributionDialog>
+  <app-card title="Add Zone">
+    <hr>
+    <form>
+      <div class="row">
+        <div class="col-md-6">
+          <mat-form-field style="width: 100%;" appearance="outline">
+            <mat-label>Client</mat-label>
+            <input matInput placeholder="client">
+          </mat-form-field>
+        </div>
+        <div class="col-md-6">
+          <mat-form-field style="width: 100%;" appearance="outline">
+            <mat-label>Zone Name</mat-label>
+            <input matInput placeholder="zone name">
+          </mat-form-field>
+        </div>
+      </div>
+
+    </form><br><br>
+
+    <div class="card-bottom">
+      <button mat-raised-button matDialogClose="yes">Cancel</button> &nbsp;
+      <button mat-raised-button color="primary" matDialogClose="yes">Add</button>
+    </div>
+
+  </app-card>
+</ng-template>
 

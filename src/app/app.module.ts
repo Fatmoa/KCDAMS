@@ -35,6 +35,8 @@ import { AddreceptionComponent } from './pages/addreception/addreception.compone
 import { AddObservationComponent } from './pages/add-observation/add-observation.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatSelectModule} from '@angular/material/select';
+import {MatRippleModule} from '@angular/material/core';
 
 
 
@@ -78,7 +80,10 @@ import {MatRadioModule} from '@angular/material/radio';
     MatDialogModule,
     MatButtonModule,
     MatStepperModule,
-    
+    MatRadioModule,
+    MatSelectModule,
+    MatRippleModule
+
 
 
 

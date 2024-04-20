@@ -19,3 +19,9 @@ describe('LabComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+
+function openDialog() {
+  throw new Error('Function not implemented.');
+}
+
