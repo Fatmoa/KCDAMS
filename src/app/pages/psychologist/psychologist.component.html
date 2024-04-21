@@ -76,24 +76,94 @@
   </div>
 </div>
 
+<!-- Dialog -->
 <ng-template #distributionDialog>
-  <app-card title="Add Zone">
+  <app-card title="Add Client">
     <hr>
     <form>
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-4">
           <mat-form-field style="width: 100%;" appearance="outline">
             <mat-label>Client</mat-label>
             <input matInput placeholder="client">
           </mat-form-field>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-4">
+          <mat-form-field style="width: 100%;" appearance="outline">
+            <mat-label>Zone Name</mat-label>
+            <input matInput placeholder="zone name">
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
           <mat-form-field style="width: 100%;" appearance="outline">
             <mat-label>Zone Name</mat-label>
             <input matInput placeholder="zone name">
           </mat-form-field>
         </div>
       </div>
+      <div class="row">
+        <div class="col-md-4">
+          <mat-form-field style="width: 100%;" appearance="outline">
+            <mat-label>Client</mat-label>
+            <input matInput placeholder="client">
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field style="width: 100%;" appearance="outline">
+            <mat-label>Zone Name</mat-label>
+            <input matInput placeholder="zone name">
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field style="width: 100%;" appearance="outline">
+            <mat-label>Zone Name</mat-label>
+            <input matInput placeholder="zone name">
+          </mat-form-field>
+        </div>
+      </div>   <div class="row">
+        <div class="col-md-4">
+          <mat-form-field style="width: 100%;" appearance="outline">
+            <mat-label>Client</mat-label>
+            <input matInput placeholder="client">
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field style="width: 100%;" appearance="outline">
+            <mat-label>Zone Name</mat-label>
+            <input matInput placeholder="zone name">
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field style="width: 100%;" appearance="outline">
+            <mat-label>Zone Name</mat-label>
+            <input matInput placeholder="zone name">
+          </mat-form-field>
+        </div>
+      </div>
+       <div class="row">
+        <div class="col-md-4">
+          <mat-form-field style="width: 100%;" appearance="outline">
+            <mat-label>Client</mat-label>
+            <input matInput placeholder="client">
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field style="width: 100%;" appearance="outline">
+            <mat-label>Zone Name</mat-label>
+            <input matInput placeholder="zone name">
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field style="width: 100%;" appearance="outline">
+              <mat-label>Drug Type</mat-label>
+              <mat-select formControlName="" multiple="">
+                  <mat-option *ngFor="let type of DrugType" [value]="type.value">
+                      {{type.value}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+      </div>
+      </div>
+
 
     </form><br><br>
 
@@ -104,4 +174,3 @@
 
   </app-card>
 </ng-template>
-

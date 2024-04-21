@@ -1,7 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { ActivatedRoute, Router } from '@angular/router';
+import {MatSelectModule} from '@angular/material/select';
 
 
 
@@ -52,11 +55,16 @@ const NAMES: string[] = [
 })
 export class PsychologistComponent implements OnInit{
   displayedColumns: string[] = ['id', 'name', 'progress', 'fruit'];
+  @ViewChild('distributionDialog') distributionDialog!: TemplateRef<any>;
   dataSource: MatTableDataSource<UserData>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  constructor (){
+  constructor (
+    private router:Router,
+    private route: ActivatedRoute,
+    private dialog:MatDialog
+  ){
     const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
 
     // Assign the data to the data source for the table to render
@@ -65,6 +73,13 @@ export class PsychologistComponent implements OnInit{
   ngOnInit(): void {
 
   }
+
+  DrugType:any[] = [
+    {value:'Small'},
+    {value:'Medium'},
+    {value:'Large'},
+    {value:'Larger'},
+  ];
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
@@ -78,17 +93,17 @@ export class PsychologistComponent implements OnInit{
     }
   }
   onClient(){
-    // let dialogRef = this.dialog.open(this.distributionDialog, {
-    //   width: '650px',
-    // });
-    // dialogRef.afterClosed().subscribe(result => {
-    //   if (result !== undefined) {
-    //     if (result !== 'no') {
-    //       const enabled = "Y"
-    //     } else if (result === 'no') {
-    //     }
-    //   }
-    // })
+    let dialogRef = this.dialog.open(this.distributionDialog, {
+      width: '990px',
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result !== undefined) {
+        if (result !== 'no') {
+          const enabled = "Y"
+        } else if (result === 'no') {
+        }
+      }
+    })
   }
 }
 function createNewUser(id: number): UserData {

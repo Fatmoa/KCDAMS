@@ -37,6 +37,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
 import {MatRippleModule} from '@angular/material/core';
+import { PatientsInfoComponent } from './pages/patients-info/patients-info.component';
 
 
 
@@ -63,6 +64,7 @@ import {MatRippleModule} from '@angular/material/core';
     EditreceptionsComponent,
     AddreceptionComponent,
     AddObservationComponent,
+    PatientsInfoComponent,
 
 
   ],

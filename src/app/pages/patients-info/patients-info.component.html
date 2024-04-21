@@ -1,0 +1,288 @@
+<div class="app-content content">
+  <div class="content-overlay"></div>
+  <div class="content-wrapper">
+    <div class="content-header row">
+      <div class="content-header-left col-md-6 col-12 mb-2">
+        <div class="row breadcrumbs-top">
+          <div class="breadcrumb-wrapper col-12">
+            <ol class="breadcrumb">
+            </ol>
+          </div>
+        </div>
+      </div>
+      <div class="content-header-right col-md-6 col-12">
+        <div class="btn-group float-md-right" role="group">
+          <button class="btn btn-info btn-min-width btn-glow mr-1 mb-1" (click)="onBack()">Back</button>
+        </div>
+      </div>
+    </div>
+    <div class="content-body">
+      <mat-stepper #stepper>
+        <!-- First step -->
+        <mat-step [stepControl]="firstFormGroup" errorMessage="Name is required.">
+          <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>Taarifa za Usajili</ng-template>
+            <br>
+            <!-- <div class="row">
+              <div class="col-md-3">
+                <mat-form-field appearance="outline">
+                  <mat-label>Name</mat-label>
+                  <input matInput placeholder="" formControlName="firstCtrl" required>
+                </mat-form-field>
+              </div>
+              <div class="col-md-3">
+                <mat-form-field appearance="outline">
+                  <mat-label>Name</mat-label>
+                  <input matInput placeholder="" formControlName="firstCtrl" required>
+                </mat-form-field>
+              </div>
+              <div class="col-md-3">
+                <mat-form-field appearance="outline">
+                  <mat-label>Name</mat-label>
+                  <input matInput placeholder="" formControlName="firstCtrl" required>
+                </mat-form-field>
+              </div>
+             </div> -->
+             <br>
+            <!-- <div class="row">
+              <div class="col-md-3">
+                <label for="gender">Jinsia:</label><br>
+                <mat-radio-group aria-label="Select an option">
+                  <mat-radio-button value="1">Mme</mat-radio-button>
+                  <mat-radio-button value="2">Mke</mat-radio-button>
+                </mat-radio-group>
+              </div>
+               <div class="col-md-3">
+              <mat-form-field appearance="outline">
+                <mat-label>Hali ya Ndoa</mat-label>
+                <mat-select disableRipple>
+                  <mat-option value="1">Sijaoa</mat-option>
+                  <mat-option value="2">Sijaolewa</mat-option>
+                  <mat-option value="3">Nimeoa</mat-option>
+                  <mat-option value="4">Nimeolewa</mat-option>
+                  <mat-option value="5">Nimeacha</mat-option>
+                  <mat-option value="6">Nimeachika</mat-option>
+                  <mat-option value="7">Nimefiwa</mat-option>
+                  <mat-option value="8">Naishi na mwenza</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+              <div class="col-md-3">
+                <mat-form-field appearance="outline">
+                  <mat-label>Kiwango cha elimu</mat-label>
+                  <mat-select disableRipple>
+                    <mat-option value="1">Elimu ya msingi</mat-option>
+                    <mat-option value="2">Elimu ya sekondari</mat-option>
+                    <mat-option value="3">Elimu ya juu</mat-option>
+                    <mat-option value="4">Sijasoma</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-md-3">
+                <mat-form-field appearance="outline">
+                  <mat-label>Ajira</mat-label>
+                  <mat-select disableRipple>
+                  <mat-option value="1">Nimeajiriwa</mat-option>
+                  <mat-option value="2">Nimejiajiri</mat-option>
+                  <mat-option value="3">Sijaajiriwa</mat-option>
+                </mat-select>
+                </mat-form-field>
+              </div>
+            </div> -->
+            <br>
+            <!-- <div class="row">
+              <div class="col-md-3">
+                <mat-form-field appearance="outline">
+                  <mat-label>Nambari ya simu</mat-label>
+                  <input matInput placeholder="Nambari ya simu" formControlName="firstCtrl" required>
+                </mat-form-field>
+              </div>
+              <div class="col-md-3">
+                <mat-form-field appearance="outline" class="example-ripple-form-field">
+                  <mat-label>Idadi ya watoto</mat-label>
+                  <input matInput  type="number">
+                </mat-form-field>
+              </div>
+              <div class="col-md-3">
+                <mat-form-field appearance="outline">
+                  <mat-label>Hali ya usajili</mat-label>
+                  <mat-select disableRipple>
+                  <mat-option value="1">Mpya</mat-option>
+                  <mat-option value="2">Mhamiaji</mat-option>
+                  <mat-option value="3">Mpita njia</mat-option>
+                </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-md-3">
+                <mat-form-field appearance="outline">
+                  <mat-label>Makaazi</mat-label>
+                  <input matInput placeholder="Makaazi" formControlName="firstCtrl" required>
+                </mat-form-field>
+
+              </div>
+            </div> -->
+            <br>
+            <!-- <div class="row">
+              <div class="col-md-3">
+                <mat-form-field appearance="outline">
+                  <mat-label>NIDA</mat-label>
+                  <input matInput placeholder="Namba ya NIDA" formControlName="firstCtrl" required>
+                </mat-form-field>
+              </div>
+              <div class="col-md-3">
+                <mat-form-field appearance="outline">
+                  <mat-label>Picha</mat-label>
+                  <input matInput>
+                </mat-form-field>
+              </div>
+            </div> -->
+            <div>
+
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+        <!-- Second step -->
+        <mat-step [stepControl]="secondFormGroup" errorMessage="">
+          <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Mtoa Rufaa</ng-template>
+            <br>
+            <!-- <div class="row">
+              <div class="col-md-3">
+                <mat-form-field appearance="outline">
+                  <mat-label>Rufaa Kutoka</mat-label>
+                  <input matInput placeholder="Jina la NGOs" formControlName="secondCtrl" required>
+                </mat-form-field>
+              </div>
+            <div class="col-md-3">
+              <mat-form-field appearance="outline">
+                <mat-label>Jina</mat-label>
+                <input matInput placeholder="la kwanza,la ukoo" formControlName="secondCtrl" required>
+              </mat-form-field>
+            </div>
+            <div class="col-md-3">
+              <mat-form-field appearance="outline">
+                <mat-label>Cheo</mat-label>
+                <input matInput placeholder="Cheo" formControlName="secondCtrl" required>
+              </mat-form-field>
+            </div>
+            <div class="col-md-3">
+              <mat-form-field appearance="outline">
+                <mat-label>Nmbari ya simu</mat-label>
+                <input matInput placeholder="Nambari ya simu" formControlName="secondCtrl" required>
+              </mat-form-field>
+            </div>
+          </div> -->
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+          </form>
+        </mat-step>
+
+        <!-- Third step -->
+        <mat-step [stepControl]="thirdFormGroup" errorMessage="">
+          <form [formGroup]="thirdFormGroup">
+            <ng-template matStepLabel>Mawasiliano ya Dharura</ng-template>
+            <br>
+            <p>Ndugu/Jamaa 1</p>
+            <!-- <div class="row">
+            <div class="col-md-3">
+              <mat-form-field appearance="outline">
+                <mat-label>Jina</mat-label>
+                <input matInput placeholder="la kwanza, ukoo" formControlName="thirdCtrl" required>
+              </mat-form-field>
+            </div>
+            <div class="col-md-3">
+              <mat-form-field appearance="outline">
+                <mat-label>Mahusiano</mat-label>
+                <input matInput placeholder="Mahusiano" formControlName="thirdCtrl" required>
+              </mat-form-field>
+            </div>
+            <div class="col-md-3">
+              <mat-form-field appearance="outline">
+                <mat-label>Makaazi</mat-label>
+                <input matInput placeholder="Makaazi" formControlName="thirdCtrl" required>
+              </mat-form-field>
+            </div>
+            <div class="col-md-3">
+              <mat-form-field appearance="outline">
+                <mat-label>Nambari ya simu</mat-label>
+                <input matInput placeholder="Last name, First name" formControlName="thirdCtrl" required>
+              </mat-form-field>
+            </div>
+          </div> -->
+          <br>
+          <p>Ndugu/Jamaa 2</p>
+          <!-- <div class="row">
+            <div class="col-md-3">
+              <mat-form-field appearance="outline">
+                <mat-label>Jina</mat-label>
+                <input matInput placeholder="la kwanza,ukoo" formControlName="thirdCtrl" required >
+              </mat-form-field>
+            </div>
+            <div class="col-md-3">
+              <mat-form-field appearance="outline">
+                <mat-label>Mahusiano</mat-label>
+                <input matInput placeholder="Mahusiano" formControlName="thirdCtrl" required>
+              </mat-form-field>
+            </div>
+            <div class="col-md-3">
+              <mat-form-field appearance="outline">
+                <mat-label>Makaazi</mat-label>
+                <input matInput placeholder="Makaazi" formControlName="thirdCtrl" required>
+              </mat-form-field>
+            </div>
+            <div class="col-md-3">
+              <mat-form-field appearance="outline">
+                <mat-label>Makaazi</mat-label>
+                <input matInput placeholder="Makaazi" formControlName="thirdCtrl" required>
+              </mat-form-field>
+            </div>
+        </div> -->
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+        <!-- Done -->
+        <mat-step [stepControl]="fourthFormGroup" errorMessage="">
+          <ng-template matStepLabel>Msajili</ng-template>
+          <br>
+          <!-- <div class="row">
+            <div class="col-md-3">
+              <mat-form-field appearance="outline">
+                <mat-label>Jina la Msajili</mat-label>
+                <input matInput placeholder="jina la kwanza,na la ukoo" formControlName="fourthCtrl" required >
+              </mat-form-field>
+            </div>
+            <div class="col-md-3">
+              <mat-form-field appearance="outline">
+                <mat-label>Numberi ya Simu</mat-label>
+                <input matInput placeholder="Nambari ya simu" formControlName="fourthCtrl" required>
+              </mat-form-field>
+            </div>
+            <div class="col-md-3">
+              <mat-form-field appearance="outline">
+                <mat-label>Tarehe ya usajili</mat-label>
+                <input type="date" matInput formControlName="fourthCtrl" required>
+              </mat-form-field>
+            </div>
+          </div> -->
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
+            <div class="btn-group float-md-right" role="group">
+              <button class="btn btn-info btn-min-width btn-glow mr-1 mb-1" >Submit</button>
+            </div>
+          </div>
+
+        </mat-step>
+      </mat-stepper>
+
+
+    </div>
+  </div>
+</div>

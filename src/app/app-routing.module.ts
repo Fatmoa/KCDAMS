@@ -16,6 +16,7 @@ import { UserMgtComponent } from './pages/user-mgt/user-mgt.component';
 import { DoctorComponent } from './pages/doctor/doctor.component';
 import { AddreceptionComponent } from './pages/addreception/addreception.component';
 import { AddObservationComponent } from './pages/add-observation/add-observation.component';
+import { PatientsInfoComponent } from './pages/patients-info/patients-info.component';
 
 const routes: Routes = [
   {
@@ -82,6 +83,10 @@ const routes: Routes = [
       {
         path:'add-observation',
         component:AddObservationComponent
+      },
+      {
+        path:'patients-info',
+        component:PatientsInfoComponent
       },
 
 
