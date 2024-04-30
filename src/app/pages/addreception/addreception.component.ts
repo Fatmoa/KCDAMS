@@ -15,10 +15,6 @@ import {MatRippleModule} from '@angular/material/core';
 
 export class AddreceptionComponent implements OnInit{
 
-  centered = false;
-  disabled = false;
-  unbounded = false;
-
   radius: number | undefined;
 
   firstFormGroup = this._formBuilder.group({

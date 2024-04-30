@@ -82,77 +82,98 @@
     <hr>
     <form>
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-3">
           <mat-form-field style="width: 100%;" appearance="outline">
-            <mat-label>Client</mat-label>
-            <input matInput placeholder="client">
+            <mat-label>MAT ID:</mat-label>
+            <input matInput placeholder="mat id">
           </mat-form-field>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
           <mat-form-field style="width: 100%;" appearance="outline">
-            <mat-label>Zone Name</mat-label>
-            <input matInput placeholder="zone name">
+            <mat-label>FILE No:</mat-label>
+            <input matInput placeholder="file no">
           </mat-form-field>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
           <mat-form-field style="width: 100%;" appearance="outline">
-            <mat-label>Zone Name</mat-label>
-            <input matInput placeholder="zone name">
+            <mat-label>Patient Name</mat-label>
+            <input matInput placeholder="full name">
+          </mat-form-field>
+        </div>
+        <div class="col-md-3">
+          <label for="gender">Jinsia:</label><br>
+          <mat-radio-group aria-label="Select an option">
+            <mat-radio-button value="1">Mme</mat-radio-button>
+            <mat-radio-button value="2">Mke</mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <mat-form-field style="width: 100%;" appearance="outline">
+            <mat-label>Age</mat-label>
+            <input matInput placeholder="age">
+          </mat-form-field>
+        </div>
+        <div class="col-md-3">
+          <mat-form-field style="width: 100%;" appearance="outline">
+            <mat-label>Drug abuse duration</mat-label>
+            <input matInput placeholder="Current duration">
+          </mat-form-field>
+        </div>
+        <div class="col-md-3">
+          <mat-form-field style="width: 100%;" appearance="outline">
+            <mat-label>Type of substance</mat-label>
+            <input matInput placeholder="type of substance">
+          </mat-form-field>
+        </div>
+        <div class="col-md-3">
+          <mat-form-field appearance="outline" class="example-ripple-form-field">
+            <mat-label>Drug abuse in day</mat-label>
+            <input matInput  type="number">
           </mat-form-field>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-3">
           <mat-form-field style="width: 100%;" appearance="outline">
-            <mat-label>Client</mat-label>
-            <input matInput placeholder="client">
+            <mat-label>Reason for drug abuse</mat-label>
+            <input matInput placeholder="Reason for using">
           </mat-form-field>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
+          <mat-form-field style="width: 100%;" appearance="outline">
+          <mat-label>Time attempted to stop</mat-label>
+            <input matInput  type="number">
+          </mat-form-field>
+        </div>
+        <div class="col-md-3">
+          <mat-form-field style="width: 100%;" appearance="outline">
+            <mat-label>Reason for stopping</mat-label>
+            <input matInput placeholder="Negative effects">
+          </mat-form-field>
+        </div>
+        <div class="col-md-3">
+
           <mat-form-field style="width: 100%;" appearance="outline">
             <mat-label>Zone Name</mat-label>
             <input matInput placeholder="zone name">
-          </mat-form-field>
-        </div>
-        <div class="col-md-4">
-          <mat-form-field style="width: 100%;" appearance="outline">
-            <mat-label>Zone Name</mat-label>
-            <input matInput placeholder="zone name">
-          </mat-form-field>
-        </div>
-      </div>   <div class="row">
-        <div class="col-md-4">
-          <mat-form-field style="width: 100%;" appearance="outline">
-            <mat-label>Client</mat-label>
-            <input matInput placeholder="client">
-          </mat-form-field>
-        </div>
-        <div class="col-md-4">
-          <mat-form-field style="width: 100%;" appearance="outline">
-            <mat-label>Zone Name</mat-label>
-            <input matInput placeholder="zone name">
-          </mat-form-field>
-        </div>
-        <div class="col-md-4">
-          <mat-form-field style="width: 100%;" appearance="outline">
-            <mat-label>Zone Name</mat-label>
-            <input matInput placeholder="zone name">
-          </mat-form-field>
+          </mat-form-field> 
         </div>
       </div>
        <div class="row">
         <div class="col-md-4">
           <mat-form-field style="width: 100%;" appearance="outline">
-            <mat-label>Client</mat-label>
-            <input matInput placeholder="client">
+            <mat-label>Familiy history:</mat-label>
+            <textarea matInput placeholder="Write patients family history..."></textarea>
           </mat-form-field>
-        </div>
-        <div class="col-md-4">
-          <mat-form-field style="width: 100%;" appearance="outline">
-            <mat-label>Zone Name</mat-label>
-            <input matInput placeholder="zone name">
-          </mat-form-field>
-        </div>
+    </div>
+    <div class="col-md-4">
+      <mat-form-field style="width: 100%;" appearance="outline">
+        <mat-label>Criminal/Social affairs:</mat-label>
+        <textarea matInput placeholder="Write patients affairs..."></textarea>
+      </mat-form-field>
+</div>
         <div class="col-md-4">
           <mat-form-field style="width: 100%;" appearance="outline">
               <mat-label>Drug Type</mat-label>
@@ -162,6 +183,31 @@
               </mat-select>
             </mat-form-field>
       </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <mat-form-field style="width: 100%;" appearance="outline">
+              <mat-label>Symptoms for mental disorder</mat-label>
+              <mat-select formControlName="" multiple="">
+                  <mat-option *ngFor="let type of disorder" [value]="type.value">
+                      {{type.value}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+      </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+            <mat-form-field style="width: 100%;" appearance="outline">
+              <mat-label>Psychological intervation plan:</mat-label>
+              <textarea matInput placeholder="Write your intervantion plan here...."></textarea>
+            </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field style="width: 100%;" appearance="outline">
+          <mat-label>Psychological Comments:</mat-label>
+          <textarea matInput placeholder="Write your comments here..."></textarea>
+        </mat-form-field>
+  </div>
       </div>
 
 

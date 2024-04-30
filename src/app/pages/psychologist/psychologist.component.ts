@@ -48,6 +48,11 @@ const NAMES: string[] = [
   'Elizabeth',
 ];
 
+interface Pokemon {
+  value: string;
+  viewValue: string;
+}
+
 @Component({
   selector: 'app-psychologist',
   templateUrl: './psychologist.component.html',
@@ -74,12 +79,24 @@ export class PsychologistComponent implements OnInit{
 
   }
 
+
   DrugType:any[] = [
     {value:'Small'},
     {value:'Medium'},
     {value:'Large'},
     {value:'Larger'},
   ];
+
+  disorder:any []=[
+    {value:'Feeling of deep thought,sadness with lose hope,lack of interestin thingsonce loved'},
+    {value:'Feeling of anxiety, worrying without any reason, lack of calmness'},
+    {value:'Feeling sleepy-seeing things/hearing sounds that others dont,feeling people want to harm you '},
+    {value:'Abig problem of not being able to understand,to not be able to concentrateor lossof memory'},
+    {value:'Problem having uncontrollable anger,causing destruction,destroying things or use abusive language'},
+    {value:'Suicidal thoughts'},
+    {value:'Suicidal attempt'},
+
+  ]
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;

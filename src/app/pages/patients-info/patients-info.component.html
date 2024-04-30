@@ -21,7 +21,7 @@
         <!-- First step -->
         <mat-step [stepControl]="firstFormGroup" errorMessage="Name is required.">
           <form [formGroup]="firstFormGroup">
-            <ng-template matStepLabel>Taarifa za Usajili</ng-template>
+            <ng-template matStepLabel>HEROINE DEPENDENCE</ng-template>
             <br>
             <!-- <div class="row">
               <div class="col-md-3">
@@ -146,7 +146,7 @@
         <!-- Second step -->
         <mat-step [stepControl]="secondFormGroup" errorMessage="">
           <form [formGroup]="secondFormGroup">
-            <ng-template matStepLabel>Mtoa Rufaa</ng-template>
+            <ng-template matStepLabel>MENTAL HEALTH</ng-template>
             <br>
             <!-- <div class="row">
               <div class="col-md-3">
@@ -184,7 +184,7 @@
         <!-- Third step -->
         <mat-step [stepControl]="thirdFormGroup" errorMessage="">
           <form [formGroup]="thirdFormGroup">
-            <ng-template matStepLabel>Mawasiliano ya Dharura</ng-template>
+            <ng-template matStepLabel>OTHER INFORMATIONS</ng-template>
             <br>
             <p>Ndugu/Jamaa 1</p>
             <!-- <div class="row">
@@ -247,9 +247,9 @@
             </div>
           </form>
         </mat-step>
-        <!-- Done -->
+        <!-- Fifth-->
         <mat-step [stepControl]="fourthFormGroup" errorMessage="">
-          <ng-template matStepLabel>Msajili</ng-template>
+          <ng-template matStepLabel>PHYSICAL EXAMINATION</ng-template>
           <br>
           <!-- <div class="row">
             <div class="col-md-3">
@@ -280,7 +280,20 @@
           </div>
 
         </mat-step>
+        <mat-step [stepControl]="thirdFormGroup" errorMessage="">
+          <form [formGroup]="thirdFormGroup">
+            <ng-template matStepLabel>OTHER INFORMATIONS</ng-template>
+            <br>
+
+          <br>
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
       </mat-stepper>
+
 
 
     </div>
