@@ -157,8 +157,11 @@
             <div class="row">
               <div class="col-md-3">
                 <mat-form-field appearance="outline">
-                  <mat-label>Rufaa Kutoka</mat-label>
-                  <input matInput placeholder="Jina la NGOs" formControlName="secondCtrl" required>
+                  <mat-label>NGO</mat-label>
+                  <mat-select disableRipple>
+                  <mat-option value="1">ZYF</mat-option>
+                  <mat-option value="2">ZAYADESA</mat-option>
+                </mat-select>
                 </mat-form-field>
               </div>
             <div class="col-md-3">
@@ -183,6 +186,7 @@
           <div>
             <button mat-button matStepperPrevious>Back</button>
             <button mat-button matStepperNext>Next</button>
+
           </div>
           </form>
         </mat-step>
@@ -249,46 +253,14 @@
         </div>
             <div>
               <button mat-button matStepperPrevious>Back</button>
-              <button mat-button matStepperNext>Next</button>
+              <button mat-button (click)="stepper.reset()">Reset</button>
+              <div class="btn-group float-md-right" role="group">
+                <button class="btn btn-info btn-min-width btn-glow mr-1 mb-1" >Submit</button>
+              </div>
             </div>
           </form>
         </mat-step>
-        <!-- Done -->
-        <mat-step [stepControl]="fourthFormGroup" errorMessage="">
-          <ng-template matStepLabel>Msajili</ng-template>
-          <br>
-          <div class="row">
-            <div class="col-md-3">
-              <mat-form-field appearance="outline">
-                <mat-label>Jina la Msajili</mat-label>
-                <input matInput placeholder="jina la kwanza,na la ukoo" formControlName="fourthCtrl" required >
-              </mat-form-field>
-            </div>
-            <div class="col-md-3">
-              <mat-form-field appearance="outline">
-                <mat-label>Numberi ya Simu</mat-label>
-                <input matInput placeholder="Nambari ya simu" formControlName="fourthCtrl" required>
-              </mat-form-field>
-            </div>
-            <div class="col-md-3">
-              <mat-form-field appearance="outline">
-                <mat-label>Tarehe ya usajili</mat-label>
-                <input type="date" matInput formControlName="fourthCtrl" required>
-              </mat-form-field>
-            </div>
-          </div>
-          <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button (click)="stepper.reset()">Reset</button>
-            <div class="btn-group float-md-right" role="group">
-              <button class="btn btn-info btn-min-width btn-glow mr-1 mb-1" >Submit</button>
-            </div>
-          </div>
-
-        </mat-step>
       </mat-stepper>
-
-
     </div>
   </div>
 </div>

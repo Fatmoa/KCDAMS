@@ -12,7 +12,7 @@
       </div>
       <div class="content-header-right col-md-6 col-12">
         <div class="btn-group float-md-right" role="group" >
-        <button type="button" class="btn btn-info btn-min-width btn-glow mr-1 mb-1">Add Form</button>
+          <button type="button" class="btn btn-info btn-min-width btn-glow mr-1 mb-1" (click)="onClick()">Add Form</button>
         </div>
       </div>
     </div>
@@ -70,18 +70,127 @@
     </div>
 
   </div>
-
-<!-- <div class="card-content collapse show">
-  <div class="card-body overflow-hidden row">
-    <div class="col-md-9 col-sm-12 border-right-grey border-right-lighten-2">
-      <div id="invoice-total-recievables" class="height-20"></div>
-    </div>
-  </div>
-</div> -->
 </div>
 </section>
 
     </div>
   </div>
 </div>
+
+<!-- Dialog -->
+<ng-template #distributionDialog>
+  <app-card title="Patients">
+    <hr>
+    <form>
+      <div class="row">
+        <div class="col-md-3">
+          <mat-form-field style="width: 100%;" appearance="outline">
+            <mat-label>MAT ID:</mat-label>
+            <input matInput placeholder="mat id">
+          </mat-form-field>
+        </div>
+        <div class="col-md-3">
+          <mat-form-field style="width: 100%;" appearance="outline">
+            <mat-label>FILE No:</mat-label>
+            <input matInput placeholder="file no">
+          </mat-form-field>
+        </div>
+        <div class="col-md-3">
+          <mat-form-field style="width: 100%;" appearance="outline">
+            <mat-label>Patient Name</mat-label>
+            <input matInput placeholder="full name">
+          </mat-form-field>
+        </div>
+        <div class="col-md-3">
+          <label for="gender">Jinsia:</label><br>
+          <mat-radio-group aria-label="Select an option">
+            <mat-radio-button value="1">Mme</mat-radio-button>
+            <mat-radio-button value="2">Mke</mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <mat-form-field style="width: 100%;" appearance="outline">
+              <mat-label>Chagua</mat-label>
+              <mat-select formControlName="" multiple="">
+                  <mat-option *ngFor="let type of matumizi" [value]="type.value">
+                      {{type.value}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+      </div>
+      <div class="col-md-4">
+        <mat-form-field style="width: 100%;" appearance="outline">
+            <mat-label>Wapi unahifadhi bomba</mat-label>
+            <mat-select formControlName="" multiple="">
+                <mat-option *ngFor="let type of uhifadhi" [value]="type.value">
+                    {{type.value}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+    </div>
+    <div class="col-md-4">
+      <mat-form-field style="width: 100%;" appearance="outline">
+          <mat-label>Usafishaji wa sindano iliotumika</mat-label>
+          <mat-select formControlName="" multiple="">
+              <mat-option *ngFor="let type of usafishaji" [value]="type.value">
+                  {{type.value}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+  </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <mat-form-field style="width: 100%;" appearance="outline">
+              <mat-label>Aina ya ngono unayotumia</mat-label>
+              <mat-select formControlName="" multiple="">
+                  <mat-option *ngFor="let type of aina_ngono" [value]="type.value">
+                      {{type.value}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+      </div>
+      <div class="col-md-4">
+        <mat-form-field style="width: 100%;" appearance="outline">
+            <mat-label>Umefanya ngono na wangapi ndani ya miezi 3</mat-label>
+            <mat-select formControlName="" multiple="">
+                <mat-option *ngFor="let type of wenza" [value]="type.value">
+                    {{type.value}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+    </div>
+    <div class="col-md-4">
+      <mat-form-field style="width: 100%;" appearance="outline">
+          <mat-label>Katika mwezi umetumia kondom wa kujamiana</mat-label>
+          <mat-select formControlName="" multiple="">
+              <mat-option *ngFor="let type of matumiz_condom" [value]="type.value">
+                  {{type.value}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+  </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+            <mat-form-field style="width: 100%;" appearance="outline">
+              <mat-label>Psychological intervation plan:</mat-label>
+              <textarea matInput placeholder="Write your intervantion plan here...."></textarea>
+            </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field style="width: 100%;" appearance="outline">
+          <mat-label>Psychological Comments:</mat-label>
+          <textarea matInput placeholder="Write your comments here..."></textarea>
+        </mat-form-field>
+  </div>
+      </div>
+
+
+
+    </form><br><br>
+
+    <div class="card-bottom">
+      <button mat-raised-button matDialogClose="yes">Cancel</button> &nbsp;
+      <button mat-raised-button color="primary" matDialogClose="yes">Add</button>
+    </div>
+
+  </app-card>
+</ng-template>
 

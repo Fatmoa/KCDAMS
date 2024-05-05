@@ -17,6 +17,7 @@ import { DoctorComponent } from './pages/doctor/doctor.component';
 import { AddreceptionComponent } from './pages/addreception/addreception.component';
 import { AddObservationComponent } from './pages/add-observation/add-observation.component';
 import { PatientsInfoComponent } from './pages/patients-info/patients-info.component';
+import { NgoComponent } from './pages/ngo/ngo.component';
 
 const routes: Routes = [
   {
@@ -87,6 +88,10 @@ const routes: Routes = [
       {
         path:'patients-info',
         component:PatientsInfoComponent
+      },
+      {
+        path:'ngo',
+        component:NgoComponent
       },
 
 

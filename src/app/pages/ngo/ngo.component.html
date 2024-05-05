@@ -12,16 +12,16 @@
       </div>
       <div class="content-header-right col-md-6 col-12">
         <div class="btn-group float-md-right" role="group">
-          <button class="btn btn-info btn-min-width btn-glow mr-1 mb-1" (click)="onAdd()">Add Patients</button>
+          <button type="button" class="btn btn-info btn-min-width btn-glow mr-1 mb-1" (click)="openDialog()">Add NGOs</button>
         </div>
       </div>
     </div>
     <div class="content-body">
       <section id="invoice-summary">
-        <!--Total Receivables -->
+        <!-- Total Receivables -->
         <div class="card">
           <div class="card-header">
-            <h4 class="card-title">Registration</h4>
+            <h4 class="card-title">Zone List</h4>
             <a class="heading-elements-toggle"><i class="la la-ellipsis-h font-medium-3"></i></a>
           </div>
           <div class="card-content collapse show">
@@ -31,7 +31,6 @@
                 <mat-label>Filter</mat-label>
                 <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
               </mat-form-field>
-
 
               <table mat-table [dataSource]="dataSource" matSort>
 
@@ -53,8 +52,6 @@
                   <td mat-cell *matCellDef="let row"> {{row.name}} </td>
                 </ng-container>
 
-
-
                 <!-- Fruit Column -->
                 <ng-container matColumnDef="fruit">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header> Fruit </th>
@@ -72,7 +69,6 @@
 
               <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
             </div>
-
           </div>
 
           <div class="card-content collapse show">
@@ -84,6 +80,30 @@
           </div>
         </div>
       </section>
+
     </div>
   </div>
 </div>
+<ng-template #distributionDialog>
+  <app-card title="Add Zone">
+    <hr>
+    <form>
+      <div class="row">
+        <div class="col-md-6">
+          <mat-form-field style="width: 100%;" appearance="outline">
+            <mat-label>NGO Name</mat-label>
+            <input matInput placeholder="NGO name">
+          </mat-form-field>
+        </div>
+      </div>
+
+    </form><br><br>
+
+    <div class="card-bottom">
+      <button mat-raised-button matDialogClose="yes">Cancel</button> &nbsp;
+      <button mat-raised-button color="primary" matDialogClose="yes">Add</button>
+    </div>
+
+  </app-card>
+</ng-template>
+

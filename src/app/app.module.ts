@@ -38,6 +38,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
 import {MatRippleModule} from '@angular/material/core';
 import { PatientsInfoComponent } from './pages/patients-info/patients-info.component';
+import { NgoComponent } from './pages/ngo/ngo.component';
 
 
 
@@ -65,6 +66,7 @@ import { PatientsInfoComponent } from './pages/patients-info/patients-info.compo
     AddreceptionComponent,
     AddObservationComponent,
     PatientsInfoComponent,
+    NgoComponent,
 
 
   ],

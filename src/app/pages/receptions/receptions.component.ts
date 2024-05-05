@@ -22,6 +22,7 @@ const FRUITS: string[] = [
   'pomegranate',
   'pineapple',
 ];
+
 const NAMES: string[] = [
   'Maia',
   'Asher',
