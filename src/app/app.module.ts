@@ -39,7 +39,11 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatRippleModule} from '@angular/material/core';
 import { PatientsInfoComponent } from './pages/patients-info/patients-info.component';
 import { NgoComponent } from './pages/ngo/ngo.component';
-
+import { EduComponent } from './pages/edu/edu.component';
+import { DrugsComponent } from './pages/drugs/drugs.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {FormsModule} from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -67,6 +71,8 @@ import { NgoComponent } from './pages/ngo/ngo.component';
     AddObservationComponent,
     PatientsInfoComponent,
     NgoComponent,
+    EduComponent,
+    DrugsComponent,
 
 
   ],
@@ -86,7 +92,10 @@ import { NgoComponent } from './pages/ngo/ngo.component';
     MatStepperModule,
     MatRadioModule,
     MatSelectModule,
-    MatRippleModule
+    MatRippleModule,
+    MatCheckboxModule,
+    FormsModule,
+    HttpClientModule
 
 
 

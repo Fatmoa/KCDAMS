@@ -1,18 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-add-observation',
   templateUrl: './add-observation.component.html',
   styleUrls: ['./add-observation.component.scss']
 })
+
+
 export class AddObservationComponent implements OnInit{
+  checked = false;
+  indeterminate = false;
+  labelPosition: 'before' | 'after' = 'after';
+  disabled = false;
   constructor (private _formBuilder: FormBuilder,private router: Router){
 
   }
   centered = false;
-  disabled = false;
+
   unbounded = false;
 
   radius: number | undefined;

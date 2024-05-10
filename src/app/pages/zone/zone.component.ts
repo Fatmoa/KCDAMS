@@ -1,49 +1,14 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ZoneService } from 'src/app/services/zone.service';
+import Swal from 'sweetalert2';
 
-export interface UserData {
-  id: string;
-  name: string;
-  progress: string;
-  fruit: string;
-}
 
-/** Constants used to fill up our data base. */
-const FRUITS: string[] = [
-  'blueberry',
-  'lychee',
-  'kiwi',
-  'mango',
-  'peach',
-  'lime',
-  'pomegranate',
-  'pineapple',
-];
-const NAMES: string[] = [
-  'Maia',
-  'Asher',
-  'Olivia',
-  'Atticus',
-  'Amelia',
-  'Jack',
-  'Charlotte',
-  'Theodore',
-  'Isla',
-  'Oliver',
-  'Isabella',
-  'Jasper',
-  'Cora',
-  'Levi',
-  'Violet',
-  'Arthur',
-  'Mia',
-  'Thomas',
-  'Elizabeth',
-];
 
 @Component({
   selector: 'app-zone',
@@ -51,29 +16,41 @@ const NAMES: string[] = [
   styleUrls: ['./zone.component.scss']
 })
 export class ZoneComponent  implements OnInit{
-  displayedColumns: string[] = ['id', 'name', 'progress', 'fruit'];
+  displayedColumns: string[] = ['id', 'name', 'status', 'action'];
   @ViewChild('distributionDialog') distributionDialog!: TemplateRef<any>;
-  dataSource: MatTableDataSource<UserData>;
+  @ViewChild('distributionDialog2') distributionDialog2!: TemplateRef<any>;
+  dataSource!: MatTableDataSource<any>;
+  ZoneForm!: FormGroup
+  ZoneEditForm!: FormGroup
+
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+
   constructor (
     private router:Router,
     private route: ActivatedRoute,
-    private dialog:MatDialog
+    private dialog:MatDialog,
+    private zoneService:ZoneService
 
-  ){
-    const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
-
-    // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(users);
-  }
+  ){}
   ngOnInit(): void {
-
+    this.fetchAllZone()
+    this.configureZoneForm()
+    this.configurationZoneEditForm()
   }
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+  }
+
+  onSave(){
+    const values=this.ZoneForm.value;
+    this.zoneService.addZone(values).subscribe((resp:any)=>{
+      this.reload();
+      this.alert();
+    })
+
   }
 
   applyFilter(event: Event) {
@@ -83,6 +60,16 @@ export class ZoneComponent  implements OnInit{
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+
+  fetchAllZone(){
+    this.zoneService.getAllZone().subscribe((resp:any)=>{
+      this.dataSource=new MatTableDataSource(resp);
+      this.dataSource.paginator=this.paginator;
+      this.dataSource.sort=this.sort;
+
+    })
   }
   openDialog(){
 
@@ -100,21 +87,93 @@ export class ZoneComponent  implements OnInit{
     })
   }
 
-}
-function createNewUser(id: number): UserData {
-  const name =
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))] +
-    ' ' +
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) +
-    '.';
+  openDialog2(row:any){
+    this.ZoneEditForm= new FormGroup({
+      zoneName: new FormControl(row.zoneName),
+      zoneCode: new FormControl(row.zoneCode)
+    })
+    console.log(row);
 
-  return {
-    id: id.toString(),
-    name: name,
-    progress: Math.round(Math.random() * 100).toString(),
-    fruit: FRUITS[Math.round(Math.random() * (FRUITS.length - 1))],
-  };
-}
+    let dialogRef = this.dialog.open(this.distributionDialog2, {
+      width: '650px',
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result !== undefined) {
+        if (result !== 'no') {
+          const enabled = "Y"
+
+        } else if (result === 'no') {
+        }
+      }
+    })
+  }
 
 
+  configureZoneForm(){
+    this.ZoneForm = new FormGroup({
+      zoneName: new FormControl(null,Validators.required),
+      zoneStatus: new FormControl(1)
+    })
 
+  }
+
+
+  reload(){
+    this.router.navigateByUrl('',{skipLocationChange:true}).then(()=>{
+      this.router.navigate(['zone'])
+    })
+  }
+
+  alert(){
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      }
+    });
+    Toast.fire({
+      icon: "success",
+      title: "Zone Added successfully"
+    });
+  }
+
+  configurationZoneEditForm(){
+    this.ZoneEditForm= new FormGroup({
+      zoneName: new FormControl(null),
+      zoneCode: new FormControl(null)
+    })
+  }
+
+  onEdit(){
+    const id=this.ZoneEditForm.value.zoneCode;
+    const values = this.ZoneEditForm.value;
+
+    this.zoneService.editZone(id,values).subscribe((resp:any)=>{
+      this.reload();
+      this.alert2();
+    })
+    }
+
+    alert2(){
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        }
+      });
+      Toast.fire({
+        icon: "success",
+        title: "Zone Edited successfully"
+      });
+    }
+  }

@@ -12,7 +12,7 @@
       </div>
       <div class="content-header-right col-md-6 col-12">
         <div class="btn-group float-md-right" role="group">
-          <button type="button" class="btn btn-info btn-min-width btn-glow mr-1 mb-1" (click)="openDialog()">Add NGOs</button>
+          <button type="button" class="btn btn-info btn-min-width btn-glow mr-1 mb-1" (click)="openDialog()">Add Drug</button>
         </div>
       </div>
     </div>
@@ -21,7 +21,7 @@
         <!-- Total Receivables -->
         <div class="card">
           <div class="card-header">
-            <h4 class="card-title">NGOs List</h4>
+            <h4 class="card-title">Drugs List</h4>
             <a class="heading-elements-toggle"><i class="la la-ellipsis-h font-medium-3"></i></a>
           </div>
           <div class="card-content collapse show">
@@ -85,14 +85,14 @@
   </div>
 </div>
 <ng-template #distributionDialog>
-  <app-card title="Add NGOs">
+  <app-card title="Add Drug Name">
     <hr>
     <form>
       <div class="row">
         <div class="col-md-6">
           <mat-form-field style="width: 100%;" appearance="outline">
-            <mat-label>NGO Name</mat-label>
-            <input matInput placeholder="NGO name">
+            <mat-label>Drug Name</mat-label>
+            <input matInput placeholder="Drug name">
           </mat-form-field>
         </div>
       </div>
@@ -103,4 +103,5 @@
     </div>
   </app-card>
 </ng-template>
+
 
