@@ -18,7 +18,6 @@ import { AddreceptionComponent } from './pages/addreception/addreception.compone
 import { AddObservationComponent } from './pages/add-observation/add-observation.component';
 import { PatientsInfoComponent } from './pages/patients-info/patients-info.component';
 import { NgoComponent } from './pages/ngo/ngo.component';
-import { EduComponent } from './pages/edu/edu.component';
 import { DrugsComponent } from './pages/drugs/drugs.component';
 
 const routes: Routes = [
@@ -96,18 +95,9 @@ const routes: Routes = [
         component:NgoComponent
       },
       {
-        path:'edu',
-        component:EduComponent
-      },
-      {
         path:'drugs',
         component:DrugsComponent
       },
-
-
-
-
-
     ]
   }
 ];
