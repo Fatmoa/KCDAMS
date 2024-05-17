@@ -1,13 +1,11 @@
-
-
-
-
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DistrictService } from 'src/app/services/district.service';
+import { RegionService } from 'src/app/services/region.service';
 
 export interface UserData {
   id: string;
@@ -64,7 +62,9 @@ export class DistrictComponent implements OnInit{
   constructor (
     private router:Router,
     private route: ActivatedRoute,
-    private dialog:MatDialog
+    private dialog:MatDialog,
+    private regionService: RegionService,
+    private districtService: DistrictService
 
   ){
     const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
@@ -73,6 +73,8 @@ export class DistrictComponent implements OnInit{
     this.dataSource = new MatTableDataSource(users);
   }
   ngOnInit(): void {
+    this.fetchAllRegion()
+    this.fetchAllDistrict()
 
   }
   ngAfterViewInit() {
@@ -88,6 +90,12 @@ export class DistrictComponent implements OnInit{
       this.dataSource.paginator.firstPage();
     }
   }
+
+  fetchAllDistrict(){
+    
+  }
+
+
   openDialog(){
 
     let dialogRef = this.dialog.open(this.distributionDialog, {
@@ -101,6 +109,14 @@ export class DistrictComponent implements OnInit{
         } else if (result === 'no') {
         }
       }
+    })
+  }
+
+
+  regions:any
+  fetchAllRegion(){
+    this.regionService.getAllRegion().subscribe((resp:any)=>{
+      this.regions=resp;
     })
   }
 

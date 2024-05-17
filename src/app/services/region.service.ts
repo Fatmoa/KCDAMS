@@ -19,7 +19,7 @@ export class RegionService {
   }
 
   editRegion(id:any,body:any){
-    this.http.put(this.regionAPI + "editRegion"+id,body )
+    this.http.put(this.regionAPI + "editRegion/"+id,body )
   }
 
 }
