@@ -6,19 +6,19 @@ import { environment } from 'src/environment/environment';
   providedIn: 'root'
 })
 export class DistrictService {
-  districtAPI = environment.baseUrl+"regions/"
+  districtAPI = environment.baseUrl+"districts/"
 
   constructor(private http: HttpClient) { }
 
   getAllDistrict(){
-    this.http.get(this.districtAPI+"all")
+   return this.http.get(this.districtAPI+"all")
   }
 
   addDistrict(body:any){
-    this.http.post(this.districtAPI+"save",body)
+    return this.http.post(this.districtAPI+"save",body)
   }
 
   editDistrict(id:any,body:any){
-    this.http.put(this.districtAPI+"editDistrict/"+id,body)
+    return this.http.put(this.districtAPI+"editDistrict/"+id,body)
   }
 }

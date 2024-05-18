@@ -12,15 +12,14 @@ export class NgoService {
   constructor(private http: HttpClient) { }
 
   getAllNgo(){
-    this.http.get(this.ngoAPI+"all")
+    return this.http.get(this.ngoAPI+"all")
   }
 
   addNgo(body:any){
-    this.http.post(this.ngoAPI+"save",body)
+    return this.http.post(this.ngoAPI+"save",body)
   }
 
   editNgo(id:any,body:any){
-    this.http.put(this.ngoAPI+"editNgo/"+id,body)
+    return this.http.put(this.ngoAPI+"editNgo/"+id,body)
   }
-
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -7,45 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DistrictService } from 'src/app/services/district.service';
 import { RegionService } from 'src/app/services/region.service';
 
-export interface UserData {
-  id: string;
-  name: string;
-  progress: string;
-  fruit: string;
-}
 
-/** Constants used to fill up our data base. */
-const FRUITS: string[] = [
-  'blueberry',
-  'lychee',
-  'kiwi',
-  'mango',
-  'peach',
-  'lime',
-  'pomegranate',
-  'pineapple',
-];
-const NAMES: string[] = [
-  'Maia',
-  'Asher',
-  'Olivia',
-  'Atticus',
-  'Amelia',
-  'Jack',
-  'Charlotte',
-  'Theodore',
-  'Isla',
-  'Oliver',
-  'Isabella',
-  'Jasper',
-  'Cora',
-  'Levi',
-  'Violet',
-  'Arthur',
-  'Mia',
-  'Thomas',
-  'Elizabeth',
-];
 
 @Component({
   selector: 'app-district',
@@ -53,12 +16,15 @@ const NAMES: string[] = [
   styleUrls: ['./district.component.scss']
 })
 export class DistrictComponent implements OnInit{
-  displayedColumns: string[] = ['id', 'name', 'progress', 'fruit'];
+  displayedColumns: string[] = ['id', 'region', 'district', 'status', 'action'];
   @ViewChild('distributionDialog') distributionDialog!: TemplateRef<any>;
-  dataSource: MatTableDataSource<UserData>;
+  dataSource!: MatTableDataSource<any>;
+  DistrictForm!: FormGroup;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+x: any;
+i: any;
   constructor (
     private router:Router,
     private route: ActivatedRoute,
@@ -67,14 +33,12 @@ export class DistrictComponent implements OnInit{
     private districtService: DistrictService
 
   ){
-    const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
 
-    // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(users);
   }
   ngOnInit(): void {
     this.fetchAllRegion()
     this.fetchAllDistrict()
+    this.configureDistrictForm()
 
   }
   ngAfterViewInit() {
@@ -92,7 +56,13 @@ export class DistrictComponent implements OnInit{
   }
 
   fetchAllDistrict(){
-    
+    this.districtService.getAllDistrict().subscribe((resp:any)=>{
+      console.log(resp);
+      this.dataSource = new MatTableDataSource(resp);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+
+    })
   }
 
 
@@ -120,20 +90,25 @@ export class DistrictComponent implements OnInit{
     })
   }
 
-}
-function createNewUser(id: number): UserData {
-  const name =
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))] +
-    ' ' +
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) +
-    '.';
+  configureDistrictForm(){
+    this.DistrictForm= new FormGroup({
+      districtName: new FormControl(null, Validators.required),
+      region: new FormControl(null, Validators.required),
+      districtStatus: new FormControl(1)
+    })
 
-  return {
-    id: id.toString(),
-    name: name,
-    progress: Math.round(Math.random() * 100).toString(),
-    fruit: FRUITS[Math.round(Math.random() * (FRUITS.length - 1))],
-  };
+  }
+
+  onSave(){
+    const val = this.DistrictForm.value
+    console.log(val);
+    this.districtService.addDistrict(val).subscribe((response:any)=>{
+      
+    })
+
+  }
+
+
 }
 
 

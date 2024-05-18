@@ -1,9 +1,11 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DrugService } from 'src/app/services/drug.service';
 
 export interface UserData {
   id: string;
@@ -50,29 +52,52 @@ const NAMES: string[] = [
   styleUrls: ['./drugs.component.scss']
 })
 export class DrugsComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'name', 'progress', 'fruit'];
+  displayedColumns: string[] = ['id', 'name','action'];
   @ViewChild('distributionDialog') distributionDialog!: TemplateRef<any>;
-  dataSource: MatTableDataSource<UserData>;
+  @ViewChild('distributionDialog2') distributionDialog2!: TemplateRef<any>;
+  dataSource!: MatTableDataSource<any>;
+  drugForm!: FormGroup;
+  EditDrugForm!:FormGroup;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   constructor (
     private router:Router,
     private route: ActivatedRoute,
-    private dialog:MatDialog
+    private dialog:MatDialog,
+    private drugService: DrugService,
 
-  ){
-    const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
-
-    // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(users);
-  }
+  ){}
   ngOnInit(): void {
+    this.fetchAllDrug();
+    this.configureDrugForm();
+    this.configureEditDrugForm()
   }
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
+
+  fetchAllDrug(){
+    this.drugService.getAllDrug().subscribe((resp:any)=>{
+      console.log(resp);
+      this.dataSource=new MatTableDataSource(resp);
+      this.dataSource.paginator= this.paginator;
+      this.dataSource.sort= this.sort
+    })
+
+  }
+
   openDialog(){
 
     let dialogRef = this.dialog.open(this.distributionDialog, {
@@ -88,27 +113,60 @@ export class DrugsComponent implements OnInit {
       }
     })
   }
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
 
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
+  configureDrugForm(){
+    this.drugForm = new FormGroup({
+      drugName: new FormControl(null,Validators.required)
+    })
   }
-}
-function createNewUser(id: number): UserData {
-  const name =
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))] +
-    ' ' +
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) +
-    '.';
 
-  return {
-    id: id.toString(),
-    name: name,
-    progress: Math.round(Math.random() * 100).toString(),
-    fruit: FRUITS[Math.round(Math.random() * (FRUITS.length - 1))],
-  };
+  onSave(){
+    const values = this.drugForm.value;
+    console.log(values);
+    this.drugService.addDrug(values).subscribe((response:any)=>{
+    })
+  }
+
+
+  openDialog2(row:any){
+    console.log(row);
+
+    this.EditDrugForm = new FormGroup({
+      drugName: new FormControl(row.drugName),
+      drugCode:new FormControl(row.drugCode)
+    })
+
+    let dialogRef = this.dialog.open(this.distributionDialog2, {
+      width: '650px',
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result !== undefined) {
+        if (result !== 'no') {
+          const enabled = "Y"
+
+        } else if (result === 'no') {
+        }
+      }
+    })
+  }
+
+
+  configureEditDrugForm(){
+    this.EditDrugForm = new FormGroup({
+      drugCode:new FormControl(null),
+      drugName: new FormControl(null)
+    })
+  }
+
+  onEdit(){
+    const id = this.EditDrugForm.value.drugCode;
+    const val = this.EditDrugForm.value
+
+    this.drugService.editDrug(id,val).subscribe((response:any)=>{
+    })
+  }
+
 }
+
+
 

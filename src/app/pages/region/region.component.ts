@@ -16,7 +16,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./region.component.scss']
 })
 export class RegionComponent implements OnInit{
-  displayedColumns: string[] = ['id', 'name', 'progress', 'fruit'];
+  displayedColumns: string[] = ['id', 'region', 'zone', 'status','action'];
   @ViewChild('distributionDialog') distributionDialog!: TemplateRef<any>;
   dataSource!: MatTableDataSource<any>;
 

@@ -11,79 +11,98 @@
         </div>
       </div>
       <div class="content-header-right col-md-6 col-12">
-        <div class="btn-group float-md-right" role="group" >
-        <button type="button" class="btn btn-info btn-min-width btn-glow mr-1 mb-1" (click)="openDialog()" >Add Region</button>
+        <div class="btn-group float-md-right" role="group">
+          <button type="button" class="btn btn-info btn-min-width btn-glow mr-1 mb-1" (click)="openDialog()">Add
+            Region</button>
         </div>
       </div>
     </div>
-    <div class="content-body"><section id="invoice-summary">
-<!-- Total Receivables -->
-<div class="card">
-<div class="card-header">
-  <h4 class="card-title">Region List</h4>
-  <a class="heading-elements-toggle"><i class="la la-ellipsis-h font-medium-3"></i></a>
-</div>
-<div class="card-content collapse show">
-  <div class="card-body">
+    <div class="content-body">
+      <section id="invoice-summary">
+        <!-- Total Receivables -->
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">Region List</h4>
+            <a class="heading-elements-toggle"><i class="la la-ellipsis-h font-medium-3"></i></a>
+          </div>
+          <div class="card-content collapse show">
+            <div class="card-body">
 
-    <mat-form-field appearance="outline">
-      <mat-label>Filter</mat-label>
-      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
-    </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Filter</mat-label>
+                <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+              </mat-form-field>
 
-    <div class="mat-elevation-z8">
-      <table mat-table [dataSource]="dataSource" matSort>
+              
+                <table mat-table [dataSource]="dataSource" matSort>
 
-        <!-- ID Column -->
-        <ng-container matColumnDef="id">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-          <td mat-cell *matCellDef="let row;let i = index"> {{i + 1}} </td>
-        </ng-container>
+                  <!-- ID Column -->
+                  <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+                    <td mat-cell *matCellDef="let row;let i = index"> {{i + 1}} </td>
+                  </ng-container>
 
-        <!-- Progress Column -->
-        <ng-container matColumnDef="progress">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> progress </th>
-          <td mat-cell *matCellDef="let row"> {{row.zone.zoneName}} </td>
-        </ng-container>
+                  <!-- Progress Column -->
+                  <ng-container matColumnDef="region">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Zone </th>
+                    <td mat-cell *matCellDef="let row"> {{row.zone.zoneName}} </td>
+                  </ng-container>
 
-        <!-- Name Column -->
-        <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-          <td mat-cell *matCellDef="let row"> {{row.regionName}} </td>
-        </ng-container>
+                  <!-- Region Column -->
+                  <ng-container matColumnDef="zone">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Region </th>
+                    <td mat-cell *matCellDef="let row"> {{row.regionName}} </td>
+                  </ng-container>
 
-        <!-- Fruit Column -->
-        <ng-container matColumnDef="fruit">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Fruit </th>
-          <td mat-cell *matCellDef="let row"> {{row.regionStatus}} </td>
-        </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-        <!-- Row shown when there is no matching data. -->
-        <tr class="mat-row" *matNoDataRow>
-          <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
-        </tr>
-      </table>
-
-      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
-    </div>
+                  <!-- Status Column -->
+                  <ng-container matColumnDef="status">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+                    <td mat-cell *matCellDef="let row">
+                      <span *ngIf="row.regionStatus == 1">
+                        <i class="badge badge-success">Active</i>
+                      </span>
+                      <span *ngIf="row.regionStatus == 0">
+                        <i class="badge badge-success">In Active</i>
+                      </span>
+                    </td>
+                  </ng-container>
 
 
-  </div>
 
-</div>
+                  <!-- Fruit Column -->
+                  <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+                    <td mat-cell *matCellDef="let row">
+                      <button mat-raised-button color="primary">Edit</button>
+                    </td>
+                  </ng-container>
 
-<div class="card-content collapse show">
-  <div class="card-body overflow-hidden row">
-    <div class="col-md-9 col-sm-12 border-right-grey border-right-lighten-2">
-      <div id="invoice-total-recievables" class="height-20"></div>
-    </div>
-  </div>
-</div>
-</div>
-</section>
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                  <!-- Row shown when there is no matching data. -->
+                  <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+                  </tr>
+                </table>
+
+                <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+
+
+
+            </div>
+
+          </div>
+
+          <div class="card-content collapse show">
+            <div class="card-body overflow-hidden row">
+              <div class="col-md-9 col-sm-12 border-right-grey border-right-lighten-2">
+                <div id="invoice-total-recievables" class="height-20"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
     </div>
   </div>
@@ -97,12 +116,12 @@
           <mat-form-field appearance="outline" style="width: 100%;">
             <mat-label>Zone Name</mat-label>
             <mat-select formControlName="zone">
-            <mat-option *ngFor="let zone of zones" [value]="zone">{{zone.zoneName}}</mat-option>
-          </mat-select>
+              <mat-option *ngFor="let zone of zones" [value]="zone">{{zone.zoneName}}</mat-option>
+            </mat-select>
           </mat-form-field>
         </div>
         <div class="col-md-6">
-          <mat-form-field  style="width: 100%;" appearance="outline">
+          <mat-form-field style="width: 100%;" appearance="outline">
             <mat-label>Region Name</mat-label>
             <input matInput placeholder="region name" formControlName="regionName">
           </mat-form-field>
@@ -111,11 +130,9 @@
     </form><br><br>
 
     <div class="card-bottom">
-      <button mat-raised-button matDialogClose="yes" >Cancel</button> &nbsp;
-      <button mat-raised-button  color="primary"  matDialogClose="yes" (click)="onSave()">Add</button>
-  </div>
+      <button mat-raised-button matDialogClose="yes">Cancel</button> &nbsp;
+      <button mat-raised-button color="primary" matDialogClose="yes" (click)="onSave()">Add</button>
+    </div>
 
   </app-card>
-  </ng-template>
-
-
+</ng-template>

@@ -12,14 +12,14 @@ export class RolesService {
   constructor(private http: HttpClient) { }
 
   getAllRole(){
-    this.http.get(this.roleAPI+"all")
+    return this.http.get(this.roleAPI+"all")
   }
 
   addRole(body:any){
-    this.http.post(this.roleAPI+"save",body)
+    return this.http.post(this.roleAPI+"save",body)
   }
 
   editRole(id:any,body:any){
-    this.http.put(this.roleAPI+"editRole/"+id,body)
+     return this.http.put(this.roleAPI+"editRole/"+id,body)
   }
 }

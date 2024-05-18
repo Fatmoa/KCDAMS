@@ -30,33 +30,46 @@
       <mat-label>Filter</mat-label>
       <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
     </mat-form-field>
-
-    <div class="mat-elevation-z8">
       <table mat-table [dataSource]="dataSource" matSort>
 
         <!-- ID Column -->
         <ng-container matColumnDef="id">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-          <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+          <td mat-cell *matCellDef="let row;let i = index">{{i+1}}</td>
         </ng-container>
 
         <!-- Progress Column -->
-        <ng-container matColumnDef="progress">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Progress </th>
-          <td mat-cell *matCellDef="let row"> {{row.progress}}% </td>
+        <ng-container matColumnDef="region">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Region </th>
+          <td mat-cell *matCellDef="let row"> {{row.region.regionName}}</td>
         </ng-container>
 
         <!-- Name Column -->
-        <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-          <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+        <ng-container matColumnDef="district">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> District </th>
+          <td mat-cell *matCellDef="let row"> {{row.districtName}} </td>
         </ng-container>
 
         <!-- Fruit Column -->
-        <ng-container matColumnDef="fruit">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Fruit </th>
-          <td mat-cell *matCellDef="let row"> {{row.fruit}} </td>
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+          <td mat-cell *matCellDef="let row">
+            <span *ngIf="row.districtStatus==1">
+              <i class="badge badge-success">Active</i>
+            </span>
+            <span *ngIf="row.districtStatus==0">
+              <i class="badge badge-success">In Active</i>
+            </span>
+          </td>
         </ng-container>
+
+          <!-- Action Column -->
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+            <td mat-cell *matCellDef="let row">
+              <button mat-raised-button color="primary" >Edit</button>
+            </td>
+          </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
@@ -68,7 +81,7 @@
       </table>
 
       <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
-    </div>
+
 
 
   </div>
@@ -89,28 +102,31 @@
   </div>
 </div>
 <ng-template #distributionDialog>
-  <app-card title="Add Zone">
+  <app-card title="Add District">
     <hr>
-    <form >
+    <form [formGroup]="DistrictForm">
       <div class="row">
         <div class="col-md-6">
           <mat-form-field  style="width: 100%;" appearance="outline">
-            <mat-label>Zone Name</mat-label>
-            <input matInput placeholder="zone name" >
+            <mat-label>Region Name</mat-label>
+            <mat-select formControlName="region">
+              <mat-option *ngFor="let region of regions" [value]="region">{{region.regionName}}</mat-option>
+            </mat-select>
           </mat-form-field>
         </div>
         <div class="col-md-6">
           <mat-form-field  style="width: 100%;" appearance="outline">
-            <mat-label>Zone Name</mat-label>
-            <input matInput placeholder="zone name" >
+            <mat-label>District Name</mat-label>
+            <input matInput placeholder="district name" formControlName="districtName">
           </mat-form-field>
         </div>
+
       </div>
     </form><br><br>
 
     <div class="card-bottom">
       <button mat-raised-button matDialogClose="yes" >Cancel</button> &nbsp;
-      <button mat-raised-button  color="primary"  matDialogClose="yes" >Add</button>
+      <button mat-raised-button  color="primary"  matDialogClose="yes" (click)="onSave()">Add</button>
   </div>
 
   </app-card>
