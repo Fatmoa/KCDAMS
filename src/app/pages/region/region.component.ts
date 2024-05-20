@@ -18,12 +18,15 @@ import Swal from 'sweetalert2';
 export class RegionComponent implements OnInit{
   displayedColumns: string[] = ['id', 'region', 'zone', 'status','action'];
   @ViewChild('distributionDialog') distributionDialog!: TemplateRef<any>;
+  @ViewChild('distributionDialog2') distributionDialog2!: TemplateRef<any>;
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
   RegionForm!:FormGroup;
+  EditRegionForm!:FormGroup
+
   constructor (
     private router:Router,
     private route: ActivatedRoute,
@@ -35,7 +38,8 @@ export class RegionComponent implements OnInit{
   ngOnInit(): void {
     this.fetchAllZone();
     this.fetchAllRegion();
-    this.configureRegionForm()
+    this.configureRegionForm();
+    this.configureEditRegionForm()
 
   }
   ngAfterViewInit() {
@@ -104,6 +108,35 @@ export class RegionComponent implements OnInit{
     this.regionService.addRegion(values).subscribe((response:any)=>{
     })
 
+  }
+
+  openDialog2(row:any){
+    this.EditRegionForm= new FormGroup({
+      regionCode: new FormControl(row.regionCode),
+      regionName: new FormControl(row.regionName),
+      zoneName: new FormControl(row.zoneName)
+    })
+
+    let dialogRef = this.dialog.open(this.distributionDialog2, {
+      width: '650px',
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result !== undefined) {
+        if (result !== 'no') {
+          const enabled = "Y"
+
+        } else if (result === 'no') {
+        }
+      }
+    })
+  }
+
+  configureEditRegionForm(){
+    this.EditRegionForm = new FormGroup({
+      regionCode: new FormControl(null),
+      regionName: new FormControl(null),
+      zoneName: new FormControl(null)
+    })
   }
 
 

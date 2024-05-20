@@ -89,7 +89,7 @@
         <div class="col-md-6">
           <mat-form-field style="width: 100%;" appearance="outline">
             <mat-label>Drug Name</mat-label>
-            <input matInput placeholder="Drug name" formControlName="drugName">
+            <input matInput placeholder="Drug name" formControlName="drugName" required>
           </mat-form-field>
         </div>
       </div>
@@ -117,7 +117,7 @@
     </form><br><br>
     <div class="card-bottom">
       <button mat-raised-button matDialogClose="yes">Cancel</button> &nbsp;
-      <button mat-raised-button color="primary" matDialogClose="yes" (click)="onSave()">Add</button>
+      <button mat-raised-button color="primary" matDialogClose="yes" (click)="onEdit()">Edit</button>
     </div>
   </app-card>
 </ng-template>

@@ -34,29 +34,26 @@
 
               <table mat-table [dataSource]="dataSource" matSort>
 
-                <!-- ID Column -->
                 <ng-container matColumnDef="id">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-                  <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+                  <td mat-cell *matCellDef="let row; let i = index"> {{i+1}} </td>
                 </ng-container>
 
                 <!-- Progress Column -->
-                <ng-container matColumnDef="progress">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Progress </th>
-                  <td mat-cell *matCellDef="let row"> {{row.progress}}% </td>
+                <ng-container matColumnDef="name">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> NGO name </th>
+                  <td mat-cell *matCellDef="let row"> {{row.ngoName}}</td>
                 </ng-container>
 
                 <!-- Name Column -->
-                <ng-container matColumnDef="name">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-                  <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+                <ng-container matColumnDef="action">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+                  <td mat-cell *matCellDef="let row">
+                    <button mat-raised-button color="primary" (click)="openDialog2(row)">Edit</button>
+                  </td>
                 </ng-container>
 
-                <!-- Fruit Column -->
-                <ng-container matColumnDef="fruit">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Fruit </th>
-                  <td mat-cell *matCellDef="let row"> {{row.fruit}} </td>
-                </ng-container>
+
 
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
@@ -87,19 +84,40 @@
 <ng-template #distributionDialog>
   <app-card title="Add NGOs">
     <hr>
-    <form>
+    <form [formGroup]="NgoForm">
       <div class="row">
         <div class="col-md-6">
           <mat-form-field style="width: 100%;" appearance="outline">
             <mat-label>NGO Name</mat-label>
-            <input matInput placeholder="NGO name">
+            <input matInput placeholder="NGO name" formControlName="ngoName">
           </mat-form-field>
         </div>
       </div>
     </form><br><br>
     <div class="card-bottom">
       <button mat-raised-button matDialogClose="yes">Cancel</button> &nbsp;
-      <button mat-raised-button color="primary" matDialogClose="yes">Add</button>
+      <button mat-raised-button color="primary" matDialogClose="yes" (click)="onAdd()">Add</button>
+    </div>
+  </app-card>
+</ng-template>
+
+
+<ng-template #distributionDialog2>
+  <app-card title="Add NGOs">
+    <hr>
+    <form [formGroup]="EditNgoForm">
+      <div class="row">
+        <div class="col-md-6">
+          <mat-form-field style="width: 100%;" appearance="outline">
+            <mat-label>NGO Name</mat-label>
+            <input matInput placeholder="NGO name" formControlName="ngoName">
+          </mat-form-field>
+        </div>
+      </div>
+    </form><br><br>
+    <div class="card-bottom">
+      <button mat-raised-button matDialogClose="yes">Cancel</button> &nbsp;
+      <button mat-raised-button color="primary" matDialogClose="yes" (click)="onEdit()">Add</button>
     </div>
   </app-card>
 </ng-template>

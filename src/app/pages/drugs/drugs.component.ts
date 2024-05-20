@@ -6,6 +6,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DrugService } from 'src/app/services/drug.service';
+import Swal from 'sweetalert2';
 
 export interface UserData {
   id: string;
@@ -124,13 +125,13 @@ export class DrugsComponent implements OnInit {
     const values = this.drugForm.value;
     console.log(values);
     this.drugService.addDrug(values).subscribe((response:any)=>{
+      this.reload()
+      this.alert();
     })
   }
 
 
   openDialog2(row:any){
-    console.log(row);
-
     this.EditDrugForm = new FormGroup({
       drugName: new FormControl(row.drugName),
       drugCode:new FormControl(row.drugCode)
@@ -161,10 +162,55 @@ export class DrugsComponent implements OnInit {
   onEdit(){
     const id = this.EditDrugForm.value.drugCode;
     const val = this.EditDrugForm.value
-
     this.drugService.editDrug(id,val).subscribe((response:any)=>{
+      this.alert2();
+      this.reload()
     })
   }
+
+  alert(){
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      }
+    });
+    Toast.fire({
+      icon: "success",
+      title: "Drug Added successfully"
+    });
+  }
+
+  reload(){
+    this.router.navigateByUrl('',{skipLocationChange:true}).then(()=>{
+      this.router.navigate(['drugs'])
+    })
+  }
+
+  alert2(){
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      }
+    });
+    Toast.fire({
+      icon: "success",
+      title: "Drug Edited successfully"
+    });
+  }
+
+
 
 }
 

@@ -33,7 +33,7 @@
                 <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
               </mat-form-field>
 
-              
+
                 <table mat-table [dataSource]="dataSource" matSort>
 
                   <!-- ID Column -->
@@ -73,7 +73,7 @@
                   <ng-container matColumnDef="action">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
                     <td mat-cell *matCellDef="let row">
-                      <button mat-raised-button color="primary">Edit</button>
+                      <button mat-raised-button color="primary" (click)="openDialog2(row)">Edit</button>
                     </td>
                   </ng-container>
 
@@ -133,6 +133,35 @@
       <button mat-raised-button matDialogClose="yes">Cancel</button> &nbsp;
       <button mat-raised-button color="primary" matDialogClose="yes" (click)="onSave()">Add</button>
     </div>
+  </app-card>
+</ng-template>
 
+
+<ng-template #distributionDialog2>
+  <app-card title="Edit Region">
+    <hr>
+    <form [formGroup]="EditRegionForm">
+      <div class="row">
+        <div class="col-md-6">
+          <mat-form-field appearance="outline" style="width: 100%;">
+            <mat-label>Zone Name</mat-label>
+            <mat-select formControlName="zone">
+              <mat-option *ngFor="let zone of zones" [value]="zone">{{zone.zoneName}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6">
+          <mat-form-field style="width: 100%;" appearance="outline">
+            <mat-label>Region Name</mat-label>
+            <input matInput placeholder="region name" formControlName="regionName">
+          </mat-form-field>
+        </div>
+      </div>
+    </form><br><br>
+
+    <div class="card-bottom">
+      <button mat-raised-button matDialogClose="yes">Cancel</button> &nbsp;
+      <button mat-raised-button color="primary" matDialogClose="yes" >Add</button>
+    </div>
   </app-card>
 </ng-template>

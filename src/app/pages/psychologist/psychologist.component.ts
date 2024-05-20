@@ -81,10 +81,10 @@ export class PsychologistComponent implements OnInit{
 
 
   DrugType:any[] = [
-    {value:'Small'},
-    {value:'Medium'},
-    {value:'Large'},
-    {value:'Larger'},
+    {value:''},
+    {value:''},
+    {value:''},
+    {value:''},
   ];
 
   disorder:any []=[
