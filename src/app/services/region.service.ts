@@ -21,4 +21,8 @@ export class RegionService {
   editRegion(id:any,body:any){
     return this.http.put(this.regionAPI + "editRegion/"+id,body )
   }
+
+  getRegionByCode(id:any){
+    return this.http.get(this.regionAPI+id)
+  }
 }

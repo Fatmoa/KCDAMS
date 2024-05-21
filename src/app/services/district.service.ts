@@ -21,4 +21,6 @@ export class DistrictService {
   editDistrict(id:any,body:any){
     return this.http.put(this.districtAPI+"editDistrict/"+id,body)
   }
+
+ 
 }

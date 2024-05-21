@@ -7,7 +7,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RegionService } from 'src/app/services/region.service';
-import Swal from 'sweetalert2';
+import Swal from 'sweetalert2'
 
 
 @Component({
@@ -16,7 +16,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./region.component.scss']
 })
 export class RegionComponent implements OnInit{
-  displayedColumns: string[] = ['id', 'region', 'zone', 'status','action'];
+  displayedColumns: string[] = ['id', 'zone', 'region', 'status','action'];
   @ViewChild('distributionDialog') distributionDialog!: TemplateRef<any>;
   @ViewChild('distributionDialog2') distributionDialog2!: TemplateRef<any>;
   dataSource!: MatTableDataSource<any>;
@@ -113,8 +113,9 @@ export class RegionComponent implements OnInit{
   openDialog2(row:any){
     this.EditRegionForm= new FormGroup({
       regionCode: new FormControl(row.regionCode),
+      zone: new FormControl(row.zone.zoneCode),
       regionName: new FormControl(row.regionName),
-      zoneName: new FormControl(row.zoneName)
+
     })
 
     let dialogRef = this.dialog.open(this.distributionDialog2, {
@@ -134,8 +135,23 @@ export class RegionComponent implements OnInit{
   configureEditRegionForm(){
     this.EditRegionForm = new FormGroup({
       regionCode: new FormControl(null),
-      regionName: new FormControl(null),
-      zoneName: new FormControl(null)
+      zone: new FormControl(null),
+      regionName: new FormControl(null)
+    })
+  }
+
+
+
+  onEdit(){
+    const id = this.EditRegionForm.value.regionCode;
+    this.zoneService.getZoneByCode(this.EditRegionForm.value.zone).subscribe((resp:any)=>{
+      const values = {...this.EditRegionForm.value,zone:resp}
+      this.regionService.editRegion(id,values).subscribe((resp:any)=>{
+        this.reload();
+        this.alert2();
+        console.log(resp);
+
+      })
     })
   }
 
@@ -162,6 +178,24 @@ export class RegionComponent implements OnInit{
     Toast.fire({
       icon: "success",
       title: "Region Added successfully"
+    });
+  }
+
+  alert2(){
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      }
+    });
+    Toast.fire({
+      icon: "success",
+      title: "Region Edited successfully"
     });
   }
 

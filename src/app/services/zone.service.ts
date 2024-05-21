@@ -6,6 +6,7 @@ import { environment } from 'src/environment/environment';
   providedIn: 'root'
 })
 export class ZoneService {
+
 zoneAPI = environment.baseUrl + "zones/"
   constructor(private http: HttpClient) { }
 
@@ -19,5 +20,9 @@ zoneAPI = environment.baseUrl + "zones/"
 
   editZone(id:any,body:any){
     return this.http.put(this.zoneAPI + "editZone/"+id,body)
+  }
+
+  getZoneByCode(id:any){
+    return this.http.get(this.zoneAPI+id)
   }
 }

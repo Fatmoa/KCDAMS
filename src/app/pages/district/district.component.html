@@ -67,7 +67,7 @@
           <ng-container matColumnDef="action">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
             <td mat-cell *matCellDef="let row">
-              <button mat-raised-button color="primary" >Edit</button>
+              <button mat-raised-button color="primary" (click)="openDialog2(row)">Edit</button>
             </td>
           </ng-container>
 
@@ -131,6 +131,37 @@
 
   </app-card>
   </ng-template>
+
+  <ng-template #distributionDialog2>
+    <app-card title="Edit District">
+      <hr>
+      <form [formGroup]="DistrictEditForm">
+        <div class="row">
+          <div class="col-md-6">
+            <mat-form-field  style="width: 100%;" appearance="outline">
+              <mat-label>Region Name</mat-label>
+              <mat-select formControlName="region">
+                <mat-option *ngFor="let region of regions" [value]="region.regionCode">{{region.regionName}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field  style="width: 100%;" appearance="outline">
+              <mat-label>District Name</mat-label>
+              <input matInput placeholder="district name" formControlName="districtName">
+            </mat-form-field>
+          </div>
+
+        </div>
+      </form><br><br>
+
+      <div class="card-bottom">
+        <button mat-raised-button matDialogClose="yes" >Cancel</button> &nbsp;
+        <button mat-raised-button  color="primary"  matDialogClose="yes" (click)="onEdit()">Edit</button>
+    </div>
+
+    </app-card>
+    </ng-template>
 
 
 
