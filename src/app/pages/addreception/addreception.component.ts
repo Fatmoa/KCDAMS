@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatRippleModule} from '@angular/material/core';
@@ -17,6 +17,9 @@ export class AddreceptionComponent implements OnInit{
 
   radius: number | undefined;
 
+  combinedForm!:FormGroup;
+
+
   firstFormGroup = this._formBuilder.group({
     firstCtrl: ['', Validators.required],
   });
@@ -26,14 +29,19 @@ export class AddreceptionComponent implements OnInit{
   thirdFormGroup = this._formBuilder.group({
     thirdCtrl: ['', Validators.required],
   });
-  fourthFormGroup = this._formBuilder.group({
-    fourthCtrl: ['', Validators.required],
-  });
 
 
 
 
-  constructor(private _formBuilder: FormBuilder,private router: Router) {}
+
+  constructor(private _formBuilder: FormBuilder,private router: Router) {
+    // this.combinedForm = this._formBuilder.group({
+    //   firstCtrl: ['', Validators.required],
+    //   secondCtrl: ['', Validators.required],
+    //   thirdCtrl: ['', Validators.required],
+    // });
+  }
+
   ngOnInit(): void {
 
   }
