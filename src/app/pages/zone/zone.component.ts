@@ -68,7 +68,6 @@ export class ZoneComponent  implements OnInit{
       this.dataSource=new MatTableDataSource(resp);
       this.dataSource.paginator=this.paginator;
       this.dataSource.sort=this.sort;
-
     })
   }
   openDialog(){

@@ -1,3 +1,5 @@
+import { RolesService } from './../../services/roles.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
@@ -5,45 +7,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 
-export interface UserData {
-  id: string;
-  name: string;
-  progress: string;
-  fruit: string;
-}
 
-/** Constants used to fill up our data base. */
-const FRUITS: string[] = [
-  'blueberry',
-  'lychee',
-  'kiwi',
-  'mango',
-  'peach',
-  'lime',
-  'pomegranate',
-  'pineapple',
-];
-const NAMES: string[] = [
-  'Maia',
-  'Asher',
-  'Olivia',
-  'Atticus',
-  'Amelia',
-  'Jack',
-  'Charlotte',
-  'Theodore',
-  'Isla',
-  'Oliver',
-  'Isabella',
-  'Jasper',
-  'Cora',
-  'Levi',
-  'Violet',
-  'Arthur',
-  'Mia',
-  'Thomas',
-  'Elizabeth',
-];
 
 @Component({
   selector: 'app-role',
@@ -51,24 +15,24 @@ const NAMES: string[] = [
   styleUrls: ['./role.component.scss']
 })
 export class RoleComponent implements OnInit{
-  displayedColumns: string[] = ['id', 'name', 'progress', 'fruit'];
+  displayedColumns: string[] = ['id', 'name', 'status', 'action'];
   @ViewChild('distributionDialog') distributionDialog!: TemplateRef<any>;
-  dataSource: MatTableDataSource<UserData>;
-
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+  dataSource!: MatTableDataSource<any>;
+  RoleForm!:FormGroup;
+
   constructor (
     private router:Router,
     private route: ActivatedRoute,
-    private dialog:MatDialog
+    private dialog:MatDialog,
+    private rolesService:RolesService,
 
-  ){
-    const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
+  ){}
 
-    // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(users);
-  }
   ngOnInit(): void {
+    this.configureRoleForm()
+    this.fetchAllRoles()
 
   }
   ngAfterViewInit() {
@@ -84,6 +48,15 @@ export class RoleComponent implements OnInit{
       this.dataSource.paginator.firstPage();
     }
   }
+
+  fetchAllRoles(){
+    this.rolesService.getAllRole().subscribe((resp:any)=>{
+      this.dataSource=new MatTableDataSource(resp);
+      this.dataSource.paginator=this.paginator;
+      this.dataSource.sort=this.sort;
+    })
+  }
+
   openDialog(){
 
     let dialogRef = this.dialog.open(this.distributionDialog, {
@@ -99,22 +72,15 @@ export class RoleComponent implements OnInit{
       }
     })
   }
+  configureRoleForm(){
+    this.RoleForm = new FormGroup({
+      uroleName: new FormControl(null,Validators.required),
+      roleStatus: new FormControl(1)
+    })
+  }
 
 }
-function createNewUser(id: number): UserData {
-  const name =
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))] +
-    ' ' +
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) +
-    '.';
 
-  return {
-    id: id.toString(),
-    name: name,
-    progress: Math.round(Math.random() * 100).toString(),
-    fruit: FRUITS[Math.round(Math.random() * (FRUITS.length - 1))],
-  };
-}
 
 
 

@@ -1,5 +1,5 @@
 import { ReceptionsComponent } from './pages/receptions/receptions.component';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
@@ -19,6 +19,7 @@ import { AddObservationComponent } from './pages/add-observation/add-observation
 import { PatientsInfoComponent } from './pages/patients-info/patients-info.component';
 import { NgoComponent } from './pages/ngo/ngo.component';
 import { DrugsComponent } from './pages/drugs/drugs.component';
+import { EditReceptionComponent } from './pages/edit-reception/edit-reception.component';
 
 const routes: Routes = [
   {
@@ -97,6 +98,10 @@ const routes: Routes = [
       {
         path:'drugs',
         component:DrugsComponent
+      },
+      {
+        path:'edit-reception',
+        component:EditReceptionComponent
       },
     ]
   }

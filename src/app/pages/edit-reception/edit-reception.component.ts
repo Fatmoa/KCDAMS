@@ -1,28 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-
-
-
+import { FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-addreception',
-  templateUrl: './addreception.component.html',
-  styleUrls: ['./addreception.component.scss'],
+  selector: 'app-edit-reception',
+  templateUrl: './edit-reception.component.html',
+  styleUrls: ['./edit-reception.component.scss']
 })
-
-export class AddreceptionComponent implements OnInit{
-  radius: number | undefined;
+export class EditReceptionComponent implements OnInit{
   firstFormGroup!:FormGroup;
   secondFormGroup!:FormGroup;
   thirdFormGroup!:FormGroup;
   parentFormGroup!: FormGroup;
-
-
-  constructor(private _formBuilder: FormBuilder,private router: Router) {}
-
-
-
+  private _formBuilder: any;
   ngOnInit(): void {
     this.firstFormGroup = this._formBuilder.group({
       firstName: ['', Validators.required],
@@ -47,20 +36,6 @@ export class AddreceptionComponent implements OnInit{
       secondFormGroup: this.secondFormGroup,
       thirdFormGroup: this.thirdFormGroup,
     });
-
   }
 
-  onBack(){
-   this.router.navigateByUrl('receptions')
-  }
-
-  onSubmit(){
-    if (this.parentFormGroup.valid){
-      console.log(this.parentFormGroup.value);
-    }else{
-      console.log('Form is invalid');
-    }
-  }
 }
-
-

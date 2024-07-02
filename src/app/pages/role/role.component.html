@@ -37,24 +37,32 @@
         <!-- ID Column -->
         <ng-container matColumnDef="id">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-          <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+          <td mat-cell *matCellDef="let row; let i = index"> {{i+1}} </td>
         </ng-container>
 
         <!-- Progress Column -->
-        <ng-container matColumnDef="progress">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Progress </th>
-          <td mat-cell *matCellDef="let row"> {{row.progress}}% </td>
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> User name </th>
+          <td mat-cell *matCellDef="let row"> {{row.roleName}}</td>
         </ng-container>
 
         <!-- Name Column -->
-        <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-          <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+          <td mat-cell *matCellDef="let row">
+            <span *ngIf="row.roleStatus == 1">
+              <i class="badge badge-success">Active</i>
+            </span>
+
+            <span *ngIf="row.roleStatus == 0">
+              <i class="badge badge-danger">In Active</i>
+            </span>
+            </td>
         </ng-container>
 
         <!-- Fruit Column -->
-        <ng-container matColumnDef="fruit">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Fruit </th>
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
           <td mat-cell *matCellDef="let row"> {{row.fruit}} </td>
         </ng-container>
 
@@ -85,20 +93,20 @@
   </div>
 </div>
 <ng-template #distributionDialog>
-  <app-card title="Add Zone">
+  <app-card title="Add User Role">
     <hr>
-    <form >
+    <form [formGroup]="RoleForm">
       <div class="row">
         <div class="col-md-6">
           <mat-form-field  style="width: 100%;" appearance="outline">
             <mat-label>User Name</mat-label>
-            <input matInput placeholder="zone name" >
+            <input matInput placeholder="userName" >
           </mat-form-field>
         </div>
         <div class="col-md-6">
           <mat-form-field  style="width: 100%;" appearance="outline">
             <mat-label>User Role</mat-label>
-            <input matInput placeholder="zone name" >
+            <input matInput placeholder="userRole" >
           </mat-form-field>
         </div>
       </div>
@@ -108,7 +116,6 @@
       <button mat-raised-button matDialogClose="yes" >Cancel</button> &nbsp;
       <button mat-raised-button  color="primary"  matDialogClose="yes" >Add</button>
   </div>
-
   </app-card>
   </ng-template>
 
