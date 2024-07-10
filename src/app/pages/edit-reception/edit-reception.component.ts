@@ -1,5 +1,7 @@
+import { ReceptionService } from './../../services/reception.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-reception',
@@ -7,35 +9,68 @@ import { FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./edit-reception.component.scss']
 })
 export class EditReceptionComponent implements OnInit{
-  firstFormGroup!:FormGroup;
-  secondFormGroup!:FormGroup;
-  thirdFormGroup!:FormGroup;
-  parentFormGroup!: FormGroup;
-  private _formBuilder: any;
+  EditForm!: FormGroup
+
+  constructor (
+    private router: Router,
+    private route: ActivatedRoute,
+    private _formBuilder: FormBuilder,
+    private receptionService:ReceptionService
+  ){
+
+  }
+
   ngOnInit(): void {
-    this.firstFormGroup = this._formBuilder.group({
-      firstName: ['', Validators.required],
-      secondName: ['', Validators.required],
-      dob: ['', Validators.required],
-      phone: ['', Validators.required],
-      children: ['', Validators.required],
-      Nida: ['', Validators.required]
-    });
-    this.secondFormGroup = this._formBuilder.group({
-      ngoName: ['', Validators.required],
-      cowName: ['', Validators.required],
-      phoneNumber: ['', Validators.required],
-    });
-    this.thirdFormGroup = this._formBuilder.group({
-      garName1: ['', Validators.required],
-      relation1: ['', Validators.required],
-      pNum1: ['', Validators.required],
-    });
-    this.parentFormGroup = this._formBuilder.group({
-      firstFormGroup: this.firstFormGroup,
-      secondFormGroup: this.secondFormGroup,
-      thirdFormGroup: this.thirdFormGroup,
-    });
+    const matID = this.route.snapshot.queryParamMap.get('path');
+    console.log(matID);
+    this.fetchReceptionByID(matID)
+
+    this.configureEditForm();
+  }
+
+  onBack(){
+    this.router.navigateByUrl('receptions')
+  }
+
+  configureEditForm(){
+    this.EditForm = new FormGroup({
+      fName: new FormControl(null),
+      lName: new FormControl(null),
+      DoB:new FormControl(null),
+      kName: new FormControl(null),
+      relation: new FormControl(null),
+      cName: new FormControl(null),
+      matCode:new FormControl(null)
+    })
+  }
+
+  fetchReceptionByID(id:any){
+    this.receptionService.getReceptionById(id).subscribe((resp:any)=>{
+      console.log(resp);
+      this.EditForm = new FormGroup({
+        fName: new FormControl(resp.patFName),
+        lName: new FormControl(resp.patLName),
+        DoB:new FormControl(resp.dob),
+        kName: new FormControl(resp.kinName),
+        relation: new FormControl(resp.kinRelationship),
+        cName: new FormControl(resp.cowName),
+        matCode:new FormControl(resp.matCode)
+      })
+
+    })
+  }
+  onClose(){
+
+  }
+  onEdit(){
+    const id = this.EditForm.value.matCode;
+    const values = this.EditForm.value;
+    console.log(values);
+    this.receptionService.editReception(id,values).subscribe((resp:any)=>{
+      console.log('edited');
+
+    })
+
   }
 
 }

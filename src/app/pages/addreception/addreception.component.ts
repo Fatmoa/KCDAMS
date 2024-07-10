@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -17,10 +18,23 @@ export class AddreceptionComponent implements OnInit{
   secondFormGroup!:FormGroup;
   thirdFormGroup!:FormGroup;
   parentFormGroup!: FormGroup;
+  selectedFile: File | null = null;
 
 
-  constructor(private _formBuilder: FormBuilder,private router: Router) {}
+  constructor(
+    private _formBuilder: FormBuilder,
+    private router: Router,
+    private http: HttpClient
+  ) {}
 
+  Selectfile1: File = null!;
+  onImageUpload1(event: any) {
+    this.Selectfile1 = event.target.files[0];
+  }
+
+  // const form1 = new FormData();
+  //  form1.append('imageFile', this.Selectfile1, this.Selectfile1.name);
+  // this.houseImageService.addHouseImage(resp.mat_code, form1).subscribe((output: any) => {});
 
 
   ngOnInit(): void {

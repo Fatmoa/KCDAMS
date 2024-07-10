@@ -12,7 +12,7 @@
       </div>
       <div class="content-header-right col-md-6 col-12">
         <div class="btn-group float-md-right" role="group">
-          <button class="btn btn-info btn-min-width btn-glow mr-1 mb-1" >Add Patients</button>
+          <button class="btn btn-info btn-min-width btn-glow mr-1 mb-1" (click)="onBack()" >Back</button>
         </div>
       </div>
     </div>
@@ -27,7 +27,73 @@
           <div class="card-content collapse show">
             <div class="card-body">
 
-              <form >
+              <form [formGroup]="EditForm">
+                <div class="row">
+                  <div class="col-md-3">
+                    <mat-form-field appearance="outline">
+                      <mat-label>First Name</mat-label>
+                      <input matInput  formControlName="fName" required>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="col-md-3">
+                    <mat-form-field appearance="outline">
+                      <mat-label>Last Name</mat-label>
+                      <input matInput  formControlName="lName" required>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="col-md-3">
+                    <mat-form-field appearance="outline">
+                      <mat-label>DOB</mat-label>
+                      <input matInput  formControlName="DoB" required>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="col-md-3">
+                    <mat-form-field appearance="outline">
+                      <mat-label>Kin Name</mat-label>
+                      <input matInput  formControlName="kName" required>
+                    </mat-form-field>
+                  </div>
+
+                </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <mat-form-field appearance="outline">
+                      <mat-label>Relationship</mat-label>
+                      <input matInput  formControlName="relation" required>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-3">
+                    <mat-form-field appearance="outline">
+                      <mat-label>Cow Name</mat-label>
+                      <input matInput placeholder="Jina kamili" formControlName="cName" required>
+                    </mat-form-field>
+                  </div>
+
+                  <!-- <div class="col-md-3">
+                    <mat-form-field appearance="outline">
+                      <mat-label>First Name</mat-label>
+                      <input matInput placeholder="Jina kamili" formControlName="firstName" required>
+                    </mat-form-field>
+                  </div> -->
+
+                  <!-- <div class="col-md-3">
+                    <mat-form-field appearance="outline">
+                      <mat-label>First Name</mat-label>
+                      <input matInput placeholder="Jina kamili" formControlName="firstName" required>
+                    </mat-form-field>
+                  </div> -->
+
+                  <!-- <div class="col-md-3">
+                    <mat-form-field appearance="outline">
+                      <mat-label>First Name</mat-label>
+                      <input matInput placeholder="Jina kamili" formControlName="firstName" required>
+                    </mat-form-field>
+                  </div> -->
+                </div>
+                <!-- <hr>
                 <div class="row">
                   <div class="col-md-3">
                     <mat-form-field appearance="outline">
@@ -56,14 +122,46 @@
                       <input matInput placeholder="Jina kamili" formControlName="firstName" required>
                     </mat-form-field>
                   </div>
+                </div> -->
+                <!-- <hr> -->
+                <!-- <div class="row">
+                  <div class="col-md-3">
+                    <mat-form-field appearance="outline">
+                      <mat-label>Jina la kwanza</mat-label>
+                      <input matInput  formControlName="fName" required>
+                    </mat-form-field>
+                  </div>
 
-                </div>
+                  <div class="col-md-3">
+                    <mat-form-field appearance="outline">
+                      <mat-label>Jina la mwisho</mat-label>
+                      <input matInput  formControlName="lName" required>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="col-md-3">
+                    <mat-form-field appearance="outline">
+                      <mat-label>Mahusiano</mat-label>
+                      <input matInput  formControlName="relation" required>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="col-md-3">
+                    <mat-form-field appearance="outline">
+                      <mat-label>Nambari ya simu</mat-label>
+                      <input matInput   formControlName="pnum" required>
+                    </mat-form-field>
+                  </div>
+                </div> -->
               </form>
+              <br><br>
 
+              <div class="card-bottom">
+                <button mat-raised-button color="primary" (click)="onClose()">Cancel</button> &nbsp;
+                <button mat-raised-button color="primary"  (click)="onEdit()">Edit</button>
+              </div>
             </div>
-
           </div>
-
           <div class="card-content collapse show">
             <div class="card-body overflow-hidden row">
               <div class="col-md-9 col-sm-12 border-right-grey border-right-lighten-2">

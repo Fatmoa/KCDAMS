@@ -25,12 +25,6 @@
             <ng-template matStepLabel>Taarifa za Usajili</ng-template>
             <br>
             <div class="row">
-              <!-- <div class="col-md-3"> -->
-                <!-- <mat-form-field appearance="outline">
-                  <mat-label>MAT ID NO</mat-label>
-                  <input matInput placeholder="MAT number" formControlName="firstCtrl" required>
-                </mat-form-field> -->
-              <!-- </div> -->
               <div class="col-md-3">
                 <mat-form-field appearance="outline">
                   <mat-label>First Name</mat-label>
@@ -151,12 +145,13 @@
                   <input matInput placeholder="Namba ya NIDA" formControlName="Nida" required>
                 </mat-form-field>
               </div>
-              <div class="col-md-3">
-                <mat-form-field appearance="outline">
-                  <mat-label>Picha</mat-label>
-                  <input matInput>
-                </mat-form-field>
-              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                    <label >Patient Picture</label>
+                        <input type="file" (change)="onImageUpload1($event)" class="form-control" placeholder="imageFile" >
+                </div>
+            </div>
             </div>
             <div>
 

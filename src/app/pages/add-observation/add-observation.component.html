@@ -25,33 +25,6 @@
           <form [formGroup]="firstFormGroup">
             <ng-template matStepLabel></ng-template>
             <br>
-            <!-- <div class="row">
-              <div class="col-md-3">
-                <mat-form-field appearance="outline">
-                  <mat-label>MAT ID NO</mat-label>
-                  <input matInput placeholder="MAT number" formControlName="firstCtrl" required>
-                </mat-form-field>
-              </div>
-              <div class="col-md-3">
-                <mat-form-field appearance="outline">
-                  <mat-label>Jina</mat-label>
-                  <input matInput placeholder="Jina kamili" formControlName="firstCtrl" required>
-                </mat-form-field>
-              </div>
-              <div class="col-md-3">
-                <label for="gender">Jinsia:</label><br>
-                <mat-radio-group aria-label="Select an option">
-                  <mat-radio-button value="1">Mme</mat-radio-button>
-                  <mat-radio-button value="2">Mke</mat-radio-button>
-                </mat-radio-group>
-              </div>
-              <div class="col-md-3">
-                <mat-form-field appearance="outline">
-                  <mat-label>Umri</mat-label>
-                  <input matInput placeholder="Miaka" formControlName="firstCtrl" required>
-                </mat-form-field>
-              </div>
-             </div> -->
              <br>
             <div class="row">
               <div class="col-md-3">
@@ -83,7 +56,7 @@
                     <mat-option value="2">Cocaine</mat-option>
                     <mat-option value="3">Methadone</mat-option>
                     <mat-option value="4">Mirungi</mat-option>
-                    <mat-option value="4">Valium</mat-option>
+                    <mat-option value="5">Valium</mat-option>
                   </mat-select>
                 </mat-form-field>
               </div>
@@ -110,11 +83,13 @@
                   </mat-form-field>
             </div>
             <div class="col-md-3">
-              <label for="gender">Unaendelea na tiba ya Kifua Kikuu?</label><br>
-              <mat-radio-group aria-label="Select an option">
-                <mat-radio-button value="1">Ndio</mat-radio-button>
-                <mat-radio-button value="2">Hapana</mat-radio-button>
-              </mat-radio-group>
+              <mat-form-field appearance="outline">
+              <mat-label>Unaendelea na tiba ya Kifua Kikuu?</mat-label>
+              <mat-select disableRipple>
+                <mat-option value="1">Ndio</mat-option>
+                <mat-option value="2">Hapana</mat-option>
+              </mat-select>
+            </mat-form-field>
             </div>
               <div class="col-md-3">
                 <mat-form-field appearance="outline">
@@ -242,19 +217,6 @@
                       <td><input type="number" min="1" max="3"></td>
                     </tr>
                     <tr>
-                      <td>8</td>
-                      <td>Tumbaku</td>
-                      <td>4</td>
-                      <td><input type="number" style="width: 30%;" min="1" max="5"></td>
-                      <td><input type="number" min="1" max="3"></td>
-                    </tr>
-                    <tr>
-                      <td>9</td>
-                      <td>Nyenginezo</td>
-                      <td>4</td>
-                      <td><input type="number" style="width: 30%;" min="1" max="5"></td>
-                      <td><input type="number" min="1" max="3"></td>
-                    </tr>
                   </tbody>
                 </table>
               </div>

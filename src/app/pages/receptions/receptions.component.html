@@ -35,10 +35,15 @@
 
               <table mat-table [dataSource]="dataSource" matSort>
 
-                <!-- ID Column -->
-                <ng-container matColumnDef="id">
+                ID Column
+                <!-- <ng-container matColumnDef="id">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
                   <td mat-cell *matCellDef="let row, let i=index"> {{i+1}} </td>
+                </ng-container> -->
+
+                <ng-container matColumnDef="id">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+                  <td mat-cell *matCellDef="let row"> {{row.matCode}} </td>
                 </ng-container>
 
                 <!-- Progress Column -->
@@ -58,18 +63,23 @@
                   <td mat-cell *matCellDef="let row"> {{row.kinName}} </td>
                 </ng-container>
 
+                <ng-container matColumnDef="relation">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> relation </th>
+                  <td mat-cell *matCellDef="let row"> {{row.kinRelationship}} </td>
+                </ng-container>
+
 
 
                 <!-- Fruit Column -->
                 <ng-container matColumnDef="cow">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header> cow_name </th>
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> cowname </th>
                   <td mat-cell *matCellDef="let row"> {{row.cowName}} </td>
                 </ng-container>
 
                 <ng-container matColumnDef="action">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
                   <td mat-cell *matCellDef="let row">
-                    <button mat-raised-button color="primary" (click)="onEdit()">Edit</button>
+                    <button mat-raised-button color="primary" (click)="onEdit(row)">Edit</button>
                    </td>
                 </ng-container>
 

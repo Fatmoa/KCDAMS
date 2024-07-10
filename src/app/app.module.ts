@@ -44,6 +44,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {FormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { EditReceptionComponent } from './pages/edit-reception/edit-reception.component';
+import { AddResultsComponent } from './pages/add-results/add-results.component';
+import { EditResultsComponent } from './pages/edit-results/edit-results.component';
 
 
 @NgModule({
@@ -73,6 +75,8 @@ import { EditReceptionComponent } from './pages/edit-reception/edit-reception.co
     NgoComponent,
     DrugsComponent,
     EditReceptionComponent,
+    AddResultsComponent,
+    EditResultsComponent,
 
 
   ],

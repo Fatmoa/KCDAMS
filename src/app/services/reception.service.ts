@@ -25,4 +25,8 @@ export class ReceptionService {
   getReceptionByCode(id:any){
     return this.http.get(this.receptionAPI+id)
   }
+
+  getReceptionById(id:any){
+    return this.http.get(this.receptionAPI + id)
+  }
 }

@@ -16,8 +16,10 @@ export class AddObservationComponent implements OnInit{
   indeterminate = false;
   labelPosition: 'before' | 'after' = 'after';
   disabled = false;
-  constructor (private _formBuilder: FormBuilder,private router: Router){
-
+  constructor (
+    private _formBuilder: FormBuilder,
+    private router: Router
+  ){
   }
   centered = false;
 
@@ -55,7 +57,7 @@ export class AddObservationComponent implements OnInit{
 
 
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    
   }
   onBack(){
     this.router.navigateByUrl('nurse')

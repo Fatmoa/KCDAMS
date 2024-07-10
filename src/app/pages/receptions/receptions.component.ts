@@ -12,7 +12,7 @@ import { ReceptionService } from 'src/app/services/reception.service';
   styleUrls: ['./receptions.component.scss']
 })
 export class ReceptionsComponent implements OnInit{
-  displayedColumns: string[] = ['id', 'name','dod', 'kin', 'cow', 'action'];
+  displayedColumns: string[] = ['id', 'name','dod', 'kin', 'relation','cow', 'action'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -32,8 +32,6 @@ export class ReceptionsComponent implements OnInit{
 
   onAdd(){
     this.router.navigateByUrl('add-reception')
-    // console.log('ok')
-
    }
 
    applyFilter(event: Event) {
@@ -51,12 +49,13 @@ export class ReceptionsComponent implements OnInit{
       this.dataSource=new MatTableDataSource(resp);
       this.dataSource.paginator=this.paginator;
       this.dataSource.sort=this.sort;
-
     })
    }
 
-   onEdit(){
-    this.router.navigateByUrl('edit-reception')
+   onEdit(row:any){
+    this.router.navigate(['edit-reception'],{queryParams:{path:row.matCode}})
+    // console.log(row.matCode);
+
    }
  }
 
