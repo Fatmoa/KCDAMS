@@ -81,8 +81,13 @@ export class AddreceptionComponent implements OnInit{
 
   onSubmit(){
     const  values = this.receptionForm.value;
-      console.log(values);
-      this.receptionService.addReception(values).subscribe((resp:any)=>{
+    const Date1 = new Date(values.dob);
+    const year = Date1.getFullYear();
+    const month = String(Date1.getMonth() + 1).padStart(2, '0');
+    const day = String(Date1.getDate()).padStart(2, '0');
+    const dob = `${year}-${month}-${day}`;
+const values2 = {...values,dob}
+      this.receptionService.addReception(values2).subscribe((resp:any)=>{
         console.log('added');
 
       })

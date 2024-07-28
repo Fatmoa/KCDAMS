@@ -20,6 +20,7 @@ import { PatientsInfoComponent } from './pages/patients-info/patients-info.compo
 import { NgoComponent } from './pages/ngo/ngo.component';
 import { DrugsComponent } from './pages/drugs/drugs.component';
 import { EditReceptionComponent } from './pages/edit-reception/edit-reception.component';
+import { RegistrarComponent } from './pages/registrar/registrar.component';
 
 const routes: Routes = [
   {
@@ -102,6 +103,10 @@ const routes: Routes = [
       {
         path:'edit-reception',
         component:EditReceptionComponent
+      },
+      {
+        path:'registrar',
+        component:RegistrarComponent
       },
     ]
   }

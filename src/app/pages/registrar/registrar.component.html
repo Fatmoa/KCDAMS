@@ -12,8 +12,7 @@
       </div>
       <div class="content-header-right col-md-6 col-12">
         <div class="btn-group float-md-right" role="group">
-          <button type="button" class="btn btn-info btn-min-width btn-glow mr-1 mb-1" (click)="openDialog()">Add
-            User</button>
+          <button type="button" class="btn btn-info btn-min-width btn-glow mr-1 mb-1" (click)="openDialog()">Add Registrar</button>
         </div>
       </div>
     </div>
@@ -22,7 +21,7 @@
         <!-- Total Receivables -->
         <div class="card">
           <div class="card-header">
-            <h4 class="card-title">User List</h4>
+            <h4 class="card-title">Registrar List</h4>
             <a class="heading-elements-toggle"><i class="la la-ellipsis-h font-medium-3"></i></a>
           </div>
           <div class="card-content collapse show">
@@ -33,41 +32,55 @@
                 <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
               </mat-form-field>
 
-
               <table mat-table [dataSource]="dataSource" matSort>
 
                 <!-- ID Column -->
                 <ng-container matColumnDef="id">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-                  <td mat-cell *matCellDef="let row; let i = index"> {{i+1}} </td>
+                  <td mat-cell *matCellDef="let row;let i = index"> {{i+1}} </td>
                 </ng-container>
 
                 <!-- Progress Column -->
                 <ng-container matColumnDef="name">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Role Name </th>
-                  <td mat-cell *matCellDef="let row"> {{row.roleName}}</td>
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+                  <td mat-cell *matCellDef="let row"> {{row}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="email">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+                  <td mat-cell *matCellDef="let row"> {{row}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="empNum">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> EmployeNumber </th>
+                  <td mat-cell *matCellDef="let row"> {{row}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="pnum">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Phone Number </th>
+                  <td mat-cell *matCellDef="let row"> {{row}} </td>
                 </ng-container>
 
                 <!-- Name Column -->
-                <ng-container matColumnDef="status">
+                <!-- <ng-container matColumnDef="status">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
                   <td mat-cell *matCellDef="let row">
-                    <span *ngIf="row.roleStatus == 1">
+                    <span *ngIf="row.zoneStatus == 1">
                       <i class="badge badge-success">Active</i>
                     </span>
 
-                    <span *ngIf="row.roleStatus == 0">
+                    <span *ngIf="row.zoneStatus == 0">
                       <i class="badge badge-danger">In Active</i>
                     </span>
-                  </td>
-                </ng-container>
+                    </td>
+                </ng-container> -->
 
                 <!-- Fruit Column -->
                 <ng-container matColumnDef="action">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
                   <td mat-cell *matCellDef="let row">
-                    <button mat-raised-button color="primary" (click)="openDialog2(row)">Edit</button>
-                  </td>
+                    <!-- <button mat-raised-button color="primary" (click)="openDialog2(row)">Edit</button> -->
+                   </td>
                 </ng-container>
 
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -96,51 +109,95 @@
     </div>
   </div>
 </div>
-
-
 <ng-template #distributionDialog>
-  <app-card title="Add Role">
+  <app-card title="Add Register">
     <hr>
-    <form [formGroup]="roleForm">
+    <form [formGroup]="regForm">
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-4">
           <mat-form-field style="width: 100%;" appearance="outline">
-            <mat-label>Role Name</mat-label>
-            <input matInput placeholder="roleName" formControlName="roleName">
+            <mat-label>First Name</mat-label>
+            <input matInput placeholder="first  name" formControlName="regisName">
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-4">
+          <mat-form-field style="width: 100%;" appearance="outline">
+            <mat-label>Middle Name</mat-label>
+            <input matInput placeholder="Middle name" formControlName="regisMname">
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-4">
+          <mat-form-field style="width: 100%;" appearance="outline">
+            <mat-label>Last Name</mat-label>
+            <input matInput placeholder="Last name" formControlName="regisLname">
           </mat-form-field>
         </div>
       </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <mat-form-field appearance="outline" style="width: 100%;">
+            <mat-label>Gender</mat-label>
+            <mat-select disableRipple formControlName="resiGender">
+              <mat-option value="1">Mke</mat-option>
+              <mat-option value="2">Mme</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-4">
+          <mat-form-field style="width: 100%;" appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Email" formControlName="regisEmail">
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-4">
+          <mat-form-field style="width: 100%;" appearance="outline">
+            <mat-label>Phone</mat-label>
+            <input matInput placeholder="Phone" formControlName="regisNumb">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <mat-form-field style="width: 100%;" appearance="outline">
+            <mat-label>Employee No</mat-label>
+            <input matInput placeholder="Employee No" formControlName="emplNum">
+          </mat-form-field>
+        </div>
+      </div>
+
     </form><br><br>
 
     <div class="card-bottom">
       <button mat-raised-button matDialogClose="yes">Cancel</button> &nbsp;
       <button mat-raised-button color="primary" matDialogClose="yes" (click)="onSave()">Add</button>
     </div>
+
   </app-card>
 </ng-template>
 
-
-
 <ng-template #distributionDialog2>
-  <app-card title="Edit Role">
+  <app-card title="Edit Zone">
     <hr>
-    <form [formGroup]="roleEditForm">
+    <form>
       <div class="row">
         <div class="col-md-12">
           <mat-form-field style="width: 100%;" appearance="outline">
-            <mat-label>Role Name</mat-label>
-            <input matInput placeholder="roleName" formControlName="roleName">
+            <mat-label>Zone Name</mat-label>
+            <input matInput placeholder="zone name" formControlName="zoneName">
           </mat-form-field>
         </div>
       </div>
     </form><br><br>
-
     <div class="card-bottom">
       <button mat-raised-button matDialogClose="yes">Cancel</button> &nbsp;
-      <button mat-raised-button color="primary" matDialogClose="yes" (click)="onEdit()">Edit</button>
+      <button mat-raised-button color="primary" matDialogClose="yes" >Edit</button>
     </div>
   </app-card>
 </ng-template>
-
-
 
