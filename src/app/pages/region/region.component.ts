@@ -104,8 +104,9 @@ export class RegionComponent implements OnInit{
 
   onSave(){
     const values = this.RegionForm.value;
-    console.log(values);
     this.regionService.addRegion(values).subscribe((response:any)=>{
+      this.reload();
+      this.alert()
     })
 
   }
@@ -149,8 +150,6 @@ export class RegionComponent implements OnInit{
       this.regionService.editRegion(id,values).subscribe((resp:any)=>{
         this.reload();
         this.alert2();
-        console.log(resp);
-
       })
     })
   }
@@ -180,6 +179,7 @@ export class RegionComponent implements OnInit{
       title: "Region Added successfully"
     });
   }
+
 
   alert2(){
     const Toast = Swal.mixin({

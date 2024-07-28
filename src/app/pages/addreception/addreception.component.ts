@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { DistrictService } from 'src/app/services/district.service';
+import { ReceptionService } from 'src/app/services/reception.service';
 
 
 
@@ -14,17 +16,13 @@ import { Router } from '@angular/router';
 
 export class AddreceptionComponent implements OnInit{
   radius: number | undefined;
-  firstFormGroup!:FormGroup;
-  secondFormGroup!:FormGroup;
-  thirdFormGroup!:FormGroup;
-  parentFormGroup!: FormGroup;
   selectedFile: File | null = null;
 
-
+  receptionForm!:FormGroup
   constructor(
-    private _formBuilder: FormBuilder,
     private router: Router,
-    private http: HttpClient
+    private districtService:DistrictService,
+    private receptionService:ReceptionService
   ) {}
 
   Selectfile1: File = null!;
@@ -38,43 +36,59 @@ export class AddreceptionComponent implements OnInit{
 
 
   ngOnInit(): void {
-    this.firstFormGroup = this._formBuilder.group({
-      firstName: ['', Validators.required],
-      secondName: ['', Validators.required],
-      dob: ['', Validators.required],
-      phone: ['', Validators.required],
-      children: ['', Validators.required],
-      Nida: ['', Validators.required]
-    });
-    this.secondFormGroup = this._formBuilder.group({
-      ngoName: ['', Validators.required],
-      cowName: ['', Validators.required],
-      phoneNumber: ['', Validators.required],
-    });
-    this.thirdFormGroup = this._formBuilder.group({
-      garName1: ['', Validators.required],
-      relation1: ['', Validators.required],
-      pNum1: ['', Validators.required],
-    });
-    this.parentFormGroup = this._formBuilder.group({
-      firstFormGroup: this.firstFormGroup,
-      secondFormGroup: this.secondFormGroup,
-      thirdFormGroup: this.thirdFormGroup,
-    });
 
+    this.fetchAllDistrict();
+    this.configureForm()
+  }
+
+  configureForm(){
+    this.receptionForm = new FormGroup({
+      patFName:new FormControl('', Validators.required),
+      patMName: new FormControl(''),
+      patLName: new FormControl('', Validators.required),
+      dob: new FormControl('', Validators.required),
+      districtData: new FormControl('', Validators.required),
+      address: new FormControl('', Validators.required),
+      gender: new FormControl('', Validators.required),
+      mar_status: new FormControl(''),
+      education: new FormControl('', Validators.required),
+      employment: new FormControl('', Validators.required),
+      phoneNumber: new FormControl('', Validators.required),
+      no_children: new FormControl('', Validators.required),
+      reg: new FormControl('', Validators.required),
+      nida: new FormControl(''),
+      ngoName: new FormControl('', Validators.required),
+      cowName: new FormControl('', Validators.required),
+      cowPhone: new FormControl(''),
+      kinName: new FormControl('', Validators.required),
+      kinPhoneNumber: new FormControl('', Validators.required),
+      kinRelation: new FormControl('', Validators.required),
+
+    })
   }
 
   onBack(){
    this.router.navigateByUrl('receptions')
   }
 
-  onSubmit(){
-    if (this.parentFormGroup.valid){
-      console.log(this.parentFormGroup.value);
-    }else{
-      console.log('Form is invalid');
-    }
+
+  districts:any;
+  fetchAllDistrict(){
+    this.districtService.getAllDistrict().subscribe((resp:any)=>{
+      this.districts = resp
+    })
   }
+
+  onSubmit(){
+    const  values = this.receptionForm.value;
+      console.log(values);
+      this.receptionService.addReception(values).subscribe((resp:any)=>{
+        console.log('added');
+
+      })
+
+}
+
 }
 
 
