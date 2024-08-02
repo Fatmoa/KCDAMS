@@ -14,16 +14,16 @@ import { ReceptionService } from 'src/app/services/reception.service';
   styleUrls: ['./addreception.component.scss'],
 })
 
-export class AddreceptionComponent implements OnInit{
+export class AddreceptionComponent implements OnInit {
   radius: number | undefined;
   selectedFile: File | null = null;
 
-  receptionForm!:FormGroup
+  receptionForm!: FormGroup
   constructor(
     private router: Router,
-    private districtService:DistrictService,
-    private receptionService:ReceptionService
-  ) {}
+    private districtService: DistrictService,
+    private receptionService: ReceptionService
+  ) { }
 
   Selectfile1: File = null!;
   onImageUpload1(event: any) {
@@ -41,9 +41,9 @@ export class AddreceptionComponent implements OnInit{
     this.configureForm()
   }
 
-  configureForm(){
+  configureForm() {
     this.receptionForm = new FormGroup({
-      patFName:new FormControl('', Validators.required),
+      patFName: new FormControl('', Validators.required),
       patMName: new FormControl(''),
       patLName: new FormControl('', Validators.required),
       dob: new FormControl('', Validators.required),
@@ -67,32 +67,32 @@ export class AddreceptionComponent implements OnInit{
     })
   }
 
-  onBack(){
-   this.router.navigateByUrl('receptions')
+  onBack() {
+    this.router.navigateByUrl('receptions')
   }
 
 
-  districts:any;
-  fetchAllDistrict(){
-    this.districtService.getAllDistrict().subscribe((resp:any)=>{
+  districts: any;
+  fetchAllDistrict() {
+    this.districtService.getAllDistrict().subscribe((resp: any) => {
       this.districts = resp
     })
   }
 
-  onSubmit(){
-    const  values = this.receptionForm.value;
+  onSubmit() {
+    const values = this.receptionForm.value;
     const Date1 = new Date(values.dob);
     const year = Date1.getFullYear();
     const month = String(Date1.getMonth() + 1).padStart(2, '0');
     const day = String(Date1.getDate()).padStart(2, '0');
     const dob = `${year}-${month}-${day}`;
-const values2 = {...values,dob}
-      this.receptionService.addReception(values2).subscribe((resp:any)=>{
-        console.log('added');
+    const values2 = { ...values, dob }
+    this.receptionService.addReception(values2).subscribe((resp: any) => {
+      console.log('added');
 
-      })
+    })
 
-}
+  }
 
 }
 

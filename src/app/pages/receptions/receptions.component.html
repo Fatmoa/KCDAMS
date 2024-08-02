@@ -35,12 +35,6 @@
 
               <table mat-table [dataSource]="dataSource" matSort>
 
-                ID Column
-                <!-- <ng-container matColumnDef="id">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-                  <td mat-cell *matCellDef="let row, let i=index"> {{i+1}} </td>
-                </ng-container> -->
-
                 <ng-container matColumnDef="id">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
                   <td mat-cell *matCellDef="let row"> {{row.matCode}} </td>
@@ -48,7 +42,7 @@
 
                 <!-- Progress Column -->
                 <ng-container matColumnDef="name">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Pat_name </th>
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Patient Name </th>
                   <td mat-cell *matCellDef="let row"> {{row.patFName+" "+row.patLName}}</td>
                 </ng-container>
 
@@ -59,20 +53,29 @@
                 </ng-container>
 
                 <ng-container matColumnDef="kin">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header> kin_name </th>
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Kin Name </th>
                   <td mat-cell *matCellDef="let row"> {{row.kinName}} </td>
                 </ng-container>
 
                 <ng-container matColumnDef="relation">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header> relation </th>
-                  <td mat-cell *matCellDef="let row"> {{row.kinRelationship}} </td>
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Relation </th>
+                  <td mat-cell *matCellDef="let row">
+                    <span *ngIf="row.kinRelation == 1 ">Baba</span>
+                    <span *ngIf="row.kinRelation == 2 ">Mama</span>
+                    <span *ngIf="row.kinRelation == 3 ">Kaka</span>
+                    <span *ngIf="row.kinRelation == 4 ">Dada</span>
+                    <span *ngIf="row.kinRelation == 5 ">Mjomba</span>
+                    <span *ngIf="row.kinRelation == 6 ">Ami</span>
+                    <span *ngIf="row.kinRelation == 7 ">Jirani</span>
+                    <span *ngIf="row.kinRelation == 8 ">Sheha</span>
+                  </td>
                 </ng-container>
 
 
 
                 <!-- Fruit Column -->
                 <ng-container matColumnDef="cow">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header> cowname </th>
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Cow Name </th>
                   <td mat-cell *matCellDef="let row"> {{row.cowName}} </td>
                 </ng-container>
 
@@ -80,7 +83,7 @@
                   <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
                   <td mat-cell *matCellDef="let row">
                     <button mat-raised-button color="primary" (click)="onEdit(row)">Edit</button>
-                   </td>
+                  </td>
                 </ng-container>
 
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
