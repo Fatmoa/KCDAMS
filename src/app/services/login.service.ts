@@ -13,4 +13,8 @@ export class LoginService {
   userRegistration(body:any){
     return this.http.post(this.loginAPI + "registration",body)
   }
+
+  getLogin(username:any,password:any){
+    return this.http.get(this.loginAPI + "getAllUsers")
+  }
 }

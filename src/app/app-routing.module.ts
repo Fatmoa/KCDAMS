@@ -21,29 +21,16 @@ import { NgoComponent } from './pages/ngo/ngo.component';
 import { DrugsComponent } from './pages/drugs/drugs.component';
 import { EditReceptionComponent } from './pages/edit-reception/edit-reception.component';
 import { RegistrarComponent } from './pages/registrar/registrar.component';
+import { LoginComponent } from './layouts/login/login.component';
 
 const routes: Routes = [
-  {
-    path:'',
-    component:MainLayoutComponent,
+  {path:'',component:LoginComponent},
+  { path:'home',component:MainLayoutComponent,
     children:[
-      {
-        path:'',
-        component:DashboardComponent,
-      },
-      {
-        path:'receptions',
-        component:ReceptionsComponent
-      },
-
-      {
-        path:'nurse',
-        component:NurseComponent
-      },
-      {
-        path:'lab',
-        component:LabComponent
-      },
+      {path:'', component:DashboardComponent,},
+      {path:'receptions',component:ReceptionsComponent},
+      { path:'nurse',component:NurseComponent},
+      {path:'lab',component:LabComponent},
       {
         path:'social_worker',
         component:SocialWorkerComponent

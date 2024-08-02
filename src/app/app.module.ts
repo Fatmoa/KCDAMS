@@ -49,6 +49,7 @@ import { EditResultsComponent } from './pages/edit-results/edit-results.componen
 import { BarchartComponent } from './pages/dashboard/barchart/barchart.component';
 import { PiechartComponent } from './pages/dashboard/piechart/piechart.component';
 import { RegistrarComponent } from './pages/registrar/registrar.component';
+import { LoginComponent } from './layouts/login/login.component';
 
 
 @NgModule({
@@ -83,6 +84,7 @@ import { RegistrarComponent } from './pages/registrar/registrar.component';
     BarchartComponent,
     PiechartComponent,
     RegistrarComponent,
+    LoginComponent,
 
 
   ],

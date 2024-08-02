@@ -1,4 +1,64 @@
 
+    <div class="main-menu menu-fixed menu-light menu-accordion 
+       menu-shadow " data-scroll-to-active="true" *ngIf="roleName =='ADMINISTRATOR'">
+      <div class="main-menu-content">
+        <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+
+          <li class=" nav-item">
+            <a routerLink="/home"><i class="la la-home"></i>
+              <span class="menu-title" data-i18n="Report">Home</span></a>
+          </li>
+          <li class=" nav-item">
+            <a routerLink="registrar"><i class="la la-stethoscope"></i>
+              <span class="menu-title" data-i18n="Doctors">Registration</span></a>
+          </li>
+          <!-- <li class=" nav-item"><a routerLink="receptions"><i class="las la-clipboard-list"></i><span class="menu-title" data-i18n="Report">Reception</span></a>
+          </li> -->
+
+          <li class=" nav-item">
+            <a routerLink="nurse"><i class="las la-medkit"></i>
+              <span class="menu-title" data-i18n="Doctors">All Patient</span></a>
+          </li>
+          <!-- <li class=" nav-item">
+            <a routerLink="lab"><i class="las la-flask"></i>
+              <span class="menu-title" data-i18n="Report">Laboratory</span></a>
+          </li>  -->
+
+          <!-- <li class=" nav-item"><a routerLink="social_worker"><i class="las la-user-alt"></i><span class="menu-title" data-i18n="Doctors">Social Worker</span></a>
+          </li>
+          <li class=" nav-item"><a routerLink="psychologist"><i class="las la-hands-helping"></i><span class="menu-title" data-i18n="Report">Psychological</span></a>
+          </li>
+          <li class=" nav-item"><a routerLink="doctor"><i class="la la-stethoscope"></i><span class="menu-title" data-i18n="Doctors">Doctors</span></a> 
+             -->
+          
+          <li class=" nav-item"><a routerLink="#"><i class="las la-cogs"></i><span class="menu-title" data-i18n="Doctors">Settings</span></a>
+            <ul class="menu-content">
+              <li><a class="menu-item" routerLink="zone"><i></i><span>Zone</span></a>
+              </li>
+              <li><a class="menu-item" routerLink="region"><i></i><span>Region</span></a>
+              </li>
+              <li><a class="menu-item" routerLink="district"><i></i><span>District</span></a>
+              </li>
+              <li><a class="menu-item" routerLink="shehia"><i></i><span>Shehia</span></a>
+              </li>
+              <li><a class="menu-item" routerLink="role"><i></i><span>Roles</span></a>
+              </li>
+              <li><a class="menu-item" routerLink="ngo"><i></i><span>NGOs</span></a>
+              </li>
+              <li><a class="menu-item" routerLink="drugs"><i></i><span>Drugs</span></a>
+              </li>
+            </ul>
+          </li>
+          <li><a class="menu-item" routerLink="user_mgt"><i class="las la-users-cog"></i><span>User Management</span></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+
+
+<!-- 
+
     <div class="main-menu menu-fixed menu-light menu-accordion    menu-shadow " data-scroll-to-active="true">
       <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
@@ -44,3 +104,4 @@
         </ul>
       </div>
     </div>
+ -->
