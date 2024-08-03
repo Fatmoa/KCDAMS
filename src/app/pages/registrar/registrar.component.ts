@@ -16,7 +16,7 @@ import { RolesService } from 'src/app/services/roles.service';
 })
 export class RegistrarComponent implements OnInit{
 
-  displayedColumns: string[] = ['id', 'name', 'email', 'empNum','pnum'];
+  displayedColumns: string[] = ['id', 'name', 'gen','empNum', 'email','pnum'];
   @ViewChild('distributionDialog') distributionDialog!: TemplateRef<any>;
   @ViewChild('distributionDialog2') distributionDialog2!: TemplateRef<any>;
   dataSource!: MatTableDataSource<any>;
@@ -39,6 +39,7 @@ export class RegistrarComponent implements OnInit{
   regForm!:FormGroup;
 ngOnInit(): void {
   this.configureForm();
+  this.fetchAllRegistrar()
 }
 
 ngAfterViewInit() {
@@ -71,6 +72,15 @@ openDialog(){
       } else if (result === 'no') {
       }
     }
+  })
+}
+
+fetchAllRegistrar(){
+  this.registrarService.getAllRegistrar().subscribe((resp:any)=>{
+    console.log(resp);
+    this.dataSource=new MatTableDataSource(resp);
+    this.dataSource.paginator=this.paginator;
+    this.dataSource.sort=this.sort;
   })
 }
 
