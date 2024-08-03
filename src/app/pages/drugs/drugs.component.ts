@@ -15,38 +15,6 @@ export interface UserData {
   fruit: string;
 }
 
-const FRUITS: string[] = [
-  'blueberry',
-  'lychee',
-  'kiwi',
-  'mango',
-  'peach',
-  'lime',
-  'pomegranate',
-  'pineapple',
-];
-const NAMES: string[] = [
-  'Maia',
-  'Asher',
-  'Olivia',
-  'Atticus',
-  'Amelia',
-  'Jack',
-  'Charlotte',
-  'Theodore',
-  'Isla',
-  'Oliver',
-  'Isabella',
-  'Jasper',
-  'Cora',
-  'Levi',
-  'Violet',
-  'Arthur',
-  'Mia',
-  'Thomas',
-  'Elizabeth',
-];
-
 @Component({
   selector: 'app-drugs',
   templateUrl: './drugs.component.html',
@@ -188,7 +156,7 @@ export class DrugsComponent implements OnInit {
 
   reload(){
     this.router.navigateByUrl('',{skipLocationChange:true}).then(()=>{
-      this.router.navigate(['drugs'])
+      this.router.navigate(['home/drugs'])
     })
   }
 

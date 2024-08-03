@@ -13,7 +13,7 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./user-mgt.component.scss']
 })
 export class UserMgtComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'username', 'pass', 'role'];
+  displayedColumns: string[] = ['id', 'username', 'role','status'];
   dataSource!: MatTableDataSource<any>;
 
 

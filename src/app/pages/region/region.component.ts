@@ -157,7 +157,7 @@ export class RegionComponent implements OnInit{
 
   reload(){
     this.router.navigateByUrl('',{skipLocationChange:true}).then(()=>{
-      this.router.navigate(['region'])
+      this.router.navigate(['home/region'])
     })
   }
 

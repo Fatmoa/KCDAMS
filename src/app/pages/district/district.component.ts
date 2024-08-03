@@ -173,7 +173,7 @@ export class DistrictComponent implements OnInit{
 
   reload(){
     this.router.navigateByUrl('',{skipLocationChange:true}).then(()=>{
-      this.router.navigate(['district'])
+      this.router.navigate(['home/district'])
     })
   }
 

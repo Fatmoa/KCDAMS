@@ -61,7 +61,6 @@ export class NgoComponent implements OnInit{
 
   fetchAllNgo(){
     this.ngoService.getAllNgo().subscribe((resp:any)=>{
-      console.log(resp);
       this.dataSource = new MatTableDataSource(resp);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort
@@ -134,7 +133,7 @@ export class NgoComponent implements OnInit{
 
   reload(){
     this.router.navigateByUrl('',{skipLocationChange:true}).then(()=>{
-      this.router.navigate(['ngo'])
+      this.router.navigate(['home/ngo'])
     })
   }
 

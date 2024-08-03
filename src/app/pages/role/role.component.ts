@@ -136,7 +136,7 @@ export class RoleComponent implements OnInit{
 
   reload(){
     this.router.navigateByUrl('',{skipLocationChange:true}).then(()=>{
-      this.router.navigate(['role'])
+      this.router.navigate(['home/role'])
     })
   }
 
