@@ -38,23 +38,21 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem("userId", resp[0].userId);
           sessionStorage.setItem("username", resp[0].username);
           sessionStorage.setItem("roleName", resp[0].roleId.roleName);
-          console.log(resp[0].roleId.roleName);
-          
-
+   
           switch (resp[0].roleId.roleName) {
-            // case 'ADMINISTRATOR':
-            //   this.router.navigateByUrl('home').then(() => {
-            //     location.reload()
-            //   })
+            case 'ADMINISTRATOR':
+              this.router.navigateByUrl('home').then(() => {
+                location.reload()
+              })
               
-            //   break;
-          //   case 'NURSE':
-          //     this.router.navigateByUrl('/home').then(() => {
-          //       location.reload()
-          //     })
-          //     break;
-          //    default:
-          //     this.router.navigateByUrl("")
+              break;
+            case 'NURSE':
+              this.router.navigateByUrl('/home').then(() => {
+                location.reload()
+              })
+              break;
+             default:
+              this.router.navigateByUrl("")
                 
           }
 
