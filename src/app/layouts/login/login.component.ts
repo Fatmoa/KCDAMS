@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin() {
+    
     setTimeout(() => {
       const username = this.loginForm.value.username;
       const password = this.loginForm.value.password;
@@ -37,24 +38,28 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem("userId", resp[0].userId);
           sessionStorage.setItem("username", resp[0].username);
           sessionStorage.setItem("roleName", resp[0].roleId.roleName);
+          console.log(resp[0].roleId.roleName);
+          
 
           switch (resp[0].roleId.roleName) {
-            case 'ADMINISTRATOR':
-              this.router.navigateByUrl('home').then(() => {
-                location.reload()
-              })
-              break;
-            case 'NURSE':
-              this.router.navigateByUrl('/home').then(() => {
-                location.reload()
-              })
-              break;
-             default:
-              this.router.navigateByUrl("")
+            // case 'ADMINISTRATOR':
+            //   this.router.navigateByUrl('home').then(() => {
+            //     location.reload()
+            //   })
+              
+            //   break;
+          //   case 'NURSE':
+          //     this.router.navigateByUrl('/home').then(() => {
+          //       location.reload()
+          //     })
+          //     break;
+          //    default:
+          //     this.router.navigateByUrl("")
                 
           }
 
-        }else{
+        }
+        else{
           console.log('user blocked');
         }
 
