@@ -12,7 +12,8 @@
       </div>
       <div class="content-header-right col-md-6 col-12">
         <div class="btn-group float-md-right" role="group">
-          <button type="button" class="btn btn-info btn-min-width btn-glow mr-1 mb-1" (click)="openDialog()">Add Registrar</button>
+          <button type="button" class="btn btn-info btn-min-width btn-glow mr-1 mb-1" 
+          (click)="openDialog()">Add Reception</button>
         </div>
       </div>
     </div>
@@ -208,7 +209,7 @@
         <div class="col-md-4">
           <mat-form-field style="width: 100%;" appearance="outline">
             <mat-label>Last Name</mat-label>
-            <input matInput placeholder="Last name" formControlName="regisLname">
+            <input matInput placeholder="Last name" formControlName="regisLname" readonly>
           </mat-form-field>
         </div>
       </div>
