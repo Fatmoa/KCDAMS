@@ -50,6 +50,8 @@ import { BarchartComponent } from './pages/dashboard/barchart/barchart.component
 import { PiechartComponent } from './pages/dashboard/piechart/piechart.component';
 import { RegistrarComponent } from './pages/registrar/registrar.component';
 import { LoginComponent } from './layouts/login/login.component';
+import { NursingComponent } from './pages/nursing/nursing.component';
+import { PsychologyComponent } from './pages/psychology/psychology.component';
 
 
 @NgModule({
@@ -85,6 +87,8 @@ import { LoginComponent } from './layouts/login/login.component';
     PiechartComponent,
     RegistrarComponent,
     LoginComponent,
+    NursingComponent,
+    PsychologyComponent,
 
 
   ],

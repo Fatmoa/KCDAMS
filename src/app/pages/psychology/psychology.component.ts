@@ -1,3 +1,4 @@
+import { PsychologyService } from './../../services/psychology.service';
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -6,16 +7,16 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
-import { RegistrarService } from 'src/app/services/registrar.service';
 import { RolesService } from 'src/app/services/roles.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-registrar',
-  templateUrl: './registrar.component.html',
-  styleUrls: ['./registrar.component.scss']
+  selector: 'app-psychology',
+  templateUrl: './psychology.component.html',
+  styleUrls: ['./psychology.component.scss']
 })
-export class RegistrarComponent implements OnInit {
+export class PsychologyComponent implements OnInit{
+
 
   displayedColumns: string[] = ['id', 'name', 'gen', 'empNum', 'email', 'pnum', 'status', 'action'];
   @ViewChild('distributionDialog') distributionDialog!: TemplateRef<any>;
@@ -31,20 +32,17 @@ export class RegistrarComponent implements OnInit {
     private dialog: MatDialog,
     private rolesService: RolesService,
     private loginService: LoginService,
-    private registrarService: RegistrarService
-  ) {
+    private psychologyService:PsychologyService,
+  ){}
 
-  }
+  psyEditForm!:FormGroup;
+  psyForm!:FormGroup
 
 
-  regForm!: FormGroup;
-  regEditForm!: FormGroup;
   ngOnInit(): void {
-    this.configureForm();
-    this.fetchAllRegistrar();
-    this.configureEditForm();
-
-
+    this.fetchAll()
+    this.configureForm()
+    this.configureEditForm()
   }
 
   ngAfterViewInit() {
@@ -53,31 +51,32 @@ export class RegistrarComponent implements OnInit {
   }
 
   configureForm() {
-    this.regForm = new FormGroup({
-      regisName: new FormControl(null, Validators.required),
-      regisMname: new FormControl(null, Validators.required),
-      regisLname: new FormControl(null, Validators.required),
-      resiGender: new FormControl(null, Validators.required),
-      regisEmail: new FormControl(null, Validators.required),
-      regisNumb: new FormControl(null, Validators.required),
-      emplNum: new FormControl(null, Validators.required),
+    this.psyForm = new FormGroup({
+      psyName: new FormControl(null,Validators.required),
+      psyMname: new FormControl(null,Validators.required),
+      psyLname: new FormControl(null,Validators.required),
+      psyGender: new FormControl(null,Validators.required),
+      psyEmail: new FormControl(null,Validators.required),
+      psyNumb: new FormControl(null,Validators.required),
+      psyEmplNum: new FormControl(null,Validators.required),
       user_data: new FormControl(null),
 
     })
   }
 
   configureEditForm() {
-    this.regEditForm = new FormGroup({
-      regId: new FormControl(null),
-      regisName: new FormControl(null, Validators.required),
-      regisMname: new FormControl(null, Validators.required),
-      regisLname: new FormControl(null, Validators.required),
-      resiGender: new FormControl(null, Validators.required),
-      regisEmail: new FormControl(null, Validators.required),
-      regisNumb: new FormControl(null, Validators.required),
-      emplNum: new FormControl(null, Validators.required),
+    this.psyEditForm = new FormGroup({
+      psyId: new FormControl(null),
+      psyName: new FormControl(null, Validators.required),
+      psyMname: new FormControl(null, Validators.required),
+      psyLname: new FormControl(null, Validators.required),
+      psyGender: new FormControl(null, Validators.required),
+      psyEmail: new FormControl(null, Validators.required),
+      psyNumb: new FormControl(null, Validators.required),
+      psyEmplNum: new FormControl(null, Validators.required),
     })
   }
+
 
   openDialog() {
     let dialogRef = this.dialog.open(this.distributionDialog, {
@@ -94,53 +93,46 @@ export class RegistrarComponent implements OnInit {
     })
   }
 
-
-
-  fetchAllRegistrar() {
-    this.registrarService.getAllRegistrar().subscribe((resp: any) => {
+  fetchAll(){
+    this.psychologyService.getAllPsychology().subscribe((resp:any)=>{
       this.dataSource = new MatTableDataSource(resp);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     })
   }
 
-  onSave() {
-    this.rolesService.getRoleByName('RECEPTION').subscribe((resp: any) => {
 
-      const login = {
-        username: this.regForm.value.regisEmail,
-        password: this.regForm.value.regisLname,
-        roleId: resp,
-        userStatus: '1'
-      }
-      console.log(login);
-      this.loginService.userRegistration(login).subscribe((resp2: any) => {
-        this.regForm.patchValue({ user_data: resp2 });
-        const values = this.regForm.value;
-        this.registrarService.addReistrar(values).subscribe((resp3: any) => {
-          this.reload();
-          this.alert()
+onSave(){
+  this.rolesService.getRoleByName('PSYCHOLOGIST').subscribe((resp: any) => {
 
-        })
-
+    const login = {
+      username: this.psyForm.value.psyLname,
+      password: this.psyForm.value.psyEmail,
+      roleId: resp,
+      userStatus: '1'
+    }
+    console.log(login);
+    this.loginService.userRegistration(login).subscribe((resp2: any) => {
+      this.psyForm.patchValue({ user_data: resp2 });
+      const values = this.psyForm.value;
+      this.psychologyService.addPsychology(values).subscribe((resp3: any) => {
+        this.reload();
+        this.alert()
       })
-
-
     })
+  })
+}
 
-  }
-
-
-  openDialog2(row: any) {
-    this.regEditForm = new FormGroup({
-      regId: new FormControl(row.regId),
-      regisName: new FormControl(row.regisName),
-      regisMname: new FormControl(row.regisMname),
-      regisLname: new FormControl(row.regisLname),
-      resiGender: new FormControl(row.resiGender),
-      regisEmail: new FormControl(row.regisEmail),
-      regisNumb: new FormControl(row.regisNumb),
-      emplNum: new FormControl(row.emplNum),
+openDialog2(row: any) {
+  this.psyEditForm = new FormGroup({
+    psyId: new FormControl(row.psyId),
+    psyName: new FormControl(row.psyName),
+    psyMname: new FormControl(row.psyMname),
+    psyLname: new FormControl(row.psyLname),
+    psyGender: new FormControl(row.psyGender),
+    psyEmail: new FormControl(row.psyEmail),
+    psyNumb: new FormControl(row.psyNumb),
+    psyEmplNum: new FormControl(row.psyEmplNum),
     })
     let dialogRef = this.dialog.open(this.distributionDialog2, {
       width: '850px',
@@ -156,24 +148,24 @@ export class RegistrarComponent implements OnInit {
     })
   }
 
+
+
   onEdit(){
-    const id = this.regEditForm.value.regId;
-    const values = this.regEditForm.value;
-
-    this.registrarService.editReistrar(id,values).subscribe((resp:any)=>{
-      this.reload();
+    const id = this.psyEditForm.value.psyId;
+    const values = this.psyEditForm.value;
+    this.psychologyService.editPsychology(id,values).subscribe((resp:any)=>{
+      this.reload()
       this.alert2()
-
     })
+
   }
-
-
 
   reload() {
     this.router.navigateByUrl('', { skipLocationChange: true }).then(() => {
-      this.router.navigate(['home/registrar'])
+      this.router.navigate(['home/psychology'])
     })
   }
+
 
   alert() {
     const Toast = Swal.mixin({
@@ -189,10 +181,9 @@ export class RegistrarComponent implements OnInit {
     });
     Toast.fire({
       icon: "success",
-      title: "Reception Added successfully"
+      title: "Pyschologist Added successfully"
     });
   }
-
 
   alert2() {
     const Toast = Swal.mixin({
@@ -208,9 +199,10 @@ export class RegistrarComponent implements OnInit {
     });
     Toast.fire({
       icon: "success",
-      title: "Reception Edited successfully"
+      title: "Pyschologist Edited successfully"
     });
   }
+
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -221,5 +213,6 @@ export class RegistrarComponent implements OnInit {
     }
   }
 
-
 }
+
+

@@ -1,3 +1,4 @@
+import { NursingService } from './../../services/nursing.service';
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -6,16 +7,15 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
-import { RegistrarService } from 'src/app/services/registrar.service';
 import { RolesService } from 'src/app/services/roles.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-registrar',
-  templateUrl: './registrar.component.html',
-  styleUrls: ['./registrar.component.scss']
+  selector: 'app-nursing',
+  templateUrl: './nursing.component.html',
+  styleUrls: ['./nursing.component.scss']
 })
-export class RegistrarComponent implements OnInit {
+export class NursingComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'name', 'gen', 'empNum', 'email', 'pnum', 'status', 'action'];
   @ViewChild('distributionDialog') distributionDialog!: TemplateRef<any>;
@@ -31,20 +31,15 @@ export class RegistrarComponent implements OnInit {
     private dialog: MatDialog,
     private rolesService: RolesService,
     private loginService: LoginService,
-    private registrarService: RegistrarService
-  ) {
+    private nursingService:NursingService
+  ){}
+  nusForm!: FormGroup;
+  nusEditForm!: FormGroup;
 
-  }
-
-
-  regForm!: FormGroup;
-  regEditForm!: FormGroup;
   ngOnInit(): void {
-    this.configureForm();
-    this.fetchAllRegistrar();
-    this.configureEditForm();
-
-
+    this.fetchAllNus(),
+    this.configNusForm(),
+    this.configurenusEditForm()
   }
 
   ngAfterViewInit() {
@@ -52,30 +47,30 @@ export class RegistrarComponent implements OnInit {
     this.dataSource.sort = this.sort;
   }
 
-  configureForm() {
-    this.regForm = new FormGroup({
-      regisName: new FormControl(null, Validators.required),
-      regisMname: new FormControl(null, Validators.required),
-      regisLname: new FormControl(null, Validators.required),
-      resiGender: new FormControl(null, Validators.required),
-      regisEmail: new FormControl(null, Validators.required),
-      regisNumb: new FormControl(null, Validators.required),
-      emplNum: new FormControl(null, Validators.required),
+  configNusForm(){
+    this.nusForm = new FormGroup({
+      nusName: new FormControl(null, Validators.required),
+      nusMname: new FormControl(null, Validators.required),
+      nusLname: new FormControl(null, Validators.required),
+      nusGender: new FormControl(null, Validators.required),
+      nusEmail: new FormControl(null, Validators.required),
+      nusPnumb: new FormControl(null, Validators.required),
+      nusemplNum: new FormControl(null, Validators.required),
       user_data: new FormControl(null),
-
     })
   }
 
-  configureEditForm() {
-    this.regEditForm = new FormGroup({
-      regId: new FormControl(null),
-      regisName: new FormControl(null, Validators.required),
-      regisMname: new FormControl(null, Validators.required),
-      regisLname: new FormControl(null, Validators.required),
-      resiGender: new FormControl(null, Validators.required),
-      regisEmail: new FormControl(null, Validators.required),
-      regisNumb: new FormControl(null, Validators.required),
-      emplNum: new FormControl(null, Validators.required),
+  configurenusEditForm(){
+    this.nusEditForm = new FormGroup ({
+      nusId:new FormControl(null),
+      nusName: new FormControl(null, Validators.required),
+      nusMname: new FormControl(null, Validators.required),
+      nusLname: new FormControl(null, Validators.required),
+      nusGender: new FormControl(null, Validators.required),
+      nusEmail: new FormControl(null, Validators.required),
+      nusPnumb: new FormControl(null, Validators.required),
+      nusemplNum: new FormControl(null, Validators.required),
+
     })
   }
 
@@ -94,53 +89,48 @@ export class RegistrarComponent implements OnInit {
     })
   }
 
-
-
-  fetchAllRegistrar() {
-    this.registrarService.getAllRegistrar().subscribe((resp: any) => {
+  fetchAllNus(){
+    this.nursingService.getAllNursing().subscribe((resp:any)=>{
       this.dataSource = new MatTableDataSource(resp);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     })
   }
 
-  onSave() {
-    this.rolesService.getRoleByName('RECEPTION').subscribe((resp: any) => {
-
+  onSave(){
+    this.rolesService.getRoleByName('NURSE').subscribe((resp:any)=>{
       const login = {
-        username: this.regForm.value.regisEmail,
-        password: this.regForm.value.regisLname,
+        username: this.nusForm.value.nusEmail,
+        password: this.nusForm.value.nusLname,
         roleId: resp,
         userStatus: '1'
       }
+
       console.log(login);
       this.loginService.userRegistration(login).subscribe((resp2: any) => {
-        this.regForm.patchValue({ user_data: resp2 });
-        const values = this.regForm.value;
-        this.registrarService.addReistrar(values).subscribe((resp3: any) => {
+        this.nusForm.patchValue({ user_data: resp2 });
+        const values = this.nusForm.value;
+        this.nursingService.addNursing(values).subscribe((resp3: any) => {
           this.reload();
           this.alert()
 
         })
 
       })
-
-
     })
-
   }
 
+  openDialog2(row:any) {
+    this.nusEditForm = new FormGroup ({
+      nusId:new FormControl(row.nusId),
+      nusName: new FormControl(row.nusName),
+      nusMname: new FormControl(row.nusMname),
+      nusLname: new FormControl(row.nusLname),
+      nusGender: new FormControl(row.nusGender),
+      nusEmail: new FormControl(row.nusEmail),
+      nusPnumb: new FormControl(row.nusPnumb),
+      nusemplNum: new FormControl(row.nusemplNum),
 
-  openDialog2(row: any) {
-    this.regEditForm = new FormGroup({
-      regId: new FormControl(row.regId),
-      regisName: new FormControl(row.regisName),
-      regisMname: new FormControl(row.regisMname),
-      regisLname: new FormControl(row.regisLname),
-      resiGender: new FormControl(row.resiGender),
-      regisEmail: new FormControl(row.regisEmail),
-      regisNumb: new FormControl(row.regisNumb),
-      emplNum: new FormControl(row.emplNum),
     })
     let dialogRef = this.dialog.open(this.distributionDialog2, {
       width: '850px',
@@ -156,22 +146,22 @@ export class RegistrarComponent implements OnInit {
     })
   }
 
-  onEdit(){
-    const id = this.regEditForm.value.regId;
-    const values = this.regEditForm.value;
 
-    this.registrarService.editReistrar(id,values).subscribe((resp:any)=>{
+  onEdit(){
+    const id = this.nusEditForm.value.nusId;
+    const values = this.nusEditForm.value;
+
+    this.nursingService.editNursing(id,values).subscribe((resp:any)=>{
+      console.log(resp);
       this.reload();
       this.alert2()
 
     })
   }
 
-
-
   reload() {
     this.router.navigateByUrl('', { skipLocationChange: true }).then(() => {
-      this.router.navigate(['home/registrar'])
+      this.router.navigate(['home/nursing'])
     })
   }
 
@@ -189,10 +179,9 @@ export class RegistrarComponent implements OnInit {
     });
     Toast.fire({
       icon: "success",
-      title: "Reception Added successfully"
+      title: "Nurse Added successfully"
     });
   }
-
 
   alert2() {
     const Toast = Swal.mixin({
@@ -208,7 +197,7 @@ export class RegistrarComponent implements OnInit {
     });
     Toast.fire({
       icon: "success",
-      title: "Reception Edited successfully"
+      title: "Nurse Edited successfully"
     });
   }
 
@@ -220,6 +209,5 @@ export class RegistrarComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
-
 
 }

@@ -13,7 +13,7 @@
       <div class="content-header-right col-md-6 col-12">
         <div class="btn-group float-md-right" role="group">
           <button type="button" class="btn btn-info btn-min-width btn-glow mr-1 mb-1"
-          (click)="openDialog()">Add Reception</button>
+          (click)="openDialog()">Add Nurse</button>
         </div>
       </div>
     </div>
@@ -22,7 +22,7 @@
         <!-- Total Receivables -->
         <div class="card">
           <div class="card-header">
-            <h4 class="card-title">Registrar List</h4>
+            <h4 class="card-title">Nurses List</h4>
             <a class="heading-elements-toggle"><i class="la la-ellipsis-h font-medium-3"></i></a>
           </div>
           <div class="card-content collapse show">
@@ -44,31 +44,31 @@
                 <!-- Progress Column -->
                 <ng-container matColumnDef="name">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-                  <td mat-cell *matCellDef="let row"> {{row.regisName + " " +  row.regisLname}} </td>
+                  <td mat-cell *matCellDef="let row"> {{row.nusName + " " +  row.nusLname}} </td>
                 </ng-container>
 
                 <ng-container matColumnDef="gen">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header> Gender </th>
+                  <!-- <td mat-cell *matCellDef="let row"> {{row.nusGender}} </td> -->
                   <td mat-cell *matCellDef="let row">
                     <span *ngIf="row.resiGender=='1'">Female</span>
                     <span *ngIf="row.resiGender=='2'">Male</span>
-
                    </td>
                 </ng-container>
 
                 <ng-container matColumnDef="empNum">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header> EmployeNumber </th>
-                  <td mat-cell *matCellDef="let row"> {{row.emplNum}} </td>
+                  <td mat-cell *matCellDef="let row"> {{row.nusemplNum}} </td>
                 </ng-container>
 
                 <ng-container matColumnDef="email">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
-                  <td mat-cell *matCellDef="let row"> {{row.regisEmail}} </td>
+                  <td mat-cell *matCellDef="let row"> {{row.nusEmail}} </td>
                 </ng-container>
 
                 <ng-container matColumnDef="pnum">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header> Phone Number </th>
-                  <td mat-cell *matCellDef="let row"> {{row.regisNumb}} </td>
+                  <td mat-cell *matCellDef="let row"> {{row.nusPnumb}} </td>
                 </ng-container>
 
                 <ng-container matColumnDef="status">
@@ -115,28 +115,28 @@
   </div>
 </div>
 <ng-template #distributionDialog>
-  <app-card title="Add Reception">
+  <app-card title="Add Nurse">
     <hr>
-    <form [formGroup]="regForm">
+    <form [formGroup]="nusForm">
       <div class="row">
         <div class="col-md-4">
           <mat-form-field style="width: 100%;" appearance="outline">
             <mat-label>First Name</mat-label>
-            <input matInput placeholder="first  name" formControlName="regisName">
+            <input matInput placeholder="first  name" formControlName="nusName">
           </mat-form-field>
         </div>
 
         <div class="col-md-4">
           <mat-form-field style="width: 100%;" appearance="outline">
             <mat-label>Middle Name</mat-label>
-            <input matInput placeholder="Middle name" formControlName="regisMname">
+            <input matInput placeholder="Middle name" formControlName="nusMname">
           </mat-form-field>
         </div>
 
         <div class="col-md-4">
           <mat-form-field style="width: 100%;" appearance="outline">
             <mat-label>Last Name</mat-label>
-            <input matInput placeholder="Last name" formControlName="regisLname">
+            <input matInput placeholder="Last name" formControlName="nusLname">
           </mat-form-field>
         </div>
       </div>
@@ -145,7 +145,7 @@
         <div class="col-md-4">
           <mat-form-field appearance="outline" style="width: 100%;">
             <mat-label>Gender</mat-label>
-            <mat-select disableRipple formControlName="resiGender">
+            <mat-select disableRipple formControlName="nusGender">
               <mat-option value="1">Mke</mat-option>
               <mat-option value="2">Mme</mat-option>
             </mat-select>
@@ -155,14 +155,14 @@
         <div class="col-md-4">
           <mat-form-field style="width: 100%;" appearance="outline">
             <mat-label>Email</mat-label>
-            <input matInput placeholder="Email" formControlName="regisEmail">
+            <input matInput placeholder="Email" formControlName="nusEmail">
           </mat-form-field>
         </div>
 
         <div class="col-md-4">
           <mat-form-field style="width: 100%;" appearance="outline">
             <mat-label>Phone</mat-label>
-            <input matInput placeholder="Phone" formControlName="regisNumb">
+            <input matInput placeholder="Phone" formControlName="nusPnumb">
           </mat-form-field>
         </div>
       </div>
@@ -171,7 +171,7 @@
         <div class="col-md-4">
           <mat-form-field style="width: 100%;" appearance="outline">
             <mat-label>Employee No</mat-label>
-            <input matInput placeholder="Employee No" formControlName="emplNum">
+            <input matInput placeholder="Employee No" formControlName="nusemplNum">
           </mat-form-field>
         </div>
 
@@ -188,28 +188,28 @@
 </ng-template>
 
 <ng-template #distributionDialog2>
-  <app-card title="Edit Reception">
+  <app-card title="Edit Nurse">
     <hr>
-    <form [formGroup]="regEditForm">
+    <form [formGroup]="nusEditForm">
       <div class="row">
         <div class="col-md-4">
           <mat-form-field style="width: 100%;" appearance="outline">
             <mat-label>First Name</mat-label>
-            <input matInput placeholder="first  name" formControlName="regisName">
+            <input matInput placeholder="first  name" formControlName="nusName">
           </mat-form-field>
         </div>
 
         <div class="col-md-4">
           <mat-form-field style="width: 100%;" appearance="outline">
             <mat-label>Middle Name</mat-label>
-            <input matInput placeholder="Middle name" formControlName="regisMname">
+            <input matInput placeholder="Middle name" formControlName="nusMname">
           </mat-form-field>
         </div>
 
         <div class="col-md-4">
           <mat-form-field style="width: 100%;" appearance="outline">
             <mat-label>Last Name</mat-label>
-            <input matInput placeholder="Last name" formControlName="regisLname" readonly>
+            <input matInput placeholder="Last name" formControlName="nusLname" readonly>
           </mat-form-field>
         </div>
       </div>
@@ -218,7 +218,7 @@
         <div class="col-md-4">
           <mat-form-field appearance="outline" style="width: 100%;">
             <mat-label>Gender</mat-label>
-            <mat-select disableRipple formControlName="resiGender">
+            <mat-select disableRipple formControlName="nusGender">
               <mat-option value="1">Mke</mat-option>
               <mat-option value="2">Mme</mat-option>
             </mat-select>
@@ -228,14 +228,14 @@
         <div class="col-md-4">
           <mat-form-field style="width: 100%;" appearance="outline">
             <mat-label>Email</mat-label>
-            <input matInput placeholder="Email" formControlName="regisEmail" readonly>
+            <input matInput placeholder="Email" formControlName="nusEmail" readonly>
           </mat-form-field>
         </div>
 
         <div class="col-md-4">
           <mat-form-field style="width: 100%;" appearance="outline">
             <mat-label>Phone</mat-label>
-            <input matInput placeholder="Phone" formControlName="regisNumb">
+            <input matInput placeholder="Phone" formControlName="nusPnumb">
           </mat-form-field>
         </div>
       </div>
@@ -244,7 +244,7 @@
         <div class="col-md-4">
           <mat-form-field style="width: 100%;" appearance="outline">
             <mat-label>Employee No</mat-label>
-            <input matInput placeholder="Employee No" formControlName="emplNum">
+            <input matInput placeholder="Employee No" formControlName="nusemplNum">
           </mat-form-field>
         </div>
 
@@ -257,4 +257,5 @@
     </div>
   </app-card>
 </ng-template>
+
 

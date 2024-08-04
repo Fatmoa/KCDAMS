@@ -22,6 +22,8 @@ import { DrugsComponent } from './pages/drugs/drugs.component';
 import { EditReceptionComponent } from './pages/edit-reception/edit-reception.component';
 import { RegistrarComponent } from './pages/registrar/registrar.component';
 import { LoginComponent } from './layouts/login/login.component';
+import { NursingComponent } from './pages/nursing/nursing.component';
+import { PsychologyComponent } from './pages/psychology/psychology.component';
 
 const routes: Routes = [
   {path:'',component:LoginComponent},
@@ -95,6 +97,16 @@ const routes: Routes = [
         path:'registrar',
         component:RegistrarComponent
       },
+      {
+        path:'nursing',
+        component:NursingComponent
+      },
+      {
+        path:'psychology',
+        component:PsychologyComponent
+      },
+
+
     ]
   }
 ];
