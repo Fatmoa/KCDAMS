@@ -103,21 +103,24 @@ export class PsychologyComponent implements OnInit{
 
 
 onSave(){
-  this.rolesService.getRoleByName('PSYCHOLOGIST').subscribe((resp: any) => {
 
+
+  this.rolesService.getRoleByName('PSYCHOLOGIST').subscribe((resp: any) => {
     const login = {
-      username: this.psyForm.value.psyLname,
-      password: this.psyForm.value.psyEmail,
+      username: this.psyForm.value.psyEmail,
+      password: this.psyForm.value.psyLname,
       roleId: resp,
       userStatus: '1'
     }
     console.log(login);
     this.loginService.userRegistration(login).subscribe((resp2: any) => {
+
       this.psyForm.patchValue({ user_data: resp2 });
       const values = this.psyForm.value;
       this.psychologyService.addPsychology(values).subscribe((resp3: any) => {
-        this.reload();
-        this.alert()
+        console.log('added')
+        // this.reload();
+        // this.alert()
       })
     })
   })

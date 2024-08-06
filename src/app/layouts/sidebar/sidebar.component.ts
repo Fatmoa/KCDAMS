@@ -13,8 +13,6 @@ export class SidebarComponent implements OnInit {
   ngOnInit(): void {
 
     this.roleName = sessionStorage.getItem('roleName');
-    console.log(this.roleName);
-    
 
   }
 

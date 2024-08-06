@@ -14,15 +14,24 @@
           <div class="collapse navbar-collapse" id="navbar-mobile">
 
            <ul class="nav navbar-nav mr-auto float-left">
-              <li class="nav-item d-none d-md-block"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="la la-list"></i></a></li>
+              <li class="nav-item d-none d-md-block">
+                <a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#">
+                  <i class="la la-list"></i></a>
+                </li>  <li class="nav-item d-none d-md-block">
+                  <a class="dropdown-toggle nav-link"data-toggle="dropdown">{{roleName}}</a>
+                </li>
+
+
+
+
 
             </ul>
             <ul class="nav navbar-nav float-right">
 
               <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown"><span class="mr-1 user-name text-bold-700"></span><span class="avatar avatar-online"><img src="../../../assets/app-assets/images/portrait/small/hosp.jpg" alt="avatar"><i></i></span></a>
                 <div class="dropdown-menu dropdown-menu-right">
-           
-    
+
+
                   <a class="dropdown-item" (click)="onLogOut()"><i class="ft-power"></i> Logout</a>
                 </div>
               </li>

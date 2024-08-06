@@ -31,7 +31,7 @@ export class ReceptionsComponent implements OnInit{
   }
 
   onAdd(){
-    this.router.navigateByUrl('add-reception')
+    this.router.navigateByUrl('home/add-reception')
    }
 
    applyFilter(event: Event) {
@@ -53,8 +53,8 @@ export class ReceptionsComponent implements OnInit{
    }
 
    onEdit(row:any){
-    this.router.navigate(['edit-reception'],{queryParams:{path:row.matCode}})
-    // console.log(row.matCode);
+    this.router.navigate(['home/edit-reception'],{queryParams:{path:row.matCode}})
+    // console.log(row.matCohome/de);
 
    }
  }

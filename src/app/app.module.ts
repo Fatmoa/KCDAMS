@@ -52,6 +52,7 @@ import { RegistrarComponent } from './pages/registrar/registrar.component';
 import { LoginComponent } from './layouts/login/login.component';
 import { NursingComponent } from './pages/nursing/nursing.component';
 import { PsychologyComponent } from './pages/psychology/psychology.component';
+import { ObservationComponent } from './pages/observation/observation.component';
 
 
 @NgModule({
@@ -89,6 +90,7 @@ import { PsychologyComponent } from './pages/psychology/psychology.component';
     LoginComponent,
     NursingComponent,
     PsychologyComponent,
+    ObservationComponent,
 
 
   ],

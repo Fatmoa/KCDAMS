@@ -24,6 +24,7 @@ import { RegistrarComponent } from './pages/registrar/registrar.component';
 import { LoginComponent } from './layouts/login/login.component';
 import { NursingComponent } from './pages/nursing/nursing.component';
 import { PsychologyComponent } from './pages/psychology/psychology.component';
+import { ObservationComponent } from './pages/observation/observation.component';
 
 const routes: Routes = [
   {path:'',component:LoginComponent},
@@ -105,8 +106,10 @@ const routes: Routes = [
         path:'psychology',
         component:PsychologyComponent
       },
-
-
+      {
+        path:'observation',
+        component:ObservationComponent
+      },
     ]
   }
 ];

@@ -57,10 +57,10 @@ export class AddObservationComponent implements OnInit{
 
 
   ngOnInit(): void {
-    
+
   }
   onBack(){
-    this.router.navigateByUrl('nurse')
+    this.router.navigateByUrl('/home/observation')
    }
 
 }

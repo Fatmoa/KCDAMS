@@ -15,7 +15,7 @@ export class LoginService {
   }
 
   getLogin(username:any,password:any){
-    return this.http.get(this.loginAPI + "getAllUsers")
+    return this.http.get(this.loginAPI  + username + "/" + password)
   }
 
   getUser(){

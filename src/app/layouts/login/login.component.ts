@@ -27,25 +27,33 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin() {
-    
+
     setTimeout(() => {
       const username = this.loginForm.value.username;
       const password = this.loginForm.value.password;
       this.loginService.getLogin(username, password).subscribe((resp: any) => {
-        
-        if (resp[0].userStatus == '1') {
+        // console.log(resp);
 
-          sessionStorage.setItem("userId", resp[0].userId);
-          sessionStorage.setItem("username", resp[0].username);
-          sessionStorage.setItem("roleName", resp[0].roleId.roleName);
-   
-          switch (resp[0].roleId.roleName) {
+
+        if (resp.userStatus == '1') {
+
+          sessionStorage.setItem("userId", resp.userId);
+          sessionStorage.setItem("username", resp.username);
+          sessionStorage.setItem("roleName", resp.roleId.roleName);
+
+          switch (resp.roleId.roleName) {
             case 'ADMINISTRATOR':
               this.router.navigateByUrl('home').then(() => {
                 location.reload()
               })
-              
+
               break;
+              case 'RECEPTION':
+                this.router.navigateByUrl('home').then(() => {
+                  location.reload()
+                })
+
+                break;
             case 'NURSE':
               this.router.navigateByUrl('/home').then(() => {
                 location.reload()
@@ -53,7 +61,7 @@ export class LoginComponent implements OnInit {
               break;
              default:
               this.router.navigateByUrl("")
-                
+
           }
 
         }
@@ -64,7 +72,7 @@ export class LoginComponent implements OnInit {
       })
     })
 
-  
+
   }
 
 }

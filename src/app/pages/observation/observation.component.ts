@@ -3,29 +3,25 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { ReceptionService } from 'src/app/services/reception.service';
-
-
-
 
 @Component({
-  selector: 'app-nurse',
-  templateUrl: './nurse.component.html',
-  styleUrls: ['./nurse.component.scss']
+  selector: 'app-observation',
+  templateUrl: './observation.component.html',
+  styleUrls: ['./observation.component.scss']
 })
-export class NurseComponent implements OnInit{
+export class ObservationComponent implements OnInit {
+
   displayedColumns: string[] = ['id', 'name','gen', 'reg', 'ngo','kiname','kinrel','kinp'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+
   constructor (
     private router:Router,
-    private receptionService: ReceptionService
-
   ){}
+
   ngOnInit(): void {
-    this.getAllPatients()
   }
 
   ngAfterViewInit() {
@@ -42,15 +38,11 @@ export class NurseComponent implements OnInit{
     }
   }
 
-  getAllPatients(){
-    this.receptionService.getAllrecption().subscribe((resp:any)=>{
-      console.log(resp);
-      this.dataSource=new MatTableDataSource(resp);
-      this.dataSource.paginator=this.paginator;
-      this.dataSource.sort=this.sort;
-    })
-  }
+     onAdd(){
+     this.router.navigateByUrl('/home/add-observation')
+
+   }
+
+   
 
 }
-
-
