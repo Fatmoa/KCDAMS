@@ -153,8 +153,8 @@ export class NursingComponent implements OnInit {
 
     this.nursingService.editNursing(id,values).subscribe((resp:any)=>{
       console.log(resp);
-      // this.reload();
-      // this.alert2()
+      this.reload();
+      this.alert2()
 
     })
   }

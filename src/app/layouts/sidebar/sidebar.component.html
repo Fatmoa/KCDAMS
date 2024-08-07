@@ -72,7 +72,7 @@
 
         <li class=" nav-item"><a routerLink="/home"><i class="la la-home"></i><span class="menu-title" data-i18n="Report">Home</span></a>
         </li>
-        <li class=" nav-item"><a routerLink="receptions"><i class="las la-clipboard-list"></i><span class="menu-title" data-i18n="Report">Reception</span></a>
+        <li class=" nav-item"><a routerLink="receptions"><i class="las la-clipboard-list"></i><span class="menu-title" data-i18n="Report">Patients</span></a>
         </li>
       </ul>
     </div>
@@ -89,6 +89,19 @@
       </li>
     </ul>
   </div>
+</div>
+
+<div class="main-menu menu-fixed menu-light menu-accordion
+menu-shadow " data-scroll-to-active="true"  *ngIf="roleName =='PSYCHOLOGIST'">
+<div class="main-menu-content">
+  <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+
+    <li class=" nav-item"><a routerLink="/home"><i class="la la-home"></i><span class="menu-title" data-i18n="Report">Home</span></a>
+    </li>
+    <li class=" nav-item"><a routerLink="psychologist"><i class="las la-medkit"></i><span class="menu-title" data-i18n="Doctors">Conselling</span></a>
+    </li>
+  </ul>
+</div>
 </div>
 
 

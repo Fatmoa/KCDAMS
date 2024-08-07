@@ -47,7 +47,7 @@
                 </ng-container>
 
                 <!-- Name Column -->
-                <ng-container matColumnDef="dod">
+                <ng-container matColumnDef="dob">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header> DOB </th>
                   <td mat-cell *matCellDef="let row"> {{row.dob | date:'dd-MM-Y'}} </td>
                 </ng-container>
@@ -70,8 +70,6 @@
                     <span *ngIf="row.kinRelation == 8 ">Sheha</span>
                   </td>
                 </ng-container>
-
-
 
                 <!-- Fruit Column -->
                 <ng-container matColumnDef="cow">

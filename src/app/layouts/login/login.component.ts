@@ -58,6 +58,13 @@ export class LoginComponent implements OnInit {
               this.router.navigateByUrl('/home').then(() => {
                 location.reload()
               })
+
+              break;
+              case 'PSYCHOLOGIST':
+                this.router.navigateByUrl('home').then(() => {
+                  location.reload()
+                })
+
               break;
              default:
               this.router.navigateByUrl("")

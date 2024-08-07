@@ -1,8 +1,10 @@
+
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ObservationService } from 'src/app/services/observation.service';
 
 @Component({
   selector: 'app-observation',
@@ -19,9 +21,12 @@ export class ObservationComponent implements OnInit {
 
   constructor (
     private router:Router,
+    private route:ActivatedRoute,
+    private observationService: ObservationService,
   ){}
 
   ngOnInit(): void {
+    this.fetchAll()
   }
 
   ngAfterViewInit() {
@@ -38,11 +43,19 @@ export class ObservationComponent implements OnInit {
     }
   }
 
+  fetchAll(){
+    this.observationService.getAllObservation().subscribe((resp:any)=>{
+      this.dataSource = new MatTableDataSource(resp);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    })
+  }
+
      onAdd(){
      this.router.navigateByUrl('/home/add-observation')
 
    }
 
-   
+
 
 }

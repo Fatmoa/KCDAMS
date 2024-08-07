@@ -1,9 +1,11 @@
+import { NgoService } from './../../services/ngo.service';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DistrictService } from 'src/app/services/district.service';
 import { ReceptionService } from 'src/app/services/reception.service';
+import Swal from 'sweetalert2';
 
 
 
@@ -22,7 +24,8 @@ export class AddreceptionComponent implements OnInit {
   constructor(
     private router: Router,
     private districtService: DistrictService,
-    private receptionService: ReceptionService
+    private receptionService: ReceptionService,
+    private ngoService: NgoService,
   ) { }
 
   Selectfile1: File = null!;
@@ -38,7 +41,8 @@ export class AddreceptionComponent implements OnInit {
   ngOnInit(): void {
 
     this.fetchAllDistrict();
-    this.configureForm()
+    this.configureForm();
+    // this.fetchAllNgo()
   }
 
   configureForm() {
@@ -57,7 +61,8 @@ export class AddreceptionComponent implements OnInit {
       no_children: new FormControl('', Validators.required),
       reg: new FormControl('', Validators.required),
       nida: new FormControl(''),
-      ngoName: new FormControl('', Validators.required),
+      // ngoData: new FormControl('', Validators.required),
+      ngoData: new FormControl('', Validators.required),
       cowName: new FormControl('', Validators.required),
       cowPhone: new FormControl(''),
       kinName: new FormControl('', Validators.required),
@@ -68,7 +73,7 @@ export class AddreceptionComponent implements OnInit {
   }
 
   onBack() {
-    this.router.navigateByUrl('receptions')
+    this.router.navigateByUrl('/home/receptions')
   }
 
 
@@ -79,6 +84,13 @@ export class AddreceptionComponent implements OnInit {
     })
   }
 
+  // ngos:any
+  // fetchAllNgo(){
+  //   this.ngoService.getAllNgo().subscribe((resp:any)=>{
+  //     this.ngos=resp
+  //   })
+  // }
+
   onSubmit() {
     const values = this.receptionForm.value;
     const Date1 = new Date(values.dob);
@@ -88,10 +100,38 @@ export class AddreceptionComponent implements OnInit {
     const dob = `${year}-${month}-${day}`;
     const values2 = { ...values, dob }
     this.receptionService.addReception(values2).subscribe((resp: any) => {
-      console.log('added');
+      console.log(resp);
+      this.alert();
+      this.reload();
+
+      // console.log('added');
 
     })
 
+  }
+
+  reload(){
+    this.router.navigateByUrl('',{skipLocationChange:true}).then(()=>{
+      this.router.navigate(['home/reception'])
+    })
+  }
+
+  alert(){
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      }
+    });
+    Toast.fire({
+      icon: "success",
+      title: "Patient Added successfully"
+    });
   }
 
 }

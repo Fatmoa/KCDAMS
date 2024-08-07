@@ -18,7 +18,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./ngo.component.scss']
 })
 export class NgoComponent implements OnInit{
-  displayedColumns: string[] = ['id', 'name', 'action'];
+  displayedColumns: string[] = ['id', 'name', 'status','action'];
   @ViewChild('distributionDialog') distributionDialog!: TemplateRef<any>;
   @ViewChild('distributionDialog2') distributionDialog2!: TemplateRef<any>;
   dataSource!: MatTableDataSource<any>;

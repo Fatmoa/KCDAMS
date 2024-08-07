@@ -103,8 +103,6 @@ export class PsychologyComponent implements OnInit{
 
 
 onSave(){
-
-
   this.rolesService.getRoleByName('PSYCHOLOGIST').subscribe((resp: any) => {
     const login = {
       username: this.psyForm.value.psyEmail,

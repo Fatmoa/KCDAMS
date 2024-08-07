@@ -36,46 +36,46 @@
         <!-- ID Column -->
         <ng-container matColumnDef="id">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-          <td mat-cell *matCellDef="let row"> {{row}} </td>
+          <td mat-cell *matCellDef="let row"> {{row.usag}} </td>
         </ng-container>
 
         <!-- Progress Column -->
         <ng-container matColumnDef="name">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Names </th>
-          <td mat-cell *matCellDef="let row"> {{row}}</td>
+          <td mat-cell *matCellDef="let row"> {{row.drugType}}</td>
         </ng-container>
 
 
         <ng-container matColumnDef="gen">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Gender </th>
-          <td mat-cell *matCellDef="let row"> {{row}} </td>
+          <td mat-cell *matCellDef="let row"> {{row.deseas}} </td>
         </ng-container>
 
         <!-- Name Column -->
         <ng-container matColumnDef="reg">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Phone number </th>
-          <td mat-cell *matCellDef="let row"> {{row}} </td>
+          <td mat-cell *matCellDef="let row"> {{row.lastDrug}} </td>
         </ng-container>
 
         <!-- Fruit Column -->
         <ng-container matColumnDef="ngo">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Ngo </th>
-          <td mat-cell *matCellDef="let row"> {{row}} </td>
+          <td mat-cell *matCellDef="let row"> {{row.comment}} </td>
         </ng-container>
 
         <ng-container matColumnDef="kiname">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> kin name </th>
-          <td mat-cell *matCellDef="let row"> {{row}} </td>
+          <td mat-cell *matCellDef="let row"> {{row.heroin}} </td>
         </ng-container>
 
         <ng-container matColumnDef="kinrel">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Relationship </th>
-          <td mat-cell *matCellDef="let row"> {{row}} </td>
+          <td mat-cell *matCellDef="let row"> {{row.methadone}} </td>
         </ng-container>
 
         <ng-container matColumnDef="kinp">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Kin number </th>
-          <td mat-cell *matCellDef="let row"> {{row}} </td>
+          <td mat-cell *matCellDef="let row"> {{row.valium}} </td>
         </ng-container>
 
 
