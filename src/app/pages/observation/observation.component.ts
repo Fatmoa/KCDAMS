@@ -1,4 +1,3 @@
-
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -13,7 +12,7 @@ import { ObservationService } from 'src/app/services/observation.service';
 })
 export class ObservationComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'name','gen', 'reg', 'ngo','kiname','kinrel','kinp'];
+  displayedColumns: string[] = ['id', 'name','gen', 'reg','kiname','kinrel','kinp','action'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -56,6 +55,9 @@ export class ObservationComponent implements OnInit {
 
    }
 
+   onEdit(row:any){
+    this.router.navigateByUrl('/home/edit-observation')
+   }
 
 
 }

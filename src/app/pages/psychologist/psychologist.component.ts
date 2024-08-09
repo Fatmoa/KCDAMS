@@ -1,57 +1,11 @@
+import { PsychologistService } from './../../services/psychologist.service';
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
-import {MatSelectModule} from '@angular/material/select';
 
-
-
-export interface UserData {
-  id: string;
-  name: string;
-  progress: string;
-  fruit: string;
-}
-
-/** Constants used to fill up our data base. */
-const FRUITS: string[] = [
-  'blueberry',
-  'lychee',
-  'kiwi',
-  'mango',
-  'peach',
-  'lime',
-  'pomegranate',
-  'pineapple',
-];
-const NAMES: string[] = [
-  'Maia',
-  'Asher',
-  'Olivia',
-  'Atticus',
-  'Amelia',
-  'Jack',
-  'Charlotte',
-  'Theodore',
-  'Isla',
-  'Oliver',
-  'Isabella',
-  'Jasper',
-  'Cora',
-  'Levi',
-  'Violet',
-  'Arthur',
-  'Mia',
-  'Thomas',
-  'Elizabeth',
-];
-
-interface Pokemon {
-  value: string;
-  viewValue: string;
-}
 
 @Component({
   selector: 'app-psychologist',
@@ -59,24 +13,21 @@ interface Pokemon {
   styleUrls: ['./psychologist.component.scss']
 })
 export class PsychologistComponent implements OnInit{
-  displayedColumns: string[] = ['id', 'name', 'progress', 'fruit'];
+  displayedColumns: string[] = ['id', 'name', 'progress', 'fruit','time','type'];
   @ViewChild('distributionDialog') distributionDialog!: TemplateRef<any>;
-  dataSource: MatTableDataSource<UserData>;
+  dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   constructor (
     private router:Router,
     private route: ActivatedRoute,
-    private dialog:MatDialog
-  ){
-    const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
+    private dialog:MatDialog,
+    private psychologistService: PsychologistService  ){}
 
-    // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(users);
-  }
+
   ngOnInit(): void {
-
+    this.fetchAll()
   }
 
 
@@ -109,6 +60,15 @@ export class PsychologistComponent implements OnInit{
       this.dataSource.paginator.firstPage();
     }
   }
+
+  fetchAll(){
+    this.psychologistService.getAllPsychologist().subscribe((resp:any)=>{
+      this.dataSource=new MatTableDataSource(resp);
+      this.dataSource.paginator=this.paginator;
+      this.dataSource.sort=this.sort;
+    })
+  }
+
   onClient(){
     let dialogRef = this.dialog.open(this.distributionDialog, {
       width: '990px',
@@ -123,18 +83,5 @@ export class PsychologistComponent implements OnInit{
     })
   }
 }
-function createNewUser(id: number): UserData {
-  const name =
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))] +
-    ' ' +
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) +
-    '.';
 
-  return {
-    id: id.toString(),
-    name: name,
-    progress: Math.round(Math.random() * 100).toString(),
-    fruit: FRUITS[Math.round(Math.random() * (FRUITS.length - 1))],
-  };
-}
 

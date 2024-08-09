@@ -36,46 +36,52 @@
         <!-- ID Column -->
         <ng-container matColumnDef="id">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-          <td mat-cell *matCellDef="let row"> {{row.usag}} </td>
+          <td mat-cell *matCellDef="let row; let i=index"> {{i+1}} </td>
         </ng-container>
 
         <!-- Progress Column -->
         <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Names </th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Aina ya dawa </th>
           <td mat-cell *matCellDef="let row"> {{row.drugType}}</td>
         </ng-container>
 
 
         <ng-container matColumnDef="gen">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Gender </th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Maradhi </th>
           <td mat-cell *matCellDef="let row"> {{row.deseas}} </td>
         </ng-container>
 
         <!-- Name Column -->
         <ng-container matColumnDef="reg">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Phone number </th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> DYMK </th>
           <td mat-cell *matCellDef="let row"> {{row.lastDrug}} </td>
         </ng-container>
 
-        <!-- Fruit Column -->
-        <ng-container matColumnDef="ngo">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Ngo </th>
-          <td mat-cell *matCellDef="let row"> {{row.comment}} </td>
-        </ng-container>
-
         <ng-container matColumnDef="kiname">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> kin name </th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Heroine </th>
           <td mat-cell *matCellDef="let row"> {{row.heroin}} </td>
         </ng-container>
 
         <ng-container matColumnDef="kinrel">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Relationship </th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Methadone </th>
           <td mat-cell *matCellDef="let row"> {{row.methadone}} </td>
         </ng-container>
 
         <ng-container matColumnDef="kinp">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Kin number </th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Valium </th>
           <td mat-cell *matCellDef="let row"> {{row.valium}} </td>
+        </ng-container>
+
+        <!-- <ng-container matColumnDef="ngo">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Comments </th>
+          <td mat-cell *matCellDef="let row"> {{row.comment}} </td>
+        </ng-container> -->
+
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+          <td mat-cell *matCellDef="let row">
+            <button mat-raised-button color="primary" (click)="onEdit(row)">Edit</button>
+          </td>
         </ng-container>
 
 
