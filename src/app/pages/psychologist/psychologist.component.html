@@ -20,7 +20,7 @@
 <!-- Total Receivables -->
 <div class="card">
 <div class="card-header">
-  <h4 class="card-title">Psychologist</h4>
+  <h4 class="card-title">Patients</h4>
   <a class="heading-elements-toggle"><i class="la la-ellipsis-h font-medium-3"></i></a>
 </div>
 <div class="card-content collapse show">
@@ -36,25 +36,25 @@
         <!-- ID Column -->
         <ng-container matColumnDef="id">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-          <td mat-cell *matCellDef="let row; let i = index"> {{row.pyId}} </td>
+          <td mat-cell *matCellDef="let row; let i = index"> {{i+1}} </td>
         </ng-container>
 
         <!-- Progress Column -->
-        <ng-container matColumnDef="progress">
+        <ng-container matColumnDef="duration">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> T.Use </th>
           <td mat-cell *matCellDef="let row"> {{row.drugDuration}} </td>
         </ng-container>
 
         <!-- Name Column -->
-        <ng-container matColumnDef="name">
+        <ng-container matColumnDef="reason">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Reason </th>
           <td mat-cell *matCellDef="let row"> {{row.reasUse}} </td>
         </ng-container>
 
         <!-- Fruit Column -->
-        <ng-container matColumnDef="fruit">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Symptoms </th>
-          <td mat-cell *matCellDef="let row"> {{row.symptoms}} </td>
+        <ng-container matColumnDef="sympto">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Attempt </th>
+          <td mat-cell *matCellDef="let row"> {{row.rstop}} </td>
         </ng-container>
 
         <ng-container matColumnDef="time">
@@ -63,8 +63,15 @@
         </ng-container>
 
         <ng-container matColumnDef="type">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> D.Type </th>
-          <td mat-cell *matCellDef="let row"> {{row.drugs.drugName}} </td>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Drug/Day </th>
+          <td mat-cell *matCellDef="let row"> {{row.drugDay}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+          <td mat-cell *matCellDef="let row">
+            <button mat-raised-button color="primary" (click)="openDialog2(row)">Edit</button>
+           </td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -90,18 +97,18 @@
 <ng-template #distributionDialog>
   <app-card title="Add">
     <hr>
-    <form>
+    <form [formGroup]="PsyForm">
       <div class="row">
         <div class="col-md-4">
           <mat-form-field style="width: 100%;" appearance="outline">
             <mat-label>Drug abuse duration</mat-label>
-            <input matInput placeholder="Current duration">
+            <input matInput placeholder="Current duration" formControlName="drugDuration">
           </mat-form-field>
         </div>
         <div class="col-md-4">
           <mat-form-field style="width: 100%;"  appearance="outline" class="example-ripple-form-field">
             <mat-label>Drug abuse in day</mat-label>
-            <input matInput  type="number" formControlName="" >
+            <input matInput  type="number" formControlName="drugDay" >
           </mat-form-field>
         </div>
         <div class="col-md-4">
@@ -118,19 +125,19 @@
         <div class="col-md-4">
           <mat-form-field style="width: 100%;" appearance="outline">
             <mat-label>Reason for drug abuse</mat-label>
-            <input matInput placeholder="Reason for using" formControlName="">
+            <input matInput placeholder="Reason for using" formControlName="reasUse">
           </mat-form-field>
         </div>
         <div class="col-md-4">
           <mat-form-field style="width: 100%;" appearance="outline">
           <mat-label>Time attempted to stop</mat-label>
-            <input matInput  type="number" formControlName="">
+            <input matInput  type="number" formControlName="tstop">
           </mat-form-field>
         </div>
         <div class="col-md-4">
           <mat-form-field style="width: 100%;" appearance="outline">
             <mat-label>Reason for stopping</mat-label>
-            <input matInput placeholder="Negative effects" formControlName="">
+            <input matInput placeholder="Negative effects" formControlName="rstop">
           </mat-form-field>
         </div>
       </div>
@@ -138,13 +145,13 @@
         <div class="col-md-6">
           <mat-form-field style="width: 100%;" appearance="outline">
             <mat-label>Familiy history:</mat-label>
-            <textarea matInput placeholder="Write patients family history..." formControlName=""></textarea>
+            <textarea matInput placeholder="Write patients family history..." formControlName="fhistory"></textarea>
           </mat-form-field>
     </div>
     <div class="col-md-6">
       <mat-form-field style="width: 100%;" appearance="outline">
         <mat-label>Criminal/Social affairs:</mat-label>
-        <textarea matInput placeholder="Write patients affairs..." formControlName=""></textarea>
+        <textarea matInput placeholder="Write patients affairs..." formControlName="crAffair"></textarea>
       </mat-form-field>
     </div>
 
@@ -153,7 +160,7 @@
         <div class="col-md-12">
           <mat-form-field style="width: 100%;" appearance="outline">
               <mat-label>Symptoms for mental disorder</mat-label>
-              <mat-select formControlName="" multiple="">
+              <mat-select formControlName="symptoms" multiple="">
                   <mat-option *ngFor="let type of disorder" [value]="type.value">
                       {{type.value}}</mat-option>
               </mat-select>
@@ -164,13 +171,13 @@
         <div class="col-md-6">
             <mat-form-field style="width: 100%;" appearance="outline">
               <mat-label>Psychological intervation plan:</mat-label>
-              <textarea matInput placeholder="Write your intervantion plan here...." formControlName=""></textarea>
+              <textarea matInput placeholder="Write your intervantion plan here...." formControlName="splan"></textarea>
             </mat-form-field>
       </div>
       <div class="col-md-6">
         <mat-form-field style="width: 100%;" appearance="outline">
           <mat-label>Psychological Comments:</mat-label>
-          <textarea matInput placeholder="Write your comments here..." formControlName=""></textarea>
+          <textarea matInput placeholder="Write your comments here..." formControlName="comm"></textarea>
         </mat-form-field>
   </div>
       </div>
@@ -180,7 +187,57 @@
 
     <div class="card-bottom">
       <button mat-raised-button matDialogClose="yes">Cancel</button> &nbsp;
-      <button mat-raised-button color="primary" matDialogClose="yes">Add</button>
+      <button mat-raised-button color="primary" matDialogClose="yes" (click)="onSave()">Add</button>
+    </div>
+
+  </app-card>
+</ng-template>
+
+<ng-template #distributionDialog2>
+  <app-card title="Edit">
+    <hr>
+    <form [formGroup]="EditPsyForm">
+      <div class="row">
+        <div class="col-md-6">
+          <mat-form-field style="width: 100%;" appearance="outline">
+            <mat-label>Drug abuse duration</mat-label>
+            <input matInput placeholder="Current duration" formControlName="drugDuration">
+          </mat-form-field>
+        </div>
+        <div class="col-md-6">
+          <mat-form-field style="width: 100%;"  appearance="outline" class="example-ripple-form-field">
+            <mat-label>Drug abuse in day</mat-label>
+            <input matInput  type="number" formControlName="drugDay" >
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <mat-form-field style="width: 100%;" appearance="outline">
+            <mat-label>Reason for drug abuse</mat-label>
+            <input matInput placeholder="Reason for using" formControlName="reasUse">
+          </mat-form-field>
+        </div>
+        <div class="col-md-6">
+          <mat-form-field style="width: 100%;" appearance="outline">
+          <mat-label>Time attempted to stop</mat-label>
+            <input matInput  type="number" formControlName="tstop">
+          </mat-form-field>
+        </div>
+      </div>
+        <div class="row">
+        <div class="col-md-6">
+          <mat-form-field style="width: 100%;" appearance="outline">
+            <mat-label>Reason for stopping</mat-label>
+            <input matInput placeholder="Negative effects" formControlName="rstop">
+          </mat-form-field>
+        </div>
+      </div>
+    </form><br><br>
+
+    <div class="card-bottom">
+      <button mat-raised-button matDialogClose="yes">Cancel</button> &nbsp;
+      <button mat-raised-button color="primary" matDialogClose="yes" (click)="onEdit()">Edit</button>
     </div>
 
   </app-card>

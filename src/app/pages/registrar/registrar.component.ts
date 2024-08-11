@@ -39,6 +39,7 @@ export class RegistrarComponent implements OnInit {
 
   regForm!: FormGroup;
   regEditForm!: FormGroup;
+
   ngOnInit(): void {
     this.configureForm();
     this.fetchAllRegistrar();
@@ -120,14 +121,9 @@ export class RegistrarComponent implements OnInit {
         this.registrarService.addReistrar(values).subscribe((resp3: any) => {
           this.reload();
           this.alert()
-
         })
-
       })
-
-
     })
-
   }
 
 

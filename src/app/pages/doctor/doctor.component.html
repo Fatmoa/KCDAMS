@@ -12,7 +12,7 @@
       </div>
       <div class="content-header-right col-md-6 col-12">
         <div class="btn-group float-md-right" role="group" >
-        <button type="button" class="btn btn-info btn-min-width btn-glow mr-1 mb-1" (click)="OnAdd()">Add</button>
+        <button type="button" class="btn btn-info btn-min-width btn-glow mr-1 mb-1" (click)="openDialog()" >Add Doctor</button>
         </div>
       </div>
     </div>
@@ -20,7 +20,7 @@
 <!-- Total Receivables -->
 <div class="card">
 <div class="card-header">
-  <h4 class="card-title">Doctor</h4>
+  <h4 class="card-title">Doctors List</h4>
   <a class="heading-elements-toggle"><i class="la la-ellipsis-h font-medium-3"></i></a>
 </div>
 <div class="card-content collapse show">
@@ -36,25 +36,50 @@
         <!-- ID Column -->
         <ng-container matColumnDef="id">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-          <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+          <td mat-cell *matCellDef="let row;let i = index"> {{i+1}} </td>
         </ng-container>
 
         <!-- Progress Column -->
-        <ng-container matColumnDef="progress">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Progress </th>
-          <td mat-cell *matCellDef="let row"> {{row.progress}}% </td>
+        <ng-container matColumnDef="names">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Names </th>
+          <td mat-cell *matCellDef="let row"> {{row.drName + " " + row.drLname}} </td>
         </ng-container>
 
         <!-- Name Column -->
-        <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-          <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+        <ng-container matColumnDef="gen">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Gender </th>
+          <td mat-cell *matCellDef="let row"> {{row.drGender}} </td>
         </ng-container>
 
         <!-- Fruit Column -->
-        <ng-container matColumnDef="fruit">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Fruit </th>
-          <td mat-cell *matCellDef="let row"> {{row.fruit}} </td>
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+          <td mat-cell *matCellDef="let row"> {{row.drEmail}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="no">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Phone </th>
+          <td mat-cell *matCellDef="let row"> {{row.drNumb}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="empno">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Employee Num </th>
+          <td mat-cell *matCellDef="let row"> {{row.drEmplNum}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Status </th>
+          <td mat-cell *matCellDef="let row">
+            <span *ngIf="row.user_data.userStatus=='1'" class="badge badge-success">Active</span>
+            <span *ngIf="row.user_data.userStatus=='0'" class="badge badge-danger">In Active</span>
+         </td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+          <td mat-cell *matCellDef="let row">
+            <button mat-raised-button color="primary" (click)="openDialog2(row)">Edit</button>
+           </td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -68,21 +93,157 @@
 
       <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
     </div>
-
-
 </div>
-
-<!-- <div class="card-content collapse show">
-  <div class="card-body overflow-hidden row">
-    <div class="col-md-9 col-sm-12 border-right-grey border-right-lighten-2">
-      <div id="invoice-total-recievables" class="height-20"></div>
-    </div>
-  </div>
-</div> -->
 </div>
 </section>
 
     </div>
   </div>
 </div>
+
+<ng-template #distributionDialog>
+  <app-card title="Add Doctor">
+    <hr>
+    <form [formGroup]="drForm">
+      <div class="row">
+        <div class="col-md-4">
+          <mat-form-field style="width: 100%;" appearance="outline">
+            <mat-label>First Name</mat-label>
+            <input matInput placeholder="first  name" formControlName="drName">
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-4">
+          <mat-form-field style="width: 100%;" appearance="outline">
+            <mat-label>Middle Name</mat-label>
+            <input matInput placeholder="Middle name" formControlName="drMname">
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-4">
+          <mat-form-field style="width: 100%;" appearance="outline">
+            <mat-label>Last Name</mat-label>
+            <input matInput placeholder="Last name" formControlName="drLname">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <mat-form-field appearance="outline" style="width: 100%;">
+            <mat-label>Gender</mat-label>
+            <mat-select disableRipple formControlName="drGender">
+              <mat-option value="1">Mke</mat-option>
+              <mat-option value="2">Mme</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-4">
+          <mat-form-field style="width: 100%;" appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Email" formControlName="drEmail">
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-4">
+          <mat-form-field style="width: 100%;" appearance="outline">
+            <mat-label>Phone</mat-label>
+            <input matInput placeholder="Phone" formControlName="drNumb">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <mat-form-field style="width: 100%;" appearance="outline">
+            <mat-label>Employee No</mat-label>
+            <input matInput placeholder="Employee No" formControlName="drEmplNum">
+          </mat-form-field>
+        </div>
+
+      </div>
+
+    </form><br><br>
+
+    <div class="card-bottom">
+      <button mat-raised-button matDialogClose="yes">Cancel</button> &nbsp;
+      <button mat-raised-button color="primary" matDialogClose="yes" (click)="onSave()">Add</button>
+    </div>
+
+  </app-card>
+</ng-template>
+
+<ng-template #distributionDialog2>
+  <app-card title="Edit Doctor">
+    <hr>
+    <form [formGroup]="EditDrForm">
+      <div class="row">
+        <div class="col-md-4">
+          <mat-form-field style="width: 100%;" appearance="outline">
+            <mat-label>First Name</mat-label>
+            <input matInput placeholder="first  name" formControlName="drName">
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-4">
+          <mat-form-field style="width: 100%;" appearance="outline">
+            <mat-label>Middle Name</mat-label>
+            <input matInput placeholder="Middle name" formControlName="drMname">
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-4">
+          <mat-form-field style="width: 100%;" appearance="outline">
+            <mat-label>Last Name</mat-label>
+            <input matInput placeholder="Last name" formControlName="drLname">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <mat-form-field appearance="outline" style="width: 100%;">
+            <mat-label>Gender</mat-label>
+            <mat-select disableRipple formControlName="drGender">
+              <mat-option value="1">Mke</mat-option>
+              <mat-option value="2">Mme</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-4">
+          <mat-form-field style="width: 100%;" appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Email" formControlName="drEmail">
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-4">
+          <mat-form-field style="width: 100%;" appearance="outline">
+            <mat-label>Phone</mat-label>
+            <input matInput placeholder="Phone" formControlName="drNumb">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <mat-form-field style="width: 100%;" appearance="outline">
+            <mat-label>Employee No</mat-label>
+            <input matInput placeholder="Employee No" formControlName="drEmplNum">
+          </mat-form-field>
+        </div>
+
+      </div>
+
+    </form><br><br>
+
+    <div class="card-bottom">
+      <button mat-raised-button matDialogClose="yes">Cancel</button> &nbsp;
+      <button mat-raised-button color="primary" matDialogClose="yes" (click)="onEdit()">Edit</button>
+    </div>
+
+  </app-card>
+</ng-template>
 

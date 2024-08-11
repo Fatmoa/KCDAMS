@@ -1,50 +1,17 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { LoginService } from './../../services/login.service';
+import { RolesService } from './../../services/roles.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { DoctorService } from './../../services/doctor.service';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import Swal from 'sweetalert2';
 
 
 
-export interface UserData {
-  id: string;
-  name: string;
-  progress: string;
-  fruit: string;
-}
-
-/** Constants used to fill up our data base. */
-const FRUITS: string[] = [
-  'blueberry',
-  'lychee',
-  'kiwi',
-  'mango',
-  'peach',
-  'lime',
-  'pomegranate',
-  'pineapple',
-];
-const NAMES: string[] = [
-  'Maia',
-  'Asher',
-  'Olivia',
-  'Atticus',
-  'Amelia',
-  'Jack',
-  'Charlotte',
-  'Theodore',
-  'Isla',
-  'Oliver',
-  'Isabella',
-  'Jasper',
-  'Cora',
-  'Levi',
-  'Violet',
-  'Arthur',
-  'Mia',
-  'Thomas',
-  'Elizabeth',
-];
 
 @Component({
   selector: 'app-doctor',
@@ -52,27 +19,149 @@ const NAMES: string[] = [
   styleUrls: ['./doctor.component.scss']
 })
 export class DoctorComponent implements OnInit{
-  displayedColumns: string[] = ['id', 'name', 'progress', 'fruit'];
-  dataSource: MatTableDataSource<UserData>;
+  [x: string]: any;
+  displayedColumns: string[] = ['id', 'names', 'gen', 'email','no','empno','status','action'];
+  dataSource!: MatTableDataSource<any>;
+  @ViewChild('distributionDialog') distributionDialog!: TemplateRef<any>;
+  @ViewChild('distributionDialog2') distributionDialog2!: TemplateRef<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  constructor (private router:Router){
-    const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
 
-    // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(users);
-  }
+  constructor (
+    private router:Router,
+    private doctorService: DoctorService,
+    private dialog: MatDialog,
+    private rolesService: RolesService,
+    private loginService: LoginService
+  ){}
+
+  drForm!: FormGroup
+  EditDrForm!: FormGroup
+
   ngOnInit(): void {
-
+    this.fetchAllDoctors()
+    this.configDrForm()
+    this.ConfigEditDrForm()
   }
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
-  OnAdd(){
-    this.router.navigateByUrl('patients-info')
+
+  fetchAllDoctors(){
+    this.doctorService.getAllDoctor().subscribe((resp:any)=>{
+      this.dataSource = new MatTableDataSource(resp);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    })
+
   }
+
+  configDrForm(){
+    this.drForm = new FormGroup({
+      drName: new FormControl(null,Validators.required),
+      drMname: new FormControl(null,Validators.required),
+      drLname: new FormControl(null,Validators.required),
+      drGender: new FormControl(null,Validators.required),
+      drEmail: new FormControl(null,Validators.required),
+      drNumb: new FormControl(null,Validators.required),
+      drEmplNum: new FormControl(null,Validators.required),
+      user_data: new FormControl(null),
+    })
+
+  }
+
+  ConfigEditDrForm(){
+    this.EditDrForm = new FormGroup({
+      drId: new FormControl(null),
+      drName: new FormControl(null,Validators.required),
+      drMname: new FormControl(null,Validators.required),
+      drLname: new FormControl(null,Validators.required),
+      drGender: new FormControl(null,Validators.required),
+      drEmail: new FormControl(null,Validators.required),
+      drNumb: new FormControl(null,Validators.required),
+      drEmplNum: new FormControl(null,Validators.required),
+    })
+
+  }
+
+  openDialog() {
+    let dialogRef = this.dialog.open(this.distributionDialog, {
+      width: '850px',
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result !== undefined) {
+        if (result !== 'no') {
+          const enabled = "Y"
+
+        } else if (result === 'no') {
+        }
+      }
+    })
+  }
+
+  openDialog2(row:any){
+    this.EditDrForm= new FormGroup({
+      drId: new FormControl(row.drId),
+      drName: new FormControl(row.drName),
+      drMname: new FormControl(row.drMname),
+      drLname: new FormControl(row.drLname),
+      drGender: new FormControl(row.drGender),
+      drEmail: new FormControl(row.drEmail),
+      drNumb: new FormControl(row.drNumb),
+      drEmplNum: new FormControl(row.drEmplNum),
+    })
+    let dialogRef = this.dialog.open(this.distributionDialog2, {
+      width: '850px',
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result !== undefined) {
+        if (result !== 'no') {
+          const enabled = "Y"
+
+        } else if (result === 'no') {
+        }
+      }
+    })
+  }
+
+  onSave(){
+    this.rolesService.getRoleByName('DOCTOR').subscribe((resp: any) => {
+
+      const login = {
+        username: this.drForm.value.drEmail,
+        password: this.drForm.value.drLname,
+        roleId: resp,
+        userStatus: '1'
+      }
+      console.log(login);
+      this.loginService.userRegistration(login).subscribe((resp2: any) => {
+        this.drForm.patchValue({ user_data: resp2 });
+        const values = this.drForm.value;
+        this.doctorService.addDoctor(values).subscribe((resp3: any) => {
+          this.reload();
+          this.alert()
+        })
+      })
+    })
+  }
+
+  onEdit(){
+    const id = this.EditDrForm.value.drId;
+    const values = this.EditDrForm.value;
+    this.doctorService.editDoctor(id,values).subscribe((resp:any)=>{
+      console.log(resp);
+      this.reload();
+      this.alert2()
+
+
+    })
+  }
+
+
+
+
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -83,20 +172,48 @@ export class DoctorComponent implements OnInit{
     }
   }
 
+  reload() {
+    this.router.navigateByUrl('', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['home/doctor'])
+    })
+  }
 
-}
-function createNewUser(id: number): UserData {
-  const name =
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))] +
-    ' ' +
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) +
-    '.';
+  alert() {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      }
+    });
+    Toast.fire({
+      icon: "success",
+      title: "Doctor Added successfully"
+    });
+  }
 
-  return {
-    id: id.toString(),
-    name: name,
-    progress: Math.round(Math.random() * 100).toString(),
-    fruit: FRUITS[Math.round(Math.random() * (FRUITS.length - 1))],
-  };
+  alert2() {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      }
+    });
+    Toast.fire({
+      icon: "success",
+      title: "Doctor Edited successfully"
+    });
+  }
+
+
 }
 

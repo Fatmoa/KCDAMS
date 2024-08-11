@@ -1,10 +1,12 @@
 import { PsychologistService } from './../../services/psychologist.service';
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -13,8 +15,9 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./psychologist.component.scss']
 })
 export class PsychologistComponent implements OnInit{
-  displayedColumns: string[] = ['id', 'name', 'progress', 'fruit','time','type'];
+  displayedColumns: string[] = ['id', 'duration', 'reason', 'sympto','time','type','action'];
   @ViewChild('distributionDialog') distributionDialog!: TemplateRef<any>;
+  @ViewChild('distributionDialog2') distributionDialog2!: TemplateRef<any>;
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -25,9 +28,13 @@ export class PsychologistComponent implements OnInit{
     private dialog:MatDialog,
     private psychologistService: PsychologistService  ){}
 
+    PsyForm!:FormGroup
+    EditPsyForm!:FormGroup
 
   ngOnInit(): void {
     this.fetchAll()
+    this.configPsyForm()
+    this.ConfigEditPsyForm()
   }
 
 
@@ -61,8 +68,73 @@ export class PsychologistComponent implements OnInit{
     }
   }
 
+  configPsyForm(){
+    this.PsyForm = new FormGroup ({
+      drugDuration:new FormControl(null,Validators.required),
+      drugDay:new FormControl(null,Validators.required),
+      reasUse:new FormControl(null,Validators.required),
+      tstop:new FormControl(null,Validators.required),
+      rstop:new FormControl(null,Validators.required),
+      fhistory:new FormControl(null,Validators.required),
+      crAffair:new FormControl(null,Validators.required),
+      symptoms:new FormControl(null,Validators.required),
+      splan:new FormControl(null,Validators.required),
+      comm:new FormControl(null,Validators.required),
+    })
+  }
+
+  ConfigEditPsyForm(){
+    this.EditPsyForm = new FormGroup({
+      drugDuration:new FormControl(null),
+      reasUse:new FormControl(null),
+      rstop:new FormControl(null),
+      tstop:new FormControl(null),
+      drugDay:new FormControl(null),
+
+    })
+  }
+
+  onSave(){
+    const values = this.PsyForm.value;
+    this.psychologistService.addPsychologist(values).subscribe((resp:any)=>{
+      console.log(resp);
+      this.reload();
+      this.alert();
+    })
+  }
+
+  onEdit(){
+    const id = this.EditPsyForm.value.pyId;
+    const values = this.EditPsyForm.value;
+    this.psychologistService.editPsychologist(id,values).subscribe((resp:any)=>{
+      this.reload();
+      this.alert2();
+    })
+
+  }
+
+  alert(){
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      }
+    });
+    Toast.fire({
+      icon: "success",
+      title: "Added successfully"
+    });
+  }
+
   fetchAll(){
     this.psychologistService.getAllPsychologist().subscribe((resp:any)=>{
+      console.log(resp);
+
       this.dataSource=new MatTableDataSource(resp);
       this.dataSource.paginator=this.paginator;
       this.dataSource.sort=this.sort;
@@ -71,6 +143,38 @@ export class PsychologistComponent implements OnInit{
 
   onClient(){
     let dialogRef = this.dialog.open(this.distributionDialog, {
+      width: '999px',
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result !== undefined) {
+        if (result !== 'no') {
+          const enabled = "Y"
+        } else if (result === 'no') {
+        }
+      }
+    })
+  }
+
+  reload(){
+    this.router.navigateByUrl('',{skipLocationChange:true}).then(()=>{
+      this.router.navigate(['/home/psychologist'])
+    })
+  }
+
+  openDialog2(row:any){
+    this.EditPsyForm = new FormGroup({
+      drugDuration:new FormControl(row.drugDuration),
+      reasUse:new FormControl(row.reasUse),
+      rstop:new FormControl(row.rstop),
+      tstop:new FormControl(row.tstop),
+      drugDay:new FormControl(row.drugDay),
+      pyId:new FormControl(row.pyId),
+    })
+
+    console.log(row);
+
+
+    let dialogRef = this.dialog.open(this.distributionDialog2, {
       width: '990px',
     });
     dialogRef.afterClosed().subscribe(result => {
@@ -81,6 +185,25 @@ export class PsychologistComponent implements OnInit{
         }
       }
     })
+
+  }
+
+  alert2(){
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      }
+    });
+    Toast.fire({
+      icon: "success",
+      title: "Edited successfully"
+    });
   }
 }
 
