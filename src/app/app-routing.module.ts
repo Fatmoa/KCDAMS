@@ -25,12 +25,14 @@ import { LoginComponent } from './layouts/login/login.component';
 import { NursingComponent } from './pages/nursing/nursing.component';
 import { PsychologyComponent } from './pages/psychology/psychology.component';
 import { ObservationComponent } from './pages/observation/observation.component';
+import { RecdashboardComponent } from './pages/dashboard/recdashboard/recdashboard.component';
 
 const routes: Routes = [
   {path:'',component:LoginComponent},
   { path:'home',component:MainLayoutComponent,
     children:[
       {path:'', component:DashboardComponent,},
+      {path:'recdashboard', component:RecdashboardComponent,},
       {path:'receptions',component:ReceptionsComponent},
       { path:'nurse',component:NurseComponent},
       {path:'lab',component:LabComponent},

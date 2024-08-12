@@ -53,6 +53,13 @@ import { LoginComponent } from './layouts/login/login.component';
 import { NursingComponent } from './pages/nursing/nursing.component';
 import { PsychologyComponent } from './pages/psychology/psychology.component';
 import { ObservationComponent } from './pages/observation/observation.component';
+import { RecdashboardComponent } from './pages/dashboard/recdashboard/recdashboard.component';
+import { NursedashboardComponent } from './pages/dashboard/nursedashboard/nursedashboard.component';
+import { PsychodashboardComponent } from './pages/dashboard/psychodashboard/psychodashboard.component';
+import { Piechart1Component } from './pages/dashboard/piechart1/piechart1.component';
+import { Piechart2Component } from './pages/dashboard/piechart2/piechart2.component';
+import { Piechart3Component } from './pages/dashboard/piechart3/piechart3.component';
+import { Piechart4Component } from './pages/dashboard/piechart4/piechart4.component';
 
 
 @NgModule({
@@ -91,6 +98,13 @@ import { ObservationComponent } from './pages/observation/observation.component'
     NursingComponent,
     PsychologyComponent,
     ObservationComponent,
+    RecdashboardComponent,
+    NursedashboardComponent,
+    PsychodashboardComponent,
+    Piechart1Component,
+    Piechart2Component,
+    Piechart3Component,
+    Piechart4Component,
 
 
   ],

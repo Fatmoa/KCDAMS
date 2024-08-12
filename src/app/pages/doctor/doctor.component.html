@@ -48,7 +48,11 @@
         <!-- Name Column -->
         <ng-container matColumnDef="gen">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Gender </th>
-          <td mat-cell *matCellDef="let row"> {{row.drGender}} </td>
+          <td mat-cell *matCellDef="let row">
+            <span *ngIf="row.drGender=='1'">Female</span>
+            <span *ngIf="row.drGender=='2'">Male</span>
+          </td>
+
         </ng-container>
 
         <!-- Fruit Column -->

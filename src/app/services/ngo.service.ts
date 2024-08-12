@@ -22,4 +22,6 @@ export class NgoService {
   editNgo(id:any,body:any){
     return this.http.put(this.ngoAPI+"editNgo/"+id,body)
   }
+
+
 }
