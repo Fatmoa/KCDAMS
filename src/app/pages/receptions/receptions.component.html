@@ -60,21 +60,21 @@
                 <ng-container matColumnDef="relation">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header> Relation </th>
                   <td mat-cell *matCellDef="let row">
-                    <span *ngIf="row.kinRelation == 1 ">Baba</span>
-                    <span *ngIf="row.kinRelation == 2 ">Mama</span>
-                    <span *ngIf="row.kinRelation == 3 ">Kaka</span>
-                    <span *ngIf="row.kinRelation == 4 ">Dada</span>
-                    <span *ngIf="row.kinRelation == 5 ">Mjomba</span>
-                    <span *ngIf="row.kinRelation == 6 ">Ami</span>
-                    <span *ngIf="row.kinRelation == 7 ">Jirani</span>
-                    <span *ngIf="row.kinRelation == 8 ">Sheha</span>
+                    <span *ngIf="row.kinRelation == '1' ">Baba</span>
+                    <span *ngIf="row.kinRelation == '2' ">Mama</span>
+                    <span *ngIf="row.kinRelation == '3' ">Kaka</span>
+                    <span *ngIf="row.kinRelation == '4' ">Dada</span>
+                    <span *ngIf="row.kinRelation == '5' ">Mjomba</span>
+                    <span *ngIf="row.kinRelation == '6' ">Ami</span>
+                    <span *ngIf="row.kinRelation == '7' ">Jirani</span>
+                    <span *ngIf="row.kinRelation == '8' ">Sheha</span>
                   </td>
                 </ng-container>
 
                 <!-- Fruit Column -->
                 <ng-container matColumnDef="cow">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Cow Name </th>
-                  <td mat-cell *matCellDef="let row"> {{row.cowName}} </td>
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Kin number </th>
+                  <td mat-cell *matCellDef="let row"> {{row.kinPhoneNumber}} </td>
                 </ng-container>
 
                 <ng-container matColumnDef="action">

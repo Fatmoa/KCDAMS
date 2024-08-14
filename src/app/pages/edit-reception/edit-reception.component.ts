@@ -39,8 +39,8 @@ export class EditReceptionComponent implements OnInit{
       patLName: new FormControl(null),
       dob:new FormControl(null),
       kinName: new FormControl(null),
-      kinRelationship: new FormControl(null),
-      cowName: new FormControl(null),
+      kinRelation: new FormControl(null),
+      kinPhoneNumber: new FormControl(null),
       matCode:new FormControl(null)
     })
   }
@@ -53,8 +53,8 @@ export class EditReceptionComponent implements OnInit{
         patLName: new FormControl(resp.patLName),
         dob:new FormControl(resp.dob),
         kinName: new FormControl(resp.kinName),
-        kinRelationship: new FormControl(resp.kinRelationship),
-        cowName: new FormControl(resp.cowName),
+        kinRelation: new FormControl(resp.kinRelation),
+        kinPhoneNumber: new FormControl(resp.kinPhoneNumber),
         matCode:new FormControl(resp.matCode)
       })
 

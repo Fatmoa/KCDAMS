@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
 
               break;
               case 'RECEPTION':
-                this.router.navigateByUrl('home').then(() => {
+                this.router.navigateByUrl('home/recdashboard').then(() => {
                   location.reload()
                 })
 

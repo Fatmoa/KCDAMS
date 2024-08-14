@@ -117,8 +117,8 @@ onSave(){
       const values = this.psyForm.value;
       this.psychologyService.addPsychology(values).subscribe((resp3: any) => {
         console.log('added')
-        // this.reload();
-        // this.alert()
+        this.reload();
+        this.alert()
       })
     })
   })

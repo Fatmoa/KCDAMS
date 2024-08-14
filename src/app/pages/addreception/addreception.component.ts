@@ -112,7 +112,7 @@ export class AddreceptionComponent implements OnInit {
 
   reload(){
     this.router.navigateByUrl('',{skipLocationChange:true}).then(()=>{
-      this.router.navigate(['home/reception'])
+      this.router.navigate(['/home/reception'])
     })
   }
 
