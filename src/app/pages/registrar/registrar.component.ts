@@ -55,13 +55,13 @@ export class RegistrarComponent implements OnInit {
 
   configureForm() {
     this.regForm = new FormGroup({
-      regisName: new FormControl(null, Validators.required),
-      regisMname: new FormControl(null, Validators.required),
-      regisLname: new FormControl(null, Validators.required),
-      resiGender: new FormControl(null, Validators.required),
-      regisEmail: new FormControl(null, Validators.required),
-      regisNumb: new FormControl(null, Validators.required),
-      emplNum: new FormControl(null, Validators.required),
+      regisName: new FormControl(null,[Validators.required,Validators.pattern('^[a-zA-Z]+$')]),
+      regisMname: new FormControl(null,[Validators.required,Validators.pattern('^[a-zA-Z]*$')]),
+      regisLname: new FormControl(null,[Validators.required,Validators.pattern('^[a-zA-Z]+$')]),
+      resiGender: new FormControl(null,Validators.required),
+      regisEmail: new FormControl(null,[Validators.required,Validators.email]),
+      regisNumb: new FormControl(null,[Validators.required,Validators.pattern('^[0-9]{10}$')]),
+      emplNum: new FormControl(null,[Validators.required,Validators.pattern('^[a-zA-Z0-9]+$')]),
       user_data: new FormControl(null),
 
     })
@@ -105,8 +105,30 @@ export class RegistrarComponent implements OnInit {
     })
   }
 
-  onSave() {
-    this.rolesService.getRoleByName('RECEPTION').subscribe((resp: any) => {
+  // onSave() {
+  //   this.rolesService.getRoleByName('RECEPTION').subscribe((resp: any) => {
+
+  //     const login = {
+  //       username: this.regForm.value.regisEmail,
+  //       password: this.regForm.value.regisLname,
+  //       roleId: resp,
+  //       userStatus: '1'
+  //     }
+  //     console.log(login);
+  //     this.loginService.userRegistration(login).subscribe((resp2: any) => {
+  //       this.regForm.patchValue({ user_data: resp2 });
+  //       const values = this.regForm.value;
+  //       this.registrarService.addReistrar(values).subscribe((resp3: any) => {
+  //         this.reload();
+  //         this.alert()
+  //       })
+  //     })
+  //   })
+  // }
+
+  onSave(){
+    if (this.regForm.valid) {
+      this.rolesService.getRoleByName('RECEPTION').subscribe((resp: any) => {
 
       const login = {
         username: this.regForm.value.regisEmail,
@@ -124,6 +146,10 @@ export class RegistrarComponent implements OnInit {
         })
       })
     })
+
+    } else {
+      this.regForm.markAllAsTouched();
+    }
   }
 
 
