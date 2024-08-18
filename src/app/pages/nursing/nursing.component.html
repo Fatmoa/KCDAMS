@@ -122,6 +122,12 @@
           <mat-form-field style="width: 100%;" appearance="outline">
             <mat-label>First Name</mat-label>
             <input matInput placeholder="first  name" formControlName="nusName">
+            <mat-error *ngIf="nusForm.get('nusName')?.hasError('required')">
+              First Name is required
+            </mat-error>
+            <mat-error *ngIf="nusForm.get('nusName')?.hasError('pattern')">
+              First Name should contain only letters
+            </mat-error>
           </mat-form-field>
         </div>
 
@@ -129,6 +135,12 @@
           <mat-form-field style="width: 100%;" appearance="outline">
             <mat-label>Middle Name</mat-label>
             <input matInput placeholder="Middle name" formControlName="nusMname">
+            <mat-error *ngIf="nusForm.get('nusMname')?.hasError('required')">
+              Middle Name is required
+            </mat-error>
+            <mat-error *ngIf="nusForm.get('nusMname')?.hasError('pattern')">
+              Middle Name should contain only letters
+            </mat-error>
           </mat-form-field>
         </div>
 
@@ -136,6 +148,12 @@
           <mat-form-field style="width: 100%;" appearance="outline">
             <mat-label>Last Name</mat-label>
             <input matInput placeholder="Last name" formControlName="nusLname">
+            <mat-error *ngIf="nusForm.get('nusLname')?.hasError('required')">
+              Last Name is required
+            </mat-error>
+            <mat-error *ngIf="nusForm.get('nusLname')?.hasError('pattern')">
+              Last Name should contain only letters
+            </mat-error>
           </mat-form-field>
         </div>
       </div>
@@ -148,6 +166,9 @@
               <mat-option value="1">Mke</mat-option>
               <mat-option value="2">Mme</mat-option>
             </mat-select>
+            <mat-error *ngIf="nusForm.get('nusGender')?.hasError('required')">
+              Gender is required
+            </mat-error>
           </mat-form-field>
         </div>
 
@@ -155,6 +176,12 @@
           <mat-form-field style="width: 100%;" appearance="outline">
             <mat-label>Email</mat-label>
             <input matInput placeholder="Email" formControlName="nusEmail">
+            <mat-error *ngIf="nusForm.get('nusEmail')?.hasError('required')">
+              Email is required
+            </mat-error>
+            <mat-error *ngIf="nusForm.get('nusEmail')?.hasError('email')">
+              Please enter a valid email address
+            </mat-error>
           </mat-form-field>
         </div>
 
@@ -162,6 +189,12 @@
           <mat-form-field style="width: 100%;" appearance="outline">
             <mat-label>Phone</mat-label>
             <input matInput placeholder="Phone" formControlName="nusPnumb">
+            <mat-error *ngIf="nusForm.get('nusPnumb')?.hasError('required')">
+              Phone number is required
+            </mat-error>
+            <mat-error *ngIf="nusForm.get('nusPnumb')?.hasError('pattern')">
+              Phone number should be 10 digits
+            </mat-error>
           </mat-form-field>
         </div>
       </div>
@@ -171,6 +204,12 @@
           <mat-form-field style="width: 100%;" appearance="outline">
             <mat-label>Employee No</mat-label>
             <input matInput placeholder="Employee No" formControlName="nusemplNum">
+            <mat-error *ngIf="nusForm.get('nusemplNum')?.hasError('required')">
+              Employee No is required
+            </mat-error>
+            <mat-error *ngIf="nusForm.get('nusemplNum')?.hasError('pattern')">
+              Employee No should be alphanumeric
+            </mat-error>
           </mat-form-field>
         </div>
 

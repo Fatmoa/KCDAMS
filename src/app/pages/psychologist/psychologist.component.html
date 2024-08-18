@@ -70,7 +70,8 @@
         <ng-container matColumnDef="action">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
           <td mat-cell *matCellDef="let row">
-            <button mat-raised-button color="primary" (click)="openDialog2(row)">Edit</button>
+            <button mat-raised-button color="primary" (click)="openDialog2(row)">Edit</button>&nbsp;
+            <button mat-raised-button color="primary" matDialogClose="yes" (click)="onView()">View</button>
            </td>
         </ng-container>
 
@@ -114,12 +115,21 @@
         <div class="col-md-4">
           <mat-form-field style="width: 100%;" appearance="outline">
               <mat-label>Drug Type</mat-label>
-              <mat-select formControlName="" multiple="">
-                  <mat-option *ngFor="let type of DrugType" [value]="type.value">
-                      {{type.value}}</mat-option>
+              <mat-select formControlName="drugs">
+                  <mat-option *ngFor="let drugs of DrugType" [value]="drugs">{{drugs.drugName}}</mat-option>
               </mat-select>
             </mat-form-field>
       </div>
+
+      <!-- <div class="col-md-4">
+        <mat-form-field style="width: 100%;" appearance="outline">
+            <mat-label>Drug Type</mat-label>
+            <mat-select formControlName="drugs" multiple="">
+                <mat-option *ngFor="let drugs of DrugType" [value]="drugs.value">
+                    {{drugs.drugName}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+    </div> -->
       </div>
       <div class="row">
         <div class="col-md-4">

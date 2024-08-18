@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -55,19 +56,19 @@ export class LoginComponent implements OnInit {
 
                 break;
             case 'NURSE':
-              this.router.navigateByUrl('/home').then(() => {
+              this.router.navigateByUrl('home/recdashboard').then(() => {
                 location.reload()
               })
 
               break;
               case 'PSYCHOLOGIST':
-                this.router.navigateByUrl('home').then(() => {
+                this.router.navigateByUrl('home/recdashboard').then(() => {
                   location.reload()
                 })
 
                 break;
                 case 'DOCTOR':
-                  this.router.navigateByUrl('home').then(() => {
+                  this.router.navigateByUrl('home/recdashboard').then(() => {
                     location.reload()
                   })
 
@@ -80,6 +81,8 @@ export class LoginComponent implements OnInit {
         }
         else{
           console.log('user blocked');
+          // this.alert();
+
         }
 
       })
@@ -87,5 +90,24 @@ export class LoginComponent implements OnInit {
 
 
   }
+
+
+  // alert(){
+  //   const Toast = Swal.mixin({
+  //     toast: true,
+  //     position: "top-end",
+  //     showConfirmButton: false,
+  //     timer: 3000,
+  //     timerProgressBar: true,
+  //     didOpen: (toast) => {
+  //       toast.onmouseenter = Swal.stopTimer;
+  //       toast.onmouseleave = Swal.resumeTimer;
+  //     }
+  //   });
+  //   Toast.fire({
+  //     icon: "error",
+  //     title: "Login failed!!"
+  //   });
+  // }
 
 }

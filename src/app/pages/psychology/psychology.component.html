@@ -122,21 +122,39 @@
         <div class="col-md-4">
           <mat-form-field style="width: 100%;" appearance="outline">
             <mat-label>First Name</mat-label>
-            <input matInput placeholder="first  name" formControlName="psyName">
+            <input matInput placeholder="first  name" formControlName="psyName" required>
+            <mat-error *ngIf="psyForm.get('psyName')?.hasError('required')">
+              First Name is required
+            </mat-error>
+            <mat-error *ngIf="psyForm.get('psyName')?.hasError('pattern')">
+              First Name should contain only letters
+            </mat-error>
           </mat-form-field>
         </div>
 
         <div class="col-md-4">
           <mat-form-field style="width: 100%;" appearance="outline">
             <mat-label>Middle Name</mat-label>
-            <input matInput placeholder="Middle name" formControlName="psyMname">
+            <input matInput placeholder="Middle name" formControlName="psyMname" required>
+            <mat-error *ngIf="psyForm.get('psyMname')?.hasError('required')">
+              Middle Name is required
+            </mat-error>
+            <mat-error *ngIf="psyForm.get('psyMname')?.hasError('pattern')">
+              Middle Name should contain only letters
+            </mat-error>
           </mat-form-field>
         </div>
 
         <div class="col-md-4">
           <mat-form-field style="width: 100%;" appearance="outline">
             <mat-label>Last Name</mat-label>
-            <input matInput placeholder="Last name" formControlName="psyLname">
+            <input matInput placeholder="Last name" formControlName="psyLname" required>
+            <mat-error *ngIf="psyForm.get('psyLname')?.hasError('required')">
+              Last Name is required
+            </mat-error>
+            <mat-error *ngIf="psyForm.get('psyLname')?.hasError('pattern')">
+              Last Name should contain only letters
+            </mat-error>
           </mat-form-field>
         </div>
       </div>
@@ -145,24 +163,39 @@
         <div class="col-md-4">
           <mat-form-field appearance="outline" style="width: 100%;">
             <mat-label>Gender</mat-label>
-            <mat-select disableRipple formControlName="psyGender">
+            <mat-select disableRipple formControlName="psyGender" required>
               <mat-option value="1">Mke</mat-option>
               <mat-option value="2">Mme</mat-option>
             </mat-select>
+            <mat-error *ngIf="psyForm.get('psyGender')?.hasError('required')">
+              Gender is required
+            </mat-error>
           </mat-form-field>
         </div>
 
         <div class="col-md-4">
           <mat-form-field style="width: 100%;" appearance="outline">
             <mat-label>Email</mat-label>
-            <input matInput placeholder="Email" formControlName="psyEmail">
+            <input matInput placeholder="Email" formControlName="psyEmail" required>
+            <mat-error *ngIf="psyForm.get('psyEmail')?.hasError('required')">
+              Email is required
+            </mat-error>
+            <mat-error *ngIf="psyForm.get('psyEmail')?.hasError('email')">
+              Please enter a valid email address
+            </mat-error>
           </mat-form-field>
         </div>
 
         <div class="col-md-4">
           <mat-form-field style="width: 100%;" appearance="outline">
             <mat-label>Phone</mat-label>
-            <input matInput placeholder="Phone" formControlName="psyNumb">
+            <input matInput placeholder="Phone" formControlName="psyNumb" required>
+            <mat-error *ngIf="psyForm.get('psyNumb')?.hasError('required')">
+              Phone number is required
+            </mat-error>
+            <mat-error *ngIf="psyForm.get('psyNumb')?.hasError('pattern')">
+              Phone number should be 10 digits
+            </mat-error>
           </mat-form-field>
         </div>
       </div>
@@ -171,7 +204,13 @@
         <div class="col-md-4">
           <mat-form-field style="width: 100%;" appearance="outline">
             <mat-label>Employee No</mat-label>
-            <input matInput placeholder="Employee No" formControlName="psyEmplNum">
+            <input matInput placeholder="Employee No" formControlName="psyEmplNum" required>
+            <mat-error *ngIf="psyForm.get('psyEmplNum')?.hasError('required')">
+              Employee No is required
+            </mat-error>
+            <mat-error *ngIf="psyForm.get('psyEmplNum')?.hasError('pattern')">
+              Employee No should be alphanumeric
+            </mat-error>
           </mat-form-field>
         </div>
 

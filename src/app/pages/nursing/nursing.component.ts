@@ -49,13 +49,13 @@ export class NursingComponent implements OnInit {
 
   configNusForm(){
     this.nusForm = new FormGroup({
-      nusName: new FormControl(null, Validators.required),
-      nusMname: new FormControl(null, Validators.required),
-      nusLname: new FormControl(null, Validators.required),
+      nusName: new FormControl(null,[Validators.required,Validators.pattern('^[a-zA-Z]+$')]),
+      nusMname: new FormControl(null,[Validators.required,Validators.pattern('^[a-zA-Z]*$')]),
+      nusLname: new FormControl(null,[Validators.required,Validators.pattern('^[a-zA-Z]+$')]),
       nusGender: new FormControl(null, Validators.required),
-      nusEmail: new FormControl(null, Validators.required),
-      nusPnumb: new FormControl(null, Validators.required),
-      nusemplNum: new FormControl(null, Validators.required),
+      nusEmail: new FormControl(null,[Validators.required,Validators.email]),
+      nusPnumb: new FormControl(null,[Validators.required,Validators.pattern('^[0-9]{10}$')]),
+      nusemplNum: new FormControl(null, [Validators.required,Validators.pattern('^[a-zA-Z0-9]+$')]),
       user_data: new FormControl(null),
     })
   }
@@ -98,6 +98,7 @@ export class NursingComponent implements OnInit {
   }
 
   onSave(){
+    if (this.nusForm.valid) {
     this.rolesService.getRoleByName('NURSE').subscribe((resp:any)=>{
       const login = {
         username: this.nusForm.value.nusEmail,
@@ -118,7 +119,12 @@ export class NursingComponent implements OnInit {
 
       })
     })
+  } else {
+    this.nusForm.markAllAsTouched();
+    this.alert3()
   }
+}
+
 
   openDialog2(row:any) {
     this.nusEditForm = new FormGroup ({
@@ -198,6 +204,24 @@ export class NursingComponent implements OnInit {
     Toast.fire({
       icon: "success",
       title: "Nurse Edited successfully"
+    });
+  }
+
+  alert3() {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      }
+    });
+    Toast.fire({
+      icon: "error",
+      title: "Can't add Form is not valid"
     });
   }
 

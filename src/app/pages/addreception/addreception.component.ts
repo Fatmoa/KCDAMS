@@ -60,6 +60,7 @@ export class AddreceptionComponent implements OnInit {
       phoneNumber: new FormControl('', Validators.required),
       no_children: new FormControl('', Validators.required),
       reg: new FormControl('', Validators.required),
+      ngoName: new FormControl('', Validators.required),
       nida: new FormControl(''),
       // ngoData: new FormControl('', Validators.required),
       ngoData: new FormControl('', Validators.required),
@@ -112,7 +113,7 @@ export class AddreceptionComponent implements OnInit {
 
   reload(){
     this.router.navigateByUrl('',{skipLocationChange:true}).then(()=>{
-      this.router.navigate(['/home/reception'])
+      this.router.navigate(['/home/receptions'])
     })
   }
 

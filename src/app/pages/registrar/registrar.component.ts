@@ -149,6 +149,7 @@ export class RegistrarComponent implements OnInit {
 
     } else {
       this.regForm.markAllAsTouched();
+      this.alert3()
     }
   }
 
@@ -231,6 +232,24 @@ export class RegistrarComponent implements OnInit {
     Toast.fire({
       icon: "success",
       title: "Reception Edited successfully"
+    });
+  }
+
+  alert3() {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      }
+    });
+    Toast.fire({
+      icon: "error",
+      title: "Can't add Form is not valid"
     });
   }
 

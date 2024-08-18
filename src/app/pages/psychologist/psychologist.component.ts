@@ -1,3 +1,4 @@
+import { DrugService } from './../../services/drug.service';
 import { PsychologistService } from './../../services/psychologist.service';
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -26,7 +27,9 @@ export class PsychologistComponent implements OnInit{
     private router:Router,
     private route: ActivatedRoute,
     private dialog:MatDialog,
-    private psychologistService: PsychologistService  ){}
+    private psychologistService: PsychologistService,
+    private drugService: DrugService,
+  ){}
 
     PsyForm!:FormGroup
     EditPsyForm!:FormGroup
@@ -35,15 +38,20 @@ export class PsychologistComponent implements OnInit{
     this.fetchAll()
     this.configPsyForm()
     this.ConfigEditPsyForm()
+    this.fetchAllDrugs()
   }
 
 
-  DrugType:any[] = [
-    {value:''},
-    {value:''},
-    {value:''},
-    {value:''},
-  ];
+  // DrugType:any[] = [ ];
+  DrugType:any
+  fetchAllDrugs(){
+    this.drugService.getAllDrug().subscribe((resp:any)=>{
+      console.log(resp);
+      this.DrugType = resp;
+
+    })
+
+  }
 
   disorder:any []=[
     {value:'Feeling of deep thought,sadness with lose hope,lack of interestin thingsonce loved'},
@@ -71,6 +79,7 @@ export class PsychologistComponent implements OnInit{
   configPsyForm(){
     this.PsyForm = new FormGroup ({
       drugDuration:new FormControl(null,Validators.required),
+      drugs:new FormControl(null,Validators.required),
       drugDay:new FormControl(null,Validators.required),
       reasUse:new FormControl(null,Validators.required),
       tstop:new FormControl(null,Validators.required),
@@ -110,6 +119,10 @@ export class PsychologistComponent implements OnInit{
       this.reload();
       this.alert2();
     })
+
+  }
+
+  onView(){
 
   }
 

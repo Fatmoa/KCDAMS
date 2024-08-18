@@ -14,7 +14,7 @@ import { ReceptionService } from 'src/app/services/reception.service';
   styleUrls: ['./nurse.component.scss']
 })
 export class NurseComponent implements OnInit{
-  displayedColumns: string[] = ['id', 'name','gen', 'reg', 'ngo','kiname','kinrel','kinp'];
+  displayedColumns: string[] = ['id', 'name','gen', 'reg', 'address','kiname','kinrel','kinp'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;

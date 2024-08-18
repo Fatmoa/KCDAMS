@@ -39,6 +39,7 @@ export class EditReceptionComponent implements OnInit{
       patLName: new FormControl(null),
       dob:new FormControl(null),
       kinName: new FormControl(null),
+      gender: new FormControl(null),
       kinRelation: new FormControl(null),
       kinPhoneNumber: new FormControl(null),
       matCode:new FormControl(null)
@@ -53,6 +54,7 @@ export class EditReceptionComponent implements OnInit{
         patLName: new FormControl(resp.patLName),
         dob:new FormControl(resp.dob),
         kinName: new FormControl(resp.kinName),
+        gender: new FormControl(resp.gender),
         kinRelation: new FormControl(resp.kinRelation),
         kinPhoneNumber: new FormControl(resp.kinPhoneNumber),
         matCode:new FormControl(resp.matCode)
@@ -77,7 +79,7 @@ export class EditReceptionComponent implements OnInit{
 
   reload() {
     this.router.navigateByUrl('', { skipLocationChange: true }).then(() => {
-      this.router.navigate(['home/reception'])
+      this.router.navigate(['/home/receptions'])
     })
   }
 

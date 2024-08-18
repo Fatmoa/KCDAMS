@@ -121,7 +121,7 @@
         <div class="col-md-4">
           <mat-form-field style="width: 100%;" appearance="outline">
             <mat-label>First Name</mat-label>
-            <input matInput placeholder="first  name" formControlName="regisName">
+            <input matInput placeholder="first  name" formControlName="regisName" required>
             <mat-error *ngIf="regForm.get('regisName')?.hasError('required')">
               First Name is required
             </mat-error>
@@ -134,7 +134,7 @@
         <div class="col-md-4">
           <mat-form-field style="width: 100%;" appearance="outline">
             <mat-label>Middle Name</mat-label>
-            <input matInput placeholder="Middle name" formControlName="regisMname">
+            <input matInput placeholder="Middle name" formControlName="regisMname" required>
             <mat-error *ngIf="regForm.get('regisMname')?.hasError('required')">
               Middle Name is required
             </mat-error>
@@ -147,7 +147,7 @@
         <div class="col-md-4">
           <mat-form-field style="width: 100%;" appearance="outline">
             <mat-label>Last Name</mat-label>
-            <input matInput placeholder="Last name" formControlName="regisLname">
+            <input matInput placeholder="Last name" formControlName="regisLname" required>
             <mat-error *ngIf="regForm.get('regisLname')?.hasError('required')">
               Last Name is required
             </mat-error>
@@ -162,7 +162,7 @@
         <div class="col-md-4">
           <mat-form-field appearance="outline" style="width: 100%;">
             <mat-label>Gender</mat-label>
-            <mat-select disableRipple formControlName="resiGender">
+            <mat-select disableRipple formControlName="resiGender" required>
               <mat-option value="1">Mke</mat-option>
               <mat-option value="2">Mme</mat-option>
             </mat-select>
@@ -175,7 +175,7 @@
         <div class="col-md-4">
           <mat-form-field style="width: 100%;" appearance="outline">
             <mat-label>Email</mat-label>
-            <input matInput placeholder="Email" formControlName="regisEmail">
+            <input matInput placeholder="Email" formControlName="regisEmail" required>
             <mat-error *ngIf="regForm.get('regisEmail')?.hasError('required')">
               Email is required
             </mat-error>
@@ -188,7 +188,7 @@
         <div class="col-md-4">
           <mat-form-field style="width: 100%;" appearance="outline">
             <mat-label>Phone</mat-label>
-            <input matInput placeholder="Phone" formControlName="regisNumb">
+            <input matInput placeholder="Phone" formControlName="regisNumb" required>
             <mat-error *ngIf="regForm.get('regisNumb')?.hasError('required')">
               Phone number is required
             </mat-error>
@@ -203,7 +203,7 @@
         <div class="col-md-4">
           <mat-form-field style="width: 100%;" appearance="outline">
             <mat-label>Employee No</mat-label>
-            <input matInput placeholder="Employee No" formControlName="emplNum">
+            <input matInput placeholder="Employee No" formControlName="emplNum" required>
             <mat-error *ngIf="regForm.get('emplNum')?.hasError('required')">
               Employee No is required
             </mat-error>
@@ -233,14 +233,14 @@
         <div class="col-md-4">
           <mat-form-field style="width: 100%;" appearance="outline">
             <mat-label>First Name</mat-label>
-            <input matInput placeholder="first  name" formControlName="regisName">
+            <input matInput placeholder="first  name" formControlName="regisName" required>
           </mat-form-field>
         </div>
 
         <div class="col-md-4">
           <mat-form-field style="width: 100%;" appearance="outline">
             <mat-label>Middle Name</mat-label>
-            <input matInput placeholder="Middle name" formControlName="regisMname">
+            <input matInput placeholder="Middle name" formControlName="regisMname" required>
           </mat-form-field>
         </div>
 
@@ -256,7 +256,7 @@
         <div class="col-md-4">
           <mat-form-field appearance="outline" style="width: 100%;">
             <mat-label>Gender</mat-label>
-            <mat-select disableRipple formControlName="resiGender">
+            <mat-select disableRipple formControlName="resiGender" required>
               <mat-option value="1">Mke</mat-option>
               <mat-option value="2">Mme</mat-option>
             </mat-select>
@@ -273,7 +273,7 @@
         <div class="col-md-4">
           <mat-form-field style="width: 100%;" appearance="outline">
             <mat-label>Phone</mat-label>
-            <input matInput placeholder="Phone" formControlName="regisNumb">
+            <input matInput placeholder="Phone" formControlName="regisNumb" required>
           </mat-form-field>
         </div>
       </div>
@@ -282,7 +282,7 @@
         <div class="col-md-4">
           <mat-form-field style="width: 100%;" appearance="outline">
             <mat-label>Employee No</mat-label>
-            <input matInput placeholder="Employee No" formControlName="emplNum">
+            <input matInput placeholder="Employee No" formControlName="emplNum" required>
           </mat-form-field>
         </div>
 

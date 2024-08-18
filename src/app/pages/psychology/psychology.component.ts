@@ -52,13 +52,13 @@ export class PsychologyComponent implements OnInit{
 
   configureForm() {
     this.psyForm = new FormGroup({
-      psyName: new FormControl(null,Validators.required),
-      psyMname: new FormControl(null,Validators.required),
-      psyLname: new FormControl(null,Validators.required),
+      psyName: new FormControl(null,[Validators.required,Validators.pattern('^[a-zA-Z]+$')]),
+      psyMname: new FormControl(null,[Validators.required,Validators.pattern('^[a-zA-Z]*$')]),
+      psyLname: new FormControl(null,[Validators.required,Validators.pattern('^[a-zA-Z]+$')]),
       psyGender: new FormControl(null,Validators.required),
-      psyEmail: new FormControl(null,Validators.required),
-      psyNumb: new FormControl(null,Validators.required),
-      psyEmplNum: new FormControl(null,Validators.required),
+      psyEmail: new FormControl(null,[Validators.required,Validators.email]),
+      psyNumb: new FormControl(null,[Validators.required,Validators.pattern('^[0-9]{10}$')]),
+      psyEmplNum: new FormControl(null,[Validators.required,Validators.pattern('^[a-zA-Z0-9]+$')]),
       user_data: new FormControl(null),
 
     })
@@ -103,6 +103,7 @@ export class PsychologyComponent implements OnInit{
 
 
 onSave(){
+  if (this.psyForm.valid) {
   this.rolesService.getRoleByName('PSYCHOLOGIST').subscribe((resp: any) => {
     const login = {
       username: this.psyForm.value.psyEmail,
@@ -122,6 +123,11 @@ onSave(){
       })
     })
   })
+
+} else {
+  this.psyForm.markAllAsTouched();
+  this.alert3()
+}
 }
 
 openDialog2(row: any) {
@@ -203,6 +209,26 @@ openDialog2(row: any) {
       title: "Pyschologist Edited successfully"
     });
   }
+
+  alert3() {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      }
+    });
+    Toast.fire({
+      icon: "error",
+      title: "Can't add Form is not valid"
+    });
+  }
+
+
 
 
   applyFilter(event: Event) {
