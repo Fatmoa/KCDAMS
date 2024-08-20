@@ -42,7 +42,7 @@ export class AddreceptionComponent implements OnInit {
 
     this.fetchAllDistrict();
     this.configureForm();
-    // this.fetchAllNgo()
+
   }
 
   configureForm() {
@@ -62,8 +62,7 @@ export class AddreceptionComponent implements OnInit {
       reg: new FormControl('', Validators.required),
       ngoName: new FormControl('', Validators.required),
       nida: new FormControl(''),
-      // ngoData: new FormControl('', Validators.required),
-      ngoData: new FormControl('', Validators.required),
+      ngo: new FormControl('', Validators.required),
       cowName: new FormControl('', Validators.required),
       cowPhone: new FormControl(''),
       kinName: new FormControl('', Validators.required),
@@ -85,12 +84,7 @@ export class AddreceptionComponent implements OnInit {
     })
   }
 
-  // ngos:any
-  // fetchAllNgo(){
-  //   this.ngoService.getAllNgo().subscribe((resp:any)=>{
-  //     this.ngos=resp
-  //   })
-  // }
+
 
   onSubmit() {
     const values = this.receptionForm.value;

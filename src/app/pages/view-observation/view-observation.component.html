@@ -10,11 +10,6 @@
           </div>
         </div>
       </div>
-      <div class="content-header-right col-md-6 col-12">
-        <div class="btn-group float-md-right" role="group" >
-        <button type="button" class="btn btn-info btn-min-width btn-glow mr-1 mb-1" (click)="onAdd()">Add</button>
-        </div>
-      </div>
     </div>
     <div class="content-body"><section id="invoice-summary">
 <div class="card">
@@ -36,7 +31,7 @@
         <!-- ID Column -->
         <ng-container matColumnDef="id">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-          <td mat-cell *matCellDef="let row; let i=index"> {{row.matCode}} </td>
+          <td mat-cell *matCellDef="let row; let i=index"> {{i+1}} </td>
         </ng-container>
 
         <!-- Progress Column -->
@@ -72,16 +67,9 @@
           <td mat-cell *matCellDef="let row"> {{row.valium}} </td>
         </ng-container>
 
-        <!-- <ng-container matColumnDef="ngo">
+        <ng-container matColumnDef="ngo">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Comments </th>
           <td mat-cell *matCellDef="let row"> {{row.comment}} </td>
-        </ng-container> -->
-
-        <ng-container matColumnDef="action">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
-          <td mat-cell *matCellDef="let row">
-            <button mat-raised-button color="primary" (click)="onEdit(row)">Edit</button>
-          </td>
         </ng-container>
 
 
@@ -104,4 +92,5 @@
     </div>
   </div>
 </div>
+
 

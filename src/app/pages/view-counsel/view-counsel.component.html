@@ -1,0 +1,82 @@
+<div class="app-content content">
+  <div class="content-overlay"></div>
+  <div class="content-wrapper">
+    <div class="content-header row">
+      <div class="content-header-left col-md-6 col-12 mb-2">
+        <div class="row breadcrumbs-top">
+          <div class="breadcrumb-wrapper col-12">
+            <ol class="breadcrumb">
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="content-body"><section id="invoice-summary">
+<div class="card">
+<div class="card-header">
+  <h4 class="card-title"></h4>
+  <a class="heading-elements-toggle"><i class="la la-ellipsis-h font-medium-3"></i></a>
+</div>
+<div class="card-content collapse show">
+  <div class="card-body">
+
+    <mat-form-field appearance="outline">
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+    </mat-form-field>
+
+
+      <table mat-table [dataSource]="dataSource" matSort>
+
+
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+          <td mat-cell *matCellDef="let row; let i=index"> {{i+1}} </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="reason">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Reasons for Drugs </th>
+          <td mat-cell *matCellDef="let row"> {{row.reasUse}}</td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="rstp">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Reason to Stop </th>
+          <td mat-cell *matCellDef="let row"> {{row.rstop}} </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="tstop">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Attempt Time Stop </th>
+          <td mat-cell *matCellDef="let row"> {{row.tstop}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="sympt">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Symptoms </th>
+          <td mat-cell *matCellDef="let row"> {{row.symptoms}} </td>
+        </ng-container>
+
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+        </tr>
+      </table>
+
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+    </div>
+</div>
+
+</div>
+</section>
+
+    </div>
+  </div>
+</div>
+
+

@@ -1,3 +1,4 @@
+import { ViewObservationComponent } from './pages/view-observation/view-observation.component';
 import { ReceptionsComponent } from './pages/receptions/receptions.component';
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -26,6 +27,8 @@ import { NursingComponent } from './pages/nursing/nursing.component';
 import { PsychologyComponent } from './pages/psychology/psychology.component';
 import { ObservationComponent } from './pages/observation/observation.component';
 import { RecdashboardComponent } from './pages/dashboard/recdashboard/recdashboard.component';
+import { ViewCounselComponent } from './pages/view-counsel/view-counsel.component';
+import { ViewPatientsComponent } from './pages/view-patients/view-patients.component';
 
 const routes: Routes = [
   {path:'',component:LoginComponent},
@@ -111,6 +114,18 @@ const routes: Routes = [
       {
         path:'observation',
         component:ObservationComponent
+      },
+      {
+        path:'viewObs',
+        component:ViewObservationComponent
+      },
+      {
+        path:'viewCous',
+        component:ViewCounselComponent
+      },
+      {
+        path:'viewPatients',
+        component:ViewPatientsComponent
       },
     ]
   }

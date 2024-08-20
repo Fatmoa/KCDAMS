@@ -57,5 +57,9 @@ export class ReceptionsComponent implements OnInit{
     this.router.navigate(['home/edit-reception'],{queryParams:{path:row.matCode}})
     // console.log(row.matCohome/de);
    }
+
+   onView(row:any){
+    this.router.navigate(['home/viewPatients'],{queryParams:{id:row.matCode}})
+   }
  }
 

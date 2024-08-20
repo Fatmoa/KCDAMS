@@ -1,0 +1,112 @@
+<div class="app-content content">
+  <div class="content-overlay"></div>
+  <div class="content-wrapper">
+    <div class="content-header row">
+      <div class="content-header-left col-md-6 col-12 mb-2">
+        <div class="row breadcrumbs-top">
+          <div class="breadcrumb-wrapper col-12">
+            <ol class="breadcrumb">
+            </ol>
+          </div>
+        </div>
+      </div>
+      <div class="content-header-right col-md-6 col-12">
+      </div>
+    </div>
+    <div class="content-header row">
+   <div class="content-header-left col-md-6 col-12 mb-2">
+  <h3 class="content-header-title">Patients Information</h3>
+  <div class="row breadcrumbs-top">
+  </div>
+   </div>
+ </div>
+ <div class="content-body">
+   <section id="patient-profile">
+  <div class="row match-height">
+  <div class="col-lg-6 col-md-12">
+    <div class="card">
+   <div class="card-body">
+   <div class="row">
+     <div class="col-lg-4 col-md-4 d-flex justify-content-around">
+    <div class="patient-img-name text-center">
+    <img src="../../../assets/app-assets/images/portrait/small/hosp.jpg"
+     class="card-img-top mb-1 patient-img img-fluid rounded-circle">
+   <h4> <b> {{receptions.patFName + " " + receptions.patLName}}</b></h4>
+    </div>
+     </div>
+     <div class="col-lg-8 col-md-8 d-flex justify-content-around">
+    <div class="patient-info">
+    <ul class="list-unstyled">
+      <li><div class="patient-info-heading"> <b>Gender:</b> </div> {{receptions.gender}}
+        <span *ngIf="receptions.gender == '1' ">Female</span>
+        <span *ngIf="receptions.gender == '2' ">Male</span>
+      </li>
+      <li><div class="patient-info-heading"> <b>Phone:</b> </div> {{receptions.phoneNumber}}</li>
+      <li><div class="patient-info-heading"> <b>Address:</b></div> {{receptions.address}}</li>
+      <li><div class="patient-info-heading"> <b>DOB:</b></div> {{receptions.dob | date:'dd-MM-Y'}}</li>
+      <li><div class="patient-info-heading"> <b>Marital Status:</b></div> {{receptions.mar_status}}
+        <span *ngIf="receptions.mar_status == '1' ">Single</span>
+        <span *ngIf="receptions.mar_status == '2' ">Married</span>
+        <span *ngIf="receptions.mar_status == '3' ">Divorced</span>
+      </li>
+      <li><div class="patient-info-heading"> <b>Education Level:</b></div> {{receptions.education}}
+        <span *ngIf="receptions.education == '1' ">Elimu ya msingi</span>
+        <span *ngIf="receptions.education == '2' ">Elimu ya sekondari</span>
+        <span *ngIf="receptions.education == '3' ">Elimu ya juu</span>
+        <span *ngIf="receptions.education == '4' ">Sijasoma</span>
+      </li>
+
+      <li><div class="patient-info-heading"> <b>NIDA:</b></div> {{receptions.nida}}</li>
+
+      <li><div class="patient-info-heading"> <b>Registration:</b></div> {{receptions.reg}}
+        <span *ngIf="receptions.reg == '1' ">Mpya</span>
+        <span *ngIf="receptions.reg == '2' ">Mhamiaji</span>
+        <span *ngIf="receptions.reg == '3' ">Mpita njia</span>
+      </li>
+    </ul>
+    </div>
+     </div>
+   </div>
+   </div>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-6">
+    <div class="card bg-primary">
+   <div class="card-body">
+    <ul class="list-unstyled text-white patient-info-card">
+   <span class="patient-info-heading"><b>KIN INFORMATION</b> </span>
+    <li><div class="patient-info-heading"> <b>Kin Name:</b></div> {{receptions.kinName}}</li>
+    <li><div class="patient-info-heading"> <b>Relationship:</b></div> {{receptions.kinRelation}}
+        <span *ngIf="receptions.kinRelation == '1' ">Baba</span>
+        <span *ngIf="receptions.kinRelation == '2' ">Mama</span>
+        <span *ngIf="receptions.kinRelation == '3' ">Kaka</span>
+        <span *ngIf="receptions.kinRelation == '4' ">Dada</span>
+        <span *ngIf="receptions.kinRelation == '5' ">Mjomba</span>
+        <span *ngIf="receptions.kinRelation == '6' ">Ami</span>
+        <span *ngIf="receptions.kinRelation == '7' ">Jirani</span>
+        <span *ngIf="receptions.kinRelation == '8' ">Sheha</span>
+    </li>
+    <li><div class="patient-info-heading"> <b>Phone:</b></div> {{receptions.kinPhoneNumber}}</li>
+    </ul>
+   </div>
+    </div>
+   </div>
+    <div class="col-lg-3 col-md-6">
+    <div class="card bg-secondary">
+    <div class="card-header">
+    <h5 class="card-title text-white">RUFAA INFORMATION</h5>
+   </div>
+     <div class="card-content mx-2">
+    <ul class="list-unstyled text-white">
+   <li><b>Cow Name :</b> <div class="patient-info-heading"></div>{{receptions.cowName}}</li>
+   <li><b>Ngo Name :</b> <div class="patient-info-heading"></div>{{receptions.ngo}}
+    <span *ngIf="receptions.ngo== '1'">ZAYADESA</span>
+  </li>
+   <li><b>Phone:</b> <div class="patient-info-heading"></div>{{receptions.cowPhone}}</li>
+    </ul>
+     </div>
+    </div>
+    </div>
+   </div>
+
+

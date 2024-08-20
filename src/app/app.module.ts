@@ -30,7 +30,6 @@ import { UserMgtComponent } from './pages/user-mgt/user-mgt.component';
 import { DoctorComponent } from './pages/doctor/doctor.component';
 import {MatStepperModule} from '@angular/material/stepper';
 import { ReceptionsComponent } from './pages/receptions/receptions.component';
-import { EditreceptionsComponent } from './pages/editreceptions/editreceptions.component';
 import { AddreceptionComponent } from './pages/addreception/addreception.component';
 import { AddObservationComponent } from './pages/add-observation/add-observation.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -60,6 +59,9 @@ import { Piechart1Component } from './pages/dashboard/piechart1/piechart1.compon
 import { Piechart2Component } from './pages/dashboard/piechart2/piechart2.component';
 import { Piechart3Component } from './pages/dashboard/piechart3/piechart3.component';
 import { Piechart4Component } from './pages/dashboard/piechart4/piechart4.component';
+import { ViewObservationComponent } from './pages/view-observation/view-observation.component';
+import { ViewCounselComponent } from './pages/view-counsel/view-counsel.component';
+import { ViewPatientsComponent } from './pages/view-patients/view-patients.component';
 
 
 @NgModule({
@@ -82,7 +84,6 @@ import { Piechart4Component } from './pages/dashboard/piechart4/piechart4.compon
     UserMgtComponent,
     DoctorComponent,
     ReceptionsComponent,
-    EditreceptionsComponent,
     AddreceptionComponent,
     AddObservationComponent,
     PatientsInfoComponent,
@@ -105,6 +106,9 @@ import { Piechart4Component } from './pages/dashboard/piechart4/piechart4.compon
     Piechart2Component,
     Piechart3Component,
     Piechart4Component,
+    ViewObservationComponent,
+    ViewCounselComponent,
+    ViewPatientsComponent,
 
 
   ],

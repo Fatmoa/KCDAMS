@@ -82,14 +82,9 @@
                   <mat-form-field appearance="outline" style="width: 100%;">
                     <mat-label>Hali ya Ndoa</mat-label>
                     <mat-select disableRipple formControlName="mar_status">
-                      <mat-option value="1">Sijaoa</mat-option>
-                      <mat-option value="2">Sijaolewa</mat-option>
-                      <mat-option value="3">Nimeoa</mat-option>
-                      <mat-option value="4">Nimeolewa</mat-option>
-                      <mat-option value="5">Nimeacha</mat-option>
-                      <mat-option value="6">Nimeachika</mat-option>
-                      <mat-option value="7">Nimefiwa</mat-option>
-                      <mat-option value="8">Naishi na mwenza</mat-option>
+                      <mat-option value="1">Single</mat-option>
+                      <mat-option value="2">Married</mat-option>
+                      <mat-option value="3">Divorced</mat-option>
                     </mat-select>
                   </mat-form-field>
                 </div>
@@ -161,7 +156,7 @@
                 <button mat-button matStepperNext color="primary">Next</button>
               </div>
           </mat-step>
-          <!-- Second step -->
+
           <mat-step [stepControl]="receptionForm" errorMessage="">
 
               <ng-template matStepLabel>Mtoa Rufaa</ng-template>
@@ -170,15 +165,12 @@
                 <div class="col-md-4">
                   <mat-form-field appearance="outline" style="width: 100%;">
                     <mat-label>NGO</mat-label>
-                    <mat-select disableRipple formControlName="ngoName">
-                      <mat-option value="1">ZYF</mat-option>
-                      <mat-option value="2">ZAYADESA</mat-option>
+                    <mat-select disableRipple formControlName="ngo">
+                      <mat-option value="1">ZAYADESA</mat-option>
                     </mat-select>
                   </mat-form-field>
                 </div>
-                <!-- <mat-select  formControlName="ngoName">
-                  <mat-option *ngFor="let ngo of ngos" [value]="ngo">{{ngo.ngoName}}</mat-option>
-                </mat-select> -->
+
                 <div class="col-md-4">
                   <mat-form-field appearance="outline" style="width: 100%;">
                     <mat-label>Jina</mat-label>
