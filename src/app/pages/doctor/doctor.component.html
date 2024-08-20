@@ -49,8 +49,8 @@
         <ng-container matColumnDef="gen">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Gender </th>
           <td mat-cell *matCellDef="let row">
-            <span *ngIf="row.drGender=='1'">Female</span>
-            <span *ngIf="row.drGender=='2'">Male</span>
+            <span *ngIf="row.drGender=='Female'">Female</span>
+            <span *ngIf="row.drGender=='Male'">Male</span>
           </td>
 
         </ng-container>
@@ -137,8 +137,8 @@
           <mat-form-field appearance="outline" style="width: 100%;">
             <mat-label>Gender</mat-label>
             <mat-select disableRipple formControlName="drGender">
-              <mat-option value="1">Mke</mat-option>
-              <mat-option value="2">Mme</mat-option>
+              <mat-option value="Female">Mke</mat-option>
+              <mat-option value="Male">Mme</mat-option>
             </mat-select>
           </mat-form-field>
         </div>
@@ -210,8 +210,8 @@
           <mat-form-field appearance="outline" style="width: 100%;">
             <mat-label>Gender</mat-label>
             <mat-select disableRipple formControlName="drGender">
-              <mat-option value="1">Mke</mat-option>
-              <mat-option value="2">Mme</mat-option>
+              <mat-option value="Female">Mke</mat-option>
+              <mat-option value="Male">Mme</mat-option>
             </mat-select>
           </mat-form-field>
         </div>

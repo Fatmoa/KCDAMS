@@ -14,4 +14,12 @@ export class ReportService {
   getPatientByDistrict(){
     return this.http.get(this.reportAPI+"patientDistrictReport")
   }
+
+  getSummary(){
+    return this.http.get(this.reportAPI+"summary")
+  }
+
+  getDoctorByGender(){
+    return this.http.get(this.reportAPI+"doctorGenderReport")
+  }
 }

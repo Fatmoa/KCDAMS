@@ -42,7 +42,7 @@ export class BarchartComponent implements OnInit{
           plotOptions: {
             bar: {
               dataLabels: {
-                position: "top" // top, center, bottom
+                position: "top" 
               }
             }
           },

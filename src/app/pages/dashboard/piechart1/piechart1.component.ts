@@ -1,3 +1,4 @@
+import { ReportService } from './../../../services/report.service';
 import { Component, OnInit } from '@angular/core';
 import * as ApexCharts from 'apexcharts';
 
@@ -10,37 +11,51 @@ import * as ApexCharts from 'apexcharts';
 })
 export class Piechart1Component implements OnInit {
 
-  constructor() {}
+  constructor(
+    private reportService: ReportService
+  ) {}
 
   ngOnInit(): void {
     this.piechart1()
   }
 
   piechart1(){
-    let chartOptions = {
-      series: [44, 55, 13, 43, 22],
-      chart: {
-        width: 380,
-        type: "pie"
-      },
-      labels: ["Team A", "Team B", "Team C", "Team D", "Team E"],
-      responsive: [
-        {
-          breakpoint: 480,
-          options: {
-            chart: {
-              width: 200
-            },
-            legend: {
-              position: "bottom"
+    this.reportService.getDoctorByGender().subscribe((resp:any)=>{
+      let noDoctor = [ ];
+      let GenderType = [ ]
+
+      for (let total = 0; total < resp.length; total++){
+        noDoctor.push(resp[total].doctors);
+        GenderType.push(resp[total].gender);
+      }
+
+
+      let chartOptions = {
+        series: noDoctor,
+        chart: {
+          width: 380,
+          type: "pie"
+        },
+        labels:GenderType,
+        responsive: [
+          {
+            breakpoint: 480,
+            options: {
+              chart: {
+                width: 200
+              },
+              legend: {
+                position: "bottom"
+              }
             }
           }
-        }
-      ]
-    };
+        ]
+      };
 
-    let piechart = new ApexCharts(document.querySelector('#chart0000'),chartOptions);
-    piechart.render()
+      let piechart = new ApexCharts(document.querySelector('#chart0000'),chartOptions);
+      piechart.render()
+    })
+
   }
 
 
