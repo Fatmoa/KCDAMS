@@ -13,7 +13,7 @@
       <div class="content-header-right col-md-6 col-12">
         <div class="btn-group float-md-right" role="group">
           <button type="button" class="btn btn-info btn-min-width btn-glow mr-1 mb-1"
-          (click)="openDialog()">Add Reception</button>
+          (click)="openDialog()">Add Registrar</button>
         </div>
       </div>
     </div>
@@ -50,8 +50,8 @@
                 <ng-container matColumnDef="gen">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header> Gender </th>
                   <td mat-cell *matCellDef="let row">
-                    <span *ngIf="row.resiGender=='1'">Female</span>
-                    <span *ngIf="row.resiGender=='2'">Male</span>
+                    <span *ngIf="row.resiGender=='Female'">Female</span>
+                    <span *ngIf="row.resiGender=='Male'">Male</span>
                    </td>
                 </ng-container>
 
@@ -83,7 +83,7 @@
                 <ng-container matColumnDef="action">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
                   <td mat-cell *matCellDef="let row">
-                    <button mat-raised-button color="primary" (click)="openDialog2(row)">Edit</button>
+                    <button mat-raised-button color="primary" (click)="openDialog2(row)"><i class="las la-edit">Edit</i></button>
                    </td>
                 </ng-container>
 
@@ -122,12 +122,8 @@
           <mat-form-field style="width: 100%;" appearance="outline">
             <mat-label>First Name</mat-label>
             <input matInput placeholder="first  name" formControlName="regisName" required>
-            <mat-error *ngIf="regForm.get('regisName')?.hasError('required')">
-              First Name is required
-            </mat-error>
-            <mat-error *ngIf="regForm.get('regisName')?.hasError('pattern')">
-              First Name should contain only letters
-            </mat-error>
+            <mat-error *ngIf="regForm.get('regisName')?.hasError('required')">First Name is required</mat-error>
+            <mat-error *ngIf="regForm.get('regisName')?.hasError('pattern')">First Name should contain only letters</mat-error>
           </mat-form-field>
         </div>
 
@@ -135,12 +131,8 @@
           <mat-form-field style="width: 100%;" appearance="outline">
             <mat-label>Middle Name</mat-label>
             <input matInput placeholder="Middle name" formControlName="regisMname" required>
-            <mat-error *ngIf="regForm.get('regisMname')?.hasError('required')">
-              Middle Name is required
-            </mat-error>
-            <mat-error *ngIf="regForm.get('regisMname')?.hasError('pattern')">
-              Middle Name should contain only letters
-            </mat-error>
+            <mat-error *ngIf="regForm.get('regisMname')?.hasError('required')">Middle Name is required</mat-error>
+            <mat-error *ngIf="regForm.get('regisMname')?.hasError('pattern')">Middle Name should contain only letters</mat-error>
           </mat-form-field>
         </div>
 
@@ -148,12 +140,8 @@
           <mat-form-field style="width: 100%;" appearance="outline">
             <mat-label>Last Name</mat-label>
             <input matInput placeholder="Last name" formControlName="regisLname" required>
-            <mat-error *ngIf="regForm.get('regisLname')?.hasError('required')">
-              Last Name is required
-            </mat-error>
-            <mat-error *ngIf="regForm.get('regisLname')?.hasError('pattern')">
-              Last Name should contain only letters
-            </mat-error>
+            <mat-error *ngIf="regForm.get('regisLname')?.hasError('required')">Last Name is required</mat-error>
+            <mat-error *ngIf="regForm.get('regisLname')?.hasError('pattern')">Last Name should contain only letters</mat-error>
           </mat-form-field>
         </div>
       </div>
@@ -163,12 +151,10 @@
           <mat-form-field appearance="outline" style="width: 100%;">
             <mat-label>Gender</mat-label>
             <mat-select disableRipple formControlName="resiGender" required>
-              <mat-option value="1">Mke</mat-option>
-              <mat-option value="2">Mme</mat-option>
+              <mat-option value="Female">Female</mat-option>
+              <mat-option value="Male">Male</mat-option>
             </mat-select>
-            <mat-error *ngIf="regForm.get('resiGender')?.hasError('required')">
-              Gender is required
-            </mat-error>
+            <mat-error *ngIf="regForm.get('resiGender')?.hasError('required')">Gender is required</mat-error>
           </mat-form-field>
         </div>
 
@@ -257,8 +243,8 @@
           <mat-form-field appearance="outline" style="width: 100%;">
             <mat-label>Gender</mat-label>
             <mat-select disableRipple formControlName="resiGender" required>
-              <mat-option value="1">Mke</mat-option>
-              <mat-option value="2">Mme</mat-option>
+              <mat-option value="Female">Female</mat-option>
+              <mat-option value="Male">Male</mat-option>
             </mat-select>
           </mat-form-field>
         </div>

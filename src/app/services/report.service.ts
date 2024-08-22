@@ -22,4 +22,23 @@ export class ReportService {
   getDoctorByGender(){
     return this.http.get(this.reportAPI+"doctorGenderReport")
   }
+
+  getRegistrarGender(){
+    return this.http.get(this.reportAPI+"registrarGenderReport")
+  }
+
+  getPsychologGender(){
+    return this.http.get(this.reportAPI+"psychologistGenderReport")
+  }
+  getNurseGender(){
+    return this.http.get(this.reportAPI+"nurseGenderReport")
+  }
+
+  // getPatientGender(){
+  //   return this.http.get(this.reportAPI+"patientGenderReport")
+  // }
+
+  getMalePatients(){
+    return this.http.get(this.reportAPI+"patSummary")
+  }
 }

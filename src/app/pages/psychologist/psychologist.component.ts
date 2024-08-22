@@ -16,7 +16,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./psychologist.component.scss']
 })
 export class PsychologistComponent implements OnInit{
-  displayedColumns: string[] = ['id', 'duration', 'reason', 'sympto','time','type','action'];
+  displayedColumns: string[] = ['id', 'drUse','duration', 'reason', 'sympto','time','type','action'];
   @ViewChild('distributionDialog') distributionDialog!: TemplateRef<any>;
   @ViewChild('distributionDialog2') distributionDialog2!: TemplateRef<any>;
   dataSource!: MatTableDataSource<any>;
@@ -42,7 +42,7 @@ export class PsychologistComponent implements OnInit{
   }
 
 
-  // DrugType:any[] = [ ];
+
   DrugType:any
   fetchAllDrugs(){
     this.drugService.getAllDrug().subscribe((resp:any)=>{
@@ -79,7 +79,7 @@ export class PsychologistComponent implements OnInit{
   configPsyForm(){
     this.PsyForm = new FormGroup ({
       drugDuration:new FormControl(null,Validators.required),
-      drugs:new FormControl(null,Validators.required),
+      drug:new FormControl(null,Validators.required),
       drugDay:new FormControl(null,Validators.required),
       reasUse:new FormControl(null,Validators.required),
       tstop:new FormControl(null,Validators.required),
@@ -99,7 +99,7 @@ export class PsychologistComponent implements OnInit{
       rstop:new FormControl(null),
       tstop:new FormControl(null),
       drugDay:new FormControl(null),
-
+      drug:new FormControl(null),
     })
   }
 
@@ -122,8 +122,8 @@ export class PsychologistComponent implements OnInit{
 
   }
 
-  onView(){
-
+  onView(row:any){
+    this.router.navigate(['home/viewPsychologist'],{queryParams:{id:row.pyId}})
   }
 
   alert(){

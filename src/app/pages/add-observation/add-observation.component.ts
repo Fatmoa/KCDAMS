@@ -42,9 +42,14 @@ export class AddObservationComponent implements OnInit{
     {value:'Mirungi'},
   ];
   maambukizi:any[] = [
-    {value:'VVU'},
-    {value:'VHB'},
-    {value:'VHC'},
+    {value:'TB'},
+    {value:'HIV'},
+    {value:'HCV'},
+    {value:'HBV'},
+    {value:'STI'},
+    {value:'Hypertension'},
+    {value:'Diabetes Mellitus'},
+
 
   ];
 
@@ -69,8 +74,8 @@ export class AddObservationComponent implements OnInit{
       pulse:new FormControl('',Validators.required),
       pr:new FormControl('',Validators.required),
       comment:new FormControl('',Validators.required),
-      // methadone:new FormControl('',Validators.required),
-      // heroin:new FormControl('',Validators.required),
+      methadone:new FormControl('',Validators.required),
+      heroin:new FormControl('',Validators.required),
     })
 
 

@@ -29,6 +29,7 @@ import { ObservationComponent } from './pages/observation/observation.component'
 import { RecdashboardComponent } from './pages/dashboard/recdashboard/recdashboard.component';
 import { ViewCounselComponent } from './pages/view-counsel/view-counsel.component';
 import { ViewPatientsComponent } from './pages/view-patients/view-patients.component';
+import { ViewPsychologComponent } from './pages/view-psycholog/view-psycholog.component';
 
 const routes: Routes = [
   {path:'',component:LoginComponent},
@@ -126,6 +127,10 @@ const routes: Routes = [
       {
         path:'viewPatients',
         component:ViewPatientsComponent
+      },
+      {
+        path:'viewPsychologist',
+        component:ViewPsychologComponent
       },
     ]
   }

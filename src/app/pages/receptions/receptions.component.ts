@@ -12,7 +12,7 @@ import { ReceptionService } from 'src/app/services/reception.service';
   styleUrls: ['./receptions.component.scss']
 })
 export class ReceptionsComponent implements OnInit{
-  displayedColumns: string[] = ['id', 'name','dob', 'kin', 'relation','cow', 'action'];
+  displayedColumns: string[] = ['id', 'name','pnum', 'add', 'kin','relation', 'kinum','action'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -55,7 +55,7 @@ export class ReceptionsComponent implements OnInit{
 
    onEdit(row:any){
     this.router.navigate(['home/edit-reception'],{queryParams:{path:row.matCode}})
-    // console.log(row.matCohome/de);
+
    }
 
    onView(row:any){

@@ -60,13 +60,13 @@ export class DoctorComponent implements OnInit{
 
   configDrForm(){
     this.drForm = new FormGroup({
-      drName: new FormControl(null,Validators.required),
-      drMname: new FormControl(null,Validators.required),
-      drLname: new FormControl(null,Validators.required),
+      drName: new FormControl(null,[Validators.required,Validators.pattern('^[a-zA-Z]+$')]),
+      drMname: new FormControl(null,[Validators.required,Validators.pattern('^[a-zA-Z]+$')]),
+      drLname: new FormControl(null,[Validators.required,Validators.pattern('^[a-zA-Z]+$')]),
       drGender: new FormControl(null,Validators.required),
-      drEmail: new FormControl(null,Validators.required),
-      drNumb: new FormControl(null,Validators.required),
-      drEmplNum: new FormControl(null,Validators.required),
+      drEmail: new FormControl(null,[Validators.required,Validators.email]),
+      drNumb: new FormControl(null,[Validators.required,Validators.pattern('^[0-9]{10}$')]),
+      drEmplNum: new FormControl(null,[Validators.required,Validators.pattern('^[a-zA-Z0-9]+$')]),
       user_data: new FormControl(null),
     })
 
@@ -127,25 +127,30 @@ export class DoctorComponent implements OnInit{
   }
 
   onSave(){
-    this.rolesService.getRoleByName('DOCTOR').subscribe((resp: any) => {
+    if (this.drForm.valid) {
+      this.rolesService.getRoleByName('DOCTOR').subscribe((resp: any) => {
 
-      const login = {
-        username: this.drForm.value.drEmail,
-        password: this.drForm.value.drLname,
-        roleId: resp,
-        userStatus: '1'
-      }
-      console.log(login);
-      this.loginService.userRegistration(login).subscribe((resp2: any) => {
-        this.drForm.patchValue({ user_data: resp2 });
-        const values = this.drForm.value;
-        this.doctorService.addDoctor(values).subscribe((resp3: any) => {
-          this.reload();
-          this.alert()
+        const login = {
+          username: this.drForm.value.drEmail,
+          password: this.drForm.value.drLname,
+          roleId: resp,
+          userStatus: '1'
+        }
+        console.log(login);
+        this.loginService.userRegistration(login).subscribe((resp2: any) => {
+          this.drForm.patchValue({ user_data: resp2 });
+          const values = this.drForm.value;
+          this.doctorService.addDoctor(values).subscribe((resp3: any) => {
+            this.reload();
+            this.alert()
+          })
         })
       })
-    })
+  }else {
+    this.drForm.markAllAsTouched();
+    this.alert3();
   }
+}
 
   onEdit(){
     const id = this.EditDrForm.value.drId;
@@ -158,10 +163,6 @@ export class DoctorComponent implements OnInit{
 
     })
   }
-
-
-
-
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -214,6 +215,25 @@ export class DoctorComponent implements OnInit{
     });
   }
 
+  alert3() {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      }
+    });
+    Toast.fire({
+      icon: "error",
+      title: "Fail to save! Invalid form "
+    });
+  }
+
 
 }
+
 

@@ -11,11 +11,11 @@
               <div class="card-body">
                 <div class="media d-flex">
                   <div class="align-self-center">
-                    <i class="la la-calendar-check-o font-large-2 success"></i>
+                    <i class="la la-stethoscope font-large-2 success"></i>
                   </div>
                   <div class="media-body text-right">
-                    <h5 class="text-muted text-bold-500">Registered Patients</h5>
-                    <h3 class="text-bold-600">122</h3>
+                    <h5 class="text-muted text-bold-500">Registered Doctors</h5>
+                    <h3 class="text-bold-600"><b>{{summary.doctors}}</b></h3>
                   </div>
                 </div>
               </div>
@@ -28,11 +28,11 @@
               <div class="card-body">
                 <div class="media d-flex">
                   <div class="align-self-center">
-                    <i class="la la-calendar-check-o font-large-2 success"></i>
+                    <i class="las la-first-aid font-large-2 success"></i>
                   </div>
                   <div class="media-body text-right">
-                    <h5 class="text-muted text-bold-500">Registered Patients</h5>
-                    <h3 class="text-bold-600">122</h3>
+                    <h5 class="text-muted text-bold-500">Registered Psychologist</h5>
+                    <h3 class="text-bold-600"><b>{{summary.psychologists}}</b></h3>
                   </div>
                 </div>
               </div>
@@ -45,11 +45,11 @@
               <div class="card-body">
                 <div class="media d-flex">
                   <div class="align-self-center">
-                    <i class="la la-stethoscope font-large-2 warning"></i>
+                    <i class="las la-user-nurse font-large-2 warning"></i>
                   </div>
                   <div class="media-body text-right">
-                    <h5 class="text-muted text-bold-500">Available Patients</h5>
-                    <h3 class="text-bold-600">33</h3>
+                    <h5 class="text-muted text-bold-500">Registered Nurse</h5>
+                    <h3 class="text-bold-600"><b>{{summary.nurses}}</b></h3>
                   </div>
                 </div>
               </div>
@@ -62,11 +62,11 @@
               <div class="card-body">
                 <div class="media d-flex">
                   <div class="align-self-center">
-                    <i class="la la-times font-large-2 info"></i>
+                    <i class="las la-pen-alt font-large-2 info"></i>
                   </div>
                   <div class="media-body text-right">
-                    <h5 class="text-muted text-bold-500">Absentee Patients</h5>
-                    <h3 class="text-bold-600">3.5K</h3>
+                    <h5 class="text-muted text-bold-500">Registered Registrar</h5>
+                    <h3 class="text-bold-600"><b>{{summary.registrars}}</b></h3>
                   </div>
                 </div>
               </div>
@@ -88,7 +88,7 @@
       <div class="col-12 col-md-6">
         <div class="card">
           <div class="card-header">
-            <h4 class="card-title">Nurses Available</h4>
+            <h4 class="card-title">Registrars Available</h4>
             <app-piechart2></app-piechart2>
           <div class="card-content">
 
@@ -111,7 +111,7 @@
     <div class="col-12 col-md-6">
       <div class="card">
         <div class="card-header">
-          <h4 class="card-title">Receptionists Available</h4>
+          <h4 class="card-title">Nurses Available</h4>
           <app-piechart4></app-piechart4>
         <div class="card-content">
 

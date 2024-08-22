@@ -39,6 +39,16 @@
           <td mat-cell *matCellDef="let row; let i = index"> {{i+1}} </td>
         </ng-container>
 
+        <ng-container matColumnDef="drUse">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Most used Drug</th>
+          <td mat-cell *matCellDef="let row">
+          <span *ngIf="row.drug == '1' ">Methadone</span>
+          <span *ngIf="row.drug == '2' ">Valium</span>
+          <span *ngIf="row.drug == '3' ">Cocaine</span>
+          <span *ngIf="row.drug == '4' ">Heroine</span>
+        </td>
+        </ng-container>
+
 
         <ng-container matColumnDef="duration">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> T.Use </th>
@@ -69,8 +79,8 @@
         <ng-container matColumnDef="action">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
           <td mat-cell *matCellDef="let row">
-            <button mat-raised-button color="primary" (click)="openDialog2(row)">Edit</button>&nbsp;
-            <button mat-raised-button color="primary" matDialogClose="yes" (click)="onView()">View</button>
+            <button mat-raised-button color="primary" (click)="openDialog2(row)"><i class="las la-edit">Edit</i></button>&nbsp;
+            <button mat-raised-button color="primary" matDialogClose="yes" (click)="onView(row)"><i class="las la-eye">View</i></button>
            </td>
         </ng-container>
 
@@ -113,21 +123,16 @@
         <div class="col-md-4">
           <mat-form-field style="width: 100%;" appearance="outline">
               <mat-label>Drug Type</mat-label>
-              <mat-select formControlName="drugs">
-                  <mat-option *ngFor="let drugs of DrugType" [value]="drugs">{{drugs.drugName}}</mat-option>
+              <mat-select formControlName="drug">
+                <mat-option value="1">Methadone</mat-option>
+                <mat-option value="2">Valium</mat-option>
+                <mat-option value="3 ">Cocaine</mat-option>
+                <mat-option value="4 ">Heroin</mat-option>
               </mat-select>
             </mat-form-field>
       </div>
 
-      <!-- <div class="col-md-4">
-        <mat-form-field style="width: 100%;" appearance="outline">
-            <mat-label>Drug Type</mat-label>
-            <mat-select formControlName="drugs" multiple="">
-                <mat-option *ngFor="let drugs of DrugType" [value]="drugs.value">
-                    {{drugs.drugName}}</mat-option>
-            </mat-select>
-          </mat-form-field>
-    </div> -->
+
       </div>
       <div class="row">
         <div class="col-md-4">

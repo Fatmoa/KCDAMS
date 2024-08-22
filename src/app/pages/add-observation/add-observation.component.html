@@ -105,17 +105,13 @@
               </div>
             </div>
             <br>
-            <!-- <div class="row">
-
-
-            </div> -->
             <div>
 
               <button mat-button matStepperNext>Next</button>
             </div>
 
         </mat-step>
-        <!-- Second step -->
+
         <mat-step [stepControl]="ObsForm" errorMessage="required">
             <ng-template matStepLabel></ng-template>
             <br>
@@ -234,8 +230,6 @@
 
         </mat-step>
 
-
-        <!-- Third step -->
         <mat-step [stepControl]="ObsForm" errorMessage="Required">
           <p>VITAL SIGN AND MEASUREMENTS</p>
             <ng-template matStepLabel></ng-template>
@@ -293,53 +287,8 @@
             <div class="btn-group float-md-right" role="group">
               <button class="btn btn-info btn-min-width btn-glow mr-1 mb-1" (click)="onSubmit()">Submit</button>
             </div>
-            <!-- <button mat-button matStepperNext>Next</button> -->
-
           </div>
-
         </mat-step>
-        <!-- Done -->
-        <!-- <mat-step [stepControl]="fourthFormGroup" errorMessage="">
-          <ng-template matStepLabel></ng-template>
-          <br>
-          <p>MUUGUZI</p>
-          <div class="row">
-            <div class="col-md-4">
-              <mat-form-field style="width: 100%;" appearance="outline">
-                <mat-label>Jina la Muuguzi</mat-label>
-                <input matInput placeholder="jina kamili" formControlName="fourthCtrl" required >
-              </mat-form-field>
-            </div>
-            <div class="col-md-4">
-              <mat-form-field style="width: 100%;" appearance="outline">
-                <mat-label>Numberi ya Simu</mat-label>
-                <input matInput placeholder="Nambari ya simu" formControlName="fourthCtrl" required>
-              </mat-form-field>
-            </div>
-            <div class="col-md-4">
-              <mat-form-field style="width: 100%;" appearance="outline">
-                <mat-label>Tarehe ya usajili</mat-label>
-                <input type="date" matInput formControlName="fourthCtrl" required>
-              </mat-form-field>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-6">
-              <mat-form-field style="width: 100%;" appearance="outline">
-                <mat-label>Comments</mat-label>
-                <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
-              </mat-form-field>
-            </div>
-          </div>
-          <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button (click)="stepper.reset()">Reset</button>
-            <div class="btn-group float-md-right" role="group">
-              <button class="btn btn-info btn-min-width btn-glow mr-1 mb-1" >Submit</button>
-            </div>
-          </div>
-
-        </mat-step> -->
       </mat-stepper>
     </form>
     </div>

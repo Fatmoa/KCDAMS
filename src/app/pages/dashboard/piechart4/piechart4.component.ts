@@ -1,3 +1,4 @@
+import { ReportService } from './../../../services/report.service';
 import { Component, OnInit } from '@angular/core';
 import * as ApexCharts from 'apexcharts';
 
@@ -8,7 +9,9 @@ import * as ApexCharts from 'apexcharts';
 })
 export class Piechart4Component implements OnInit{
 
-  constructor() {
+  constructor(
+    private reportService:ReportService
+  ) {
 
   }
   ngOnInit(): void {
@@ -16,13 +19,23 @@ export class Piechart4Component implements OnInit{
   }
 
   piechart4(){
+    this.reportService.getNurseGender().subscribe((resp:any)=>{
+
+    let nurseNo = [];
+    let nurseGen = [];
+
+    for(let length =0; length<resp.length;length++){
+      nurseNo.push(resp[length].nurses);
+      nurseGen.push(resp[length].gender)
+    }
+
     let chartOptions = {
-      series: [44, 55, 13, 43, 22],
+      series: nurseNo,
       chart: {
         width: 380,
         type: "pie"
       },
-      labels: ["Team A", "Team B", "Team C", "Team D", "Team E"],
+      labels: nurseGen,
       responsive: [
         {
           breakpoint: 480,
@@ -38,8 +51,10 @@ export class Piechart4Component implements OnInit{
       ]
     };
 
-    let piechart = new ApexCharts(document.querySelector('#chart0004'),chartOptions);
-    piechart.render()
+      let piechart = new ApexCharts(document.querySelector('#chart0004'),chartOptions);
+      piechart.render()
+
+    })
   }
 
 }

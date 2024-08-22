@@ -28,18 +28,24 @@
                   <mat-form-field appearance="outline" style="width: 100%;">
                     <mat-label>First Name</mat-label>
                     <input matInput placeholder="Jina kamili" formControlName="patFName" required>
+                    <mat-error *ngIf="receptionForm.get('patFName')?.hasError('required')">First Name is required</mat-error>
+                    <mat-error *ngIf="receptionForm.get('patFName')?.hasError('pattern')">First Name should contain only letters</mat-error>
                   </mat-form-field>
                 </div>
                 <div class="col-md-3">
                   <mat-form-field appearance="outline" style="width: 100%;">
                     <mat-label>Second Name</mat-label>
                     <input matInput placeholder="Jina kamili" formControlName="patMName" required>
+                    <mat-error *ngIf="receptionForm.get('drMname')?.hasError('required')">Middle Name is required</mat-error>
+                    <mat-error *ngIf="receptionForm.get('drMname')?.hasError('pattern')">Middle Name should contain only letters</mat-error>
                   </mat-form-field>
                 </div>
                 <div class="col-md-3">
                   <mat-form-field appearance="outline" style="width: 100%;">
                     <mat-label>Last Name</mat-label>
                     <input matInput placeholder="Jina kamili" formControlName="patLName" required>
+                    <mat-error *ngIf="receptionForm.get('drMname')?.hasError('required')">Last Name is required</mat-error>
+                    <mat-error *ngIf="receptionForm.get('drMname')?.hasError('pattern')">Last Name should contain only letters</mat-error>
                   </mat-form-field>
                 </div>
 
@@ -47,6 +53,7 @@
                   <mat-form-field appearance="outline" style="width: 100%;">
                     <mat-label>Tarehe ya kuzaliwa</mat-label>
                     <input type="date" matInput  formControlName="dob" required>
+                    <mat-error *ngIf="receptionForm.get('dob')?.hasError('required')">Date of Birth is required</mat-error>
                   </mat-form-field>
                 </div>
               </div>
@@ -59,33 +66,37 @@
                       <mat-option value="1" *ngFor="let district of districts" [value]="district">
                         {{district.districtName}}</mat-option>
                     </mat-select>
+                    <mat-error *ngIf="receptionForm.get('districtData')?.hasError('required')">District is required</mat-error>
                   </mat-form-field>
                 </div>
 
                 <div class="col-md-3">
                   <mat-form-field appearance="outline" style="width: 100%;">
                     <mat-label>Makaazi</mat-label>
-                    <input matInput placeholder="address" formControlName="address">
+                    <input matInput placeholder="address" formControlName="address" required>
+                    <mat-error *ngIf="receptionForm.get('address')?.hasError('required')">Address is required</mat-error>
                   </mat-form-field>
                 </div>
 
                 <div class="col-md-3">
                   <mat-form-field appearance="outline" style="width: 100%;">
                     <mat-label>Jinsia</mat-label>
-                    <mat-select disableRipple formControlName="gender">
-                      <mat-option value="Female">Mke</mat-option>
-                      <mat-option value="Male">Mme</mat-option>
+                    <mat-select disableRipple formControlName="gender" required>
+                      <mat-option value="Female">Female</mat-option>
+                      <mat-option value="Male">Male</mat-option>
                     </mat-select>
+                    <mat-error *ngIf="receptionForm.get('gender')?.hasError('required')">Gender is required</mat-error>
                   </mat-form-field>
                 </div>
                 <div class="col-md-3">
                   <mat-form-field appearance="outline" style="width: 100%;">
                     <mat-label>Hali ya Ndoa</mat-label>
-                    <mat-select disableRipple formControlName="mar_status">
-                      <mat-option value="1">Single</mat-option>
-                      <mat-option value="2">Married</mat-option>
-                      <mat-option value="3">Divorced</mat-option>
+                    <mat-select disableRipple formControlName="mar_status" required>
+                      <mat-option value="Single">Single</mat-option>
+                      <mat-option value="Married">Married</mat-option>
+                      <mat-option value="Divorced">Divorced</mat-option>
                     </mat-select>
+                    <mat-error *ngIf="receptionForm.get('mar_status')?.hasError('required')">Marital status is required</mat-error>
                   </mat-form-field>
                 </div>
               </div>
@@ -94,34 +105,39 @@
                 <div class="col-md-3">
                   <mat-form-field appearance="outline" style="width: 100%;">
                     <mat-label>Kiwango cha elimu</mat-label>
-                    <mat-select disableRipple formControlName="education">
-                      <mat-option value="1">Elimu ya msingi</mat-option>
-                      <mat-option value="2">Elimu ya sekondari</mat-option>
-                      <mat-option value="3">Elimu ya juu</mat-option>
-                      <mat-option value="4">Sijasoma</mat-option>
+                    <mat-select disableRipple formControlName="education" required>
+                      <mat-option value="Msingi">Msingi</mat-option>
+                      <mat-option value="Sekondari">Sekondari</mat-option>
+                      <mat-option value="Elimu ya juu">Elimu ya juu</mat-option>
+                      <mat-option value="Sijasoma">Sijasoma</mat-option>
                     </mat-select>
+                    <mat-error *ngIf="receptionForm.get('education')?.hasError('required')">Education level is required</mat-error>
                   </mat-form-field>
                 </div>
                 <div class="col-md-3">
                   <mat-form-field appearance="outline" style="width: 100%;">
                     <mat-label>Ajira</mat-label>
-                    <mat-select disableRipple formControlName="employment">
-                      <mat-option value="1">Nimeajiriwa</mat-option>
-                      <mat-option value="2">Nimejiajiri</mat-option>
-                      <mat-option value="3">Sijaajiriwa</mat-option>
+                    <mat-select disableRipple formControlName="employment" required>
+                      <mat-option value="Nimeajiriwa">Nimeajiriwa</mat-option>
+                      <mat-option value="Nimejiajiri">Nimejiajiri</mat-option>
+                      <mat-option value="Sijaajiriwa">Sijaajiriwa</mat-option>
                     </mat-select>
+                    <mat-error *ngIf="receptionForm.get('employment')?.hasError('required')">Employment status is required</mat-error>
                   </mat-form-field>
                 </div>
                 <div class="col-md-3">
                   <mat-form-field appearance="outline" style="width: 100%;">
                     <mat-label>Nambari ya simu</mat-label>
                     <input matInput placeholder="Nambari ya simu" formControlName="phoneNumber" required>
+                    <mat-error *ngIf="receptionForm.get('phoneNumber')?.hasError('required')">Phone number is required</mat-error>
+                    <mat-error *ngIf="receptionForm.get('phoneNumber')?.hasError('pattern')">Invalid phone number format</mat-error>
                   </mat-form-field>
                 </div>
                 <div class="col-md-3">
                   <mat-form-field appearance="outline" style="width: 100%;" class="example-ripple-form-field">
                     <mat-label>Idadi ya watoto</mat-label>
-                    <input matInput type="number" formControlName="no_children">
+                    <input matInput type="number" formControlName="no_children"  min="0" required>
+                    <mat-error *ngIf="receptionForm.get('no_children')?.hasError('required')">Number of children is required</mat-error>
                   </mat-form-field>
                 </div>
               </div>
@@ -130,17 +146,20 @@
                 <div class="col-md-3">
                   <mat-form-field appearance="outline" style="width: 100%;">
                     <mat-label>Hali ya usajili</mat-label>
-                    <mat-select disableRipple formControlName="reg">
-                      <mat-option value="1">Mpya</mat-option>
-                      <mat-option value="2">Mhamiaji</mat-option>
-                      <mat-option value="3">Mpita njia</mat-option>
+                    <mat-select disableRipple formControlName="reg" required>
+                      <mat-option value="Mpya">Mpya</mat-option>
+                      <mat-option value="Mhamiaji">Mhamiaji</mat-option>
+                      <mat-option value="Mpita njia">Mpita njia</mat-option>
                     </mat-select>
+                    <mat-error *ngIf="receptionForm.get('reg')?.hasError('required')">Registration status is required</mat-error>
                   </mat-form-field>
                 </div>
                 <div class="col-md-3">
                   <mat-form-field appearance="outline" style="width: 100%;">
                     <mat-label>NIDA</mat-label>
                     <input matInput placeholder="Namba ya NIDA" formControlName="nida" required>
+                    <mat-error *ngIf="receptionForm.get('nida')?.hasError('required')">NIDA is required</mat-error>
+                    <mat-error *ngIf="receptionForm.get('nida')?.hasError('pattern')">Invalid NIDA format!,only 20 numbers required</mat-error>
                   </mat-form-field>
                 </div>
 
@@ -152,7 +171,6 @@
                 </div>
               </div>
               <div>
-
                 <button mat-button matStepperNext color="primary">Next</button>
               </div>
           </mat-step>
@@ -165,9 +183,10 @@
                 <div class="col-md-4">
                   <mat-form-field appearance="outline" style="width: 100%;">
                     <mat-label>NGO</mat-label>
-                    <mat-select disableRipple formControlName="ngo">
-                      <mat-option value="1">ZAYADESA</mat-option>
+                    <mat-select disableRipple formControlName="ngo" required>
+                      <mat-option value="ZAYADESA">ZAYADESA</mat-option>
                     </mat-select>
+                    <mat-error *ngIf="receptionForm.get('ngo')?.hasError('required')">NGO is required</mat-error>
                   </mat-form-field>
                 </div>
 
@@ -175,12 +194,15 @@
                   <mat-form-field appearance="outline" style="width: 100%;">
                     <mat-label>Jina</mat-label>
                     <input matInput placeholder="la kwanza,la ukoo" formControlName="cowName" required>
+                    <mat-error *ngIf="receptionForm.get('cowName')?.hasError('required')">Name is required</mat-error>
                   </mat-form-field>
                 </div>
                 <div class="col-md-4">
                   <mat-form-field appearance="outline" style="width: 100%;">
                     <mat-label>Nambari ya simu</mat-label>
-                    <input matInput placeholder="Nambari ya simu" formControlName="cowPhone">
+                    <input matInput placeholder="Nambari ya simu" formControlName="cowPhone" required>
+                    <mat-error *ngIf="receptionForm.get('cowPhone')?.hasError('required')">Phone number is required</mat-error>
+                    <mat-error *ngIf="receptionForm.get('cowPhone')?.hasError('pattern')">Invalid phone number format</mat-error>
                   </mat-form-field>
                 </div>
               </div>
@@ -202,21 +224,23 @@
                   <mat-form-field appearance="outline" style="width: 100%;">
                     <mat-label>Jina</mat-label>
                     <input matInput placeholder="la kwanza" formControlName="kinName" required>
+                    <mat-error *ngIf="receptionForm.get('kinName')?.hasError('required')">Kin name is required</mat-error>
                   </mat-form-field>
                 </div>
                 <div class="col-md-4">
                   <mat-form-field appearance="outline" style="width: 100%;">
                     <mat-label>Mahusiano</mat-label>
-                    <mat-select disableRipple formControlName="kinRelation">
-                      <mat-option value="1">Baba</mat-option>
-                      <mat-option value="2">Mama</mat-option>
-                      <mat-option value="3">Kaka</mat-option>
-                      <mat-option value="4">Dada</mat-option>
-                      <mat-option value="5">Mjomba</mat-option>
-                      <mat-option value="6">Ami</mat-option>
-                      <mat-option value="7">Jirani</mat-option>
-                      <mat-option value="8">Sheha</mat-option>
+                    <mat-select disableRipple formControlName="kinRelation" required>
+                      <mat-option value="Baba">Baba</mat-option>
+                      <mat-option value="Mama">Mama</mat-option>
+                      <mat-option value="Kaka">Kaka</mat-option>
+                      <mat-option value="Dada">Dada</mat-option>
+                      <mat-option value="Mjomba">Mjomba</mat-option>
+                      <mat-option value="Ami">Ami</mat-option>
+                      <mat-option value="Jirani">Jirani</mat-option>
+                      <mat-option value="Sheha">Sheha</mat-option>
                     </mat-select>
+                    <mat-error *ngIf="receptionForm.get('kinRelation')?.hasError('required')">Relation with Kin is required</mat-error>
                   </mat-form-field>
                 </div>
 
@@ -224,6 +248,8 @@
                   <mat-form-field appearance="outline" style="width: 100%;">
                     <mat-label>Nambari ya simu</mat-label>
                     <input matInput placeholder="Last name, First name" formControlName="kinPhoneNumber" required>
+                    <mat-error *ngIf="receptionForm.get('kinPhoneNumber')?.hasError('required')">Phone number is required</mat-error>
+                    <mat-error *ngIf="receptionForm.get('kinPhoneNumber')?.hasError('pattern')">Invalid phone number format</mat-error>
                   </mat-form-field>
                 </div>
               </div>

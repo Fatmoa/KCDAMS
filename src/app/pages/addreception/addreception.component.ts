@@ -47,26 +47,26 @@ export class AddreceptionComponent implements OnInit {
 
   configureForm() {
     this.receptionForm = new FormGroup({
-      patFName: new FormControl('', Validators.required),
-      patMName: new FormControl(''),
-      patLName: new FormControl('', Validators.required),
+      patFName: new FormControl('',[Validators.required, Validators.pattern('^[a-zA-Z ]*$')]),
+      patMName: new FormControl('',[Validators.required, Validators.pattern('^[a-zA-Z ]*$')]),
+      patLName: new FormControl('',[Validators.required, Validators.pattern('^[a-zA-Z ]*$')]),
       dob: new FormControl('', Validators.required),
       districtData: new FormControl('', Validators.required),
       address: new FormControl('', Validators.required),
       gender: new FormControl('', Validators.required),
-      mar_status: new FormControl(''),
+      mar_status: new FormControl('',Validators.required),
       education: new FormControl('', Validators.required),
       employment: new FormControl('', Validators.required),
-      phoneNumber: new FormControl('', Validators.required),
-      no_children: new FormControl('', Validators.required),
+      phoneNumber: new FormControl('',[Validators.required, Validators.pattern('^[0-9]{10}$')]),
+      no_children: new FormControl('', [Validators.required, Validators.min(0)]),
       reg: new FormControl('', Validators.required),
       ngoName: new FormControl('', Validators.required),
-      nida: new FormControl(''),
+      nida: new FormControl('',[Validators.required, Validators.pattern('^[0-9]{20}$')]),
       ngo: new FormControl('', Validators.required),
-      cowName: new FormControl('', Validators.required),
-      cowPhone: new FormControl(''),
-      kinName: new FormControl('', Validators.required),
-      kinPhoneNumber: new FormControl('', Validators.required),
+      cowName: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z ]*$')]),
+      cowPhone: new FormControl('',[Validators.required, Validators.pattern('^[0-9]{10}$')]),
+      kinName: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z ]*$')]),
+      kinPhoneNumber: new FormControl('',[Validators.required, Validators.pattern('^[0-9]{10}$')]),
       kinRelation: new FormControl('', Validators.required),
 
     })
@@ -84,26 +84,30 @@ export class AddreceptionComponent implements OnInit {
     })
   }
 
-
-
   onSubmit() {
-    const values = this.receptionForm.value;
-    const Date1 = new Date(values.dob);
-    const year = Date1.getFullYear();
-    const month = String(Date1.getMonth() + 1).padStart(2, '0');
-    const day = String(Date1.getDate()).padStart(2, '0');
-    const dob = `${year}-${month}-${day}`;
-    const values2 = { ...values, dob }
-    this.receptionService.addReception(values2).subscribe((resp: any) => {
-      console.log(resp);
-      this.alert();
-      this.reload();
+    // if (this.receptionForm.valid) {
+      const values = this.receptionForm.value;
+      const Date1 = new Date(values.dob);
+      const year = Date1.getFullYear();
+      const month = String(Date1.getMonth() + 1).padStart(2, '0');
+      const day = String(Date1.getDate()).padStart(2, '0');
+      const dob = `${year}-${month}-${day}`;
+      const values2 = { ...values, dob }
+      this.receptionService.addReception(values2).subscribe((resp: any) => {
+        console.log(resp);
+        this.alert();
+        this.reload();
+      })
+  // }
+  // else {
+  //   this.receptionForm.markAllAsTouched();
+  //   this.alert2();
 
-      // console.log('added');
+  // }
 
-    })
+}
 
-  }
+
 
   reload(){
     this.router.navigateByUrl('',{skipLocationChange:true}).then(()=>{
@@ -129,6 +133,29 @@ export class AddreceptionComponent implements OnInit {
     });
   }
 
+  alert2() {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      }
+    });
+    Toast.fire({
+      icon: "error",
+      title: "Fail to save! Invalid form "
+    });
+  }
+
 }
+
+
+
+
+
 
 

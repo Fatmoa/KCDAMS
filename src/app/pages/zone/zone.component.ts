@@ -9,7 +9,7 @@ import { ZoneService } from 'src/app/services/zone.service';
 import Swal from 'sweetalert2';
 
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+
 @Component({
   selector: 'app-zone',
   templateUrl: './zone.component.html',
@@ -119,7 +119,7 @@ export class ZoneComponent  implements OnInit{
 
   reload(){
     this.router.navigateByUrl('',{skipLocationChange:true}).then(()=>{
-      this.router.navigate(['zone'])
+      this.router.navigate(['home/zone'])
     })
   }
 

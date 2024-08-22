@@ -62,6 +62,7 @@ import { Piechart4Component } from './pages/dashboard/piechart4/piechart4.compon
 import { ViewObservationComponent } from './pages/view-observation/view-observation.component';
 import { ViewCounselComponent } from './pages/view-counsel/view-counsel.component';
 import { ViewPatientsComponent } from './pages/view-patients/view-patients.component';
+import { ViewPsychologComponent } from './pages/view-psycholog/view-psycholog.component';
 
 
 @NgModule({
@@ -109,6 +110,7 @@ import { ViewPatientsComponent } from './pages/view-patients/view-patients.compo
     ViewObservationComponent,
     ViewCounselComponent,
     ViewPatientsComponent,
+    ViewPsychologComponent,
 
 
   ],

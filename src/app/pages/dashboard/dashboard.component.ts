@@ -1,3 +1,4 @@
+import { ReportService } from './../../services/report.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit{
 roleName:any
-  constructor(){}
+  constructor(
+    private reportService:ReportService,
+  ){}
   ngOnInit(): void {
     this.roleName = sessionStorage.getItem('roleName');
+    this.getSummary();
   }
+
+  summary:any;
+  getSummary(){
+    this.reportService.getSummary().subscribe((resp:any)=>{
+      this.summary = resp;
+    })
+  }
+
+
 
 }

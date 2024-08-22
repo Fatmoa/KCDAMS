@@ -50,8 +50,8 @@
                 <ng-container matColumnDef="gen">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header> Gender </th>
                   <td mat-cell *matCellDef="let row">
-                    <span *ngIf="row.psyGender=='1'">Female</span>
-                    <span *ngIf="row.psyGender=='2'">Male</span>
+                    <span *ngIf="row.psyGender=='Female'">Female</span>
+                    <span *ngIf="row.psyGender=='Male'">Male</span>
 
                    </td>
                 </ng-container>
@@ -84,7 +84,7 @@
                 <ng-container matColumnDef="action">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
                   <td mat-cell *matCellDef="let row">
-                    <button mat-raised-button color="primary" (click)="openDialog2(row)">Edit</button>
+                    <button mat-raised-button color="primary" (click)="openDialog2(row)"><i class="las la-edit">Edit</i></button>
                    </td>
                 </ng-container>
 
@@ -164,8 +164,8 @@
           <mat-form-field appearance="outline" style="width: 100%;">
             <mat-label>Gender</mat-label>
             <mat-select disableRipple formControlName="psyGender" required>
-              <mat-option value="1">Mke</mat-option>
-              <mat-option value="2">Mme</mat-option>
+              <mat-option value="Female">Female</mat-option>
+              <mat-option value="Male">Male</mat-option>
             </mat-select>
             <mat-error *ngIf="psyForm.get('psyGender')?.hasError('required')">
               Gender is required
@@ -177,12 +177,8 @@
           <mat-form-field style="width: 100%;" appearance="outline">
             <mat-label>Email</mat-label>
             <input matInput placeholder="Email" formControlName="psyEmail" required>
-            <mat-error *ngIf="psyForm.get('psyEmail')?.hasError('required')">
-              Email is required
-            </mat-error>
-            <mat-error *ngIf="psyForm.get('psyEmail')?.hasError('email')">
-              Please enter a valid email address
-            </mat-error>
+            <mat-error *ngIf="psyForm.get('psyEmail')?.hasError('required')">Email is required</mat-error>
+            <mat-error *ngIf="psyForm.get('psyEmail')?.hasError('email')">Please enter a valid email address</mat-error>
           </mat-form-field>
         </div>
 
@@ -190,12 +186,8 @@
           <mat-form-field style="width: 100%;" appearance="outline">
             <mat-label>Phone</mat-label>
             <input matInput placeholder="Phone" formControlName="psyNumb" required>
-            <mat-error *ngIf="psyForm.get('psyNumb')?.hasError('required')">
-              Phone number is required
-            </mat-error>
-            <mat-error *ngIf="psyForm.get('psyNumb')?.hasError('pattern')">
-              Phone number should be 10 digits
-            </mat-error>
+            <mat-error *ngIf="psyForm.get('psyNumb')?.hasError('required')">Phone number is required</mat-error>
+            <mat-error *ngIf="psyForm.get('psyNumb')?.hasError('pattern')">Phone number should be 10 digits</mat-error>
           </mat-form-field>
         </div>
       </div>
@@ -205,12 +197,8 @@
           <mat-form-field style="width: 100%;" appearance="outline">
             <mat-label>Employee No</mat-label>
             <input matInput placeholder="Employee No" formControlName="psyEmplNum" required>
-            <mat-error *ngIf="psyForm.get('psyEmplNum')?.hasError('required')">
-              Employee No is required
-            </mat-error>
-            <mat-error *ngIf="psyForm.get('psyEmplNum')?.hasError('pattern')">
-              Employee No should be alphanumeric
-            </mat-error>
+            <mat-error *ngIf="psyForm.get('psyEmplNum')?.hasError('required')">Employee No is required</mat-error>
+            <mat-error *ngIf="psyForm.get('psyEmplNum')?.hasError('pattern')">Employee No should be alphanumeric</mat-error>
           </mat-form-field>
         </div>
 
@@ -258,8 +246,8 @@
           <mat-form-field appearance="outline" style="width: 100%;">
             <mat-label>Gender</mat-label>
             <mat-select disableRipple formControlName="psyGender">
-              <mat-option value="1">Mke</mat-option>
-              <mat-option value="2">Mme</mat-option>
+              <mat-option value="Female">Female</mat-option>
+              <mat-option value="Male">Male</mat-option>
             </mat-select>
           </mat-form-field>
         </div>
