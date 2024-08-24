@@ -14,10 +14,9 @@ import Swal from 'sweetalert2';
 
 
 export class AddObservationComponent implements OnInit{
-  checked = false;
   indeterminate = false;
   labelPosition: 'before' | 'after' = 'after';
-  disabled = false;
+
 
   ObsForm!:FormGroup
   constructor (
@@ -73,9 +72,15 @@ export class AddObservationComponent implements OnInit{
       height:new FormControl('',Validators.required),
       pulse:new FormControl('',Validators.required),
       pr:new FormControl('',Validators.required),
+      Partner:new FormControl('',Validators.required),
       comment:new FormControl('',Validators.required),
-      methadone:new FormControl('',Validators.required),
-      heroin:new FormControl('',Validators.required),
+      niddle:new FormControl('',Validators.required),
+      venous:new FormControl('',Validators.required),
+      phlebitis:new FormControl('',Validators.required),
+      pl_niddle:new FormControl('',Validators.required),
+      pl_venous:new FormControl('',Validators.required),
+      pl_phlebitis:new FormControl('',Validators.required),
+
     })
 
 

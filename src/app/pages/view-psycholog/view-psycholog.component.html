@@ -21,7 +21,7 @@
       </div>
     </div>
     <div class="col-lg-10 col-md-12">
-      <div class="card bg-secondary">
+      <div class="card">
      <div class="card-body">
      <div class="row">
        <div class="col-lg-4 col-md-4 d-flex justify-content-around">
@@ -33,11 +33,14 @@
        </div>
        <div class="col-lg-8 col-md-8 d-flex justify-content-around">
       <div class="patient-info">
-      <ul class="list-unstyled text-white">
-         <li><span class="patient-info-heading"> <b>Most used :</b> </span> {{pschs.symptoms}}</li>
-         <li><span class="patient-info-heading"> <b>Most used :</b> </span> {{pschs.symptoms}}</li>
-         <li><span class="patient-info-heading"> <b>Most used :</b> </span> {{pschs.symptoms}}</li>
-        <li><span class="patient-info-heading"> <b>Most used :</b> </span> {{pschs.symptoms}}</li>
+      <ul class="list-unstyled ">
+         <li><b>TIME/DURATION FOR DRUG:</b><div class="patient-info-heading"></div>{{pschs.drugDuration}}</li>
+         <li><b>REASON FOR USE:</b><div class="patient-info-heading"></div>{{pschs.reasUse}}</li>
+         <li><b>SYMPTOMS :</b><div class="patient-info-heading"> </div>{{pschs.symptoms}}</li>
+         <li><b>CRIMINAL AFFAIR:</b> <div class="patient-info-heading"></div>{{pschs.crAffair}}</li>
+         <li><b>FAMILY HISTORY:</b> <div class="patient-info-heading"></div>{{pschs.fhistory}}</li>
+        <li><b>PSYCHOLOGIST COMMENTS:</b><div class="patient-info-heading"></div>{{pschs.comm}}</li>
+        <li><b>PSYCHOLOGIST PLAN:</b><div class="patient-info-heading"></div>{{pschs.splan}}</li>
       </ul>
       </div>
        </div>

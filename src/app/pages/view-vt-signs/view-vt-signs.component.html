@@ -1,0 +1,108 @@
+<div class="app-content content">
+  <div class="content-overlay"></div>
+  <div class="content-wrapper">
+    <div class="content-header row">
+      <div class="content-header-left col-md-6 col-12 mb-2">
+        <div class="row breadcrumbs-top">
+          <div class="breadcrumb-wrapper col-12">
+            <ol class="breadcrumb">
+            </ol>
+          </div>
+        </div>
+      </div>
+      <div class="content-header-right col-md-6 col-12">
+      </div>
+    </div>
+    <div class="content-header row">
+   <div class="content-header-left col-md-6 col-12 mb-2">
+  <h3 class="content-header-title">Patients Information</h3>
+  <div class="row breadcrumbs-top">
+  </div>
+   </div>
+ </div>
+ <div class="content-body">
+   <section id="patient-profile">
+  <div class="row match-height">
+  <div class="col-lg-6 col-md-12">
+    <div class="card">
+   <div class="card-body">
+   <div class="row">
+     <div class="col-lg-4 col-md-4 d-flex justify-content-around">
+    <div class="patient-img-name text-center">
+    <img src="../../../assets/app-assets/images/portrait/small/hosp.jpg"
+     class="card-img-top mb-1 patient-img img-fluid rounded-circle">
+   <h4> <b> {{mesures.patFName + " " + mesures.patLName}}</b></h4>
+    </div>
+     </div>
+     <div class="col-lg-8 col-md-8 d-flex justify-content-around">
+    <div class="patient-info">
+    <ul class="list-unstyled">
+      <li><div class="patient-info-heading"> <b>Drug:</b> </div> {{mesures.drugType}}</li>
+      <li><div class="patient-info-heading"> <b>Usage:</b> </div>
+        <span *ngIf="mesures.usag == '1' ">Kuvuta</span>
+        <span *ngIf="mesures.usag == '2' ">Kujidunga</span>
+        <span *ngIf="mesures.usag == '3' ">Zote</span>
+
+      </li>
+      <li><div class="patient-info-heading"> <b>Last drug:</b> </div>
+        <span *ngIf="mesures.lastDrug == '1' ">Heroine</span>
+        <span *ngIf="mesures.lastDrug == '2' ">Cocaine</span>
+        <span *ngIf="mesures.lastDrug == '3' ">Methadone</span>
+        <span *ngIf="mesures.lastDrug == '4' ">Mirungi</span>
+        <span *ngIf="mesures.lastDrug == '5' ">Valium</span>
+      </li>
+      <li><div class="patient-info-heading"> <b>Last use:</b></div>
+        <span *ngIf="mesures.lastUsg == '1' ">Ndani ya wiki</span>
+        <span *ngIf="mesures.lastUsg == '2' ">Wiki hadi mwezi</span>
+        <span *ngIf="mesures.lastUsg == '3' ">Zaid ya mwezi mmoja</span>
+      </li>
+      <li><div class="patient-info-heading"> <b>Deseases:</b></div> {{mesures.deseas}}</li>
+
+      <li><div class="patient-info-heading"> <b>Partner with methadone treatment:</b></div>
+        <span *ngIf="mesures.partner == '1' ">Ndio</span>
+        <span *ngIf="mesures.partner == '2' ">Hapana</span>
+        <span *ngIf="mesures.partner == '3' ">Sina mwenza</span>
+      </li>
+    </ul>
+    </div>
+     </div>
+   </div>
+   </div>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-6">
+    <div class="card bg-primary">
+   <div class="card-body">
+    <ul class="list-unstyled text-white patient-info-card">
+   <span class="patient-info-heading"><b>VITAL SIGNS</b> </span>
+   <li><div class="patient-info-heading"> <b>Niddle sign:</b></div> {{mesures.niddle}}</li>
+    <li><div class="patient-info-heading"> <b>Plce:</b></div> {{mesures.pl_niddle}}</li>
+    <li><div class="patient-info-heading"> <b>Veneous Scarring:</b></div> {{mesures.venous}}</li>
+    <li><div class="patient-info-heading"> <b>Place:</b></div> {{mesures.pl_venous}}</li>
+    <li><div class="patient-info-heading"> <b>Phlebitis:</b></div> {{mesures.phlebitis}}</li>
+    <li><div class="patient-info-heading"> <b>Place:</b></div> {{mesures.pl_phlebitis}}</li>
+    <li><div class="patient-info-heading"> <b>Nurse Comments:</b></div> {{mesures.comment}}</li>
+    </ul>
+   </div>
+    </div>
+   </div>
+    <div class="col-lg-3 col-md-6">
+    <div class="card bg-secondary">
+    <div class="card-header">
+    <h5 class="card-title text-white">MEASUREMENTS</h5>
+   </div>
+     <div class="card-content mx-2">
+    <ul class="list-unstyled text-white">
+   <li><b>Temperature :</b> <div class="patient-info-heading"></div>{{mesures.press}} °C</li>
+   <li><b>Blood Pressure:</b> <div class="patient-info-heading"></div>{{mesures.bp}} mm/Hg</li>
+   <li><b>Height:</b> <div class="patient-info-heading"></div>{{mesures.height}} cm</li>
+   <li><b>Weight:</b> <div class="patient-info-heading"></div>{{mesures.weight }} kgs</li>
+   <li><b>Pulse:</b> <div class="patient-info-heading"></div>{{mesures.pulse}} min</li>
+    </ul>
+     </div>
+    </div>
+    </div>
+   </div>
+
+
+

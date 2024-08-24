@@ -1,0 +1,86 @@
+<div class="app-content content">
+  <div class="content-overlay"></div>
+  <div class="content-wrapper">
+    <div class="content-header row">
+      <div class="content-header-left col-md-6 col-12 mb-2">
+        <div class="row breadcrumbs-top">
+          <div class="breadcrumb-wrapper col-12">
+            <ol class="breadcrumb">
+            </ol>
+          </div>
+        </div>
+      </div>
+      <div class="content-header-right col-md-6 col-12">
+        <div class="btn-group float-md-right" role="group">
+          <button class="btn btn-info btn-min-width btn-glow mr-1 mb-1" (click)="onBack()" >Back</button>
+        </div>
+      </div>
+    </div>
+    <div class="content-body">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">Edit Patient</h4>
+            <a class="heading-elements-toggle"><i class="la la-ellipsis-h font-medium-3"></i></a>
+          </div>
+          <div class="card-content collapse show">
+            <div class="card-body">
+
+              <form [formGroup]="EditForm">
+                <div class="row">
+                  <div class="col-md-3">
+                    <mat-form-field appearance="outline" style="width: 100%;">
+                      <mat-label>Dawa ya mwisho kutumia</mat-label>
+                      <mat-select formControlName="lastDrug" disableRipple>
+                        <mat-option value="1">Heroin</mat-option>
+                        <mat-option value="2">Cocaine</mat-option>
+                        <mat-option value="3">Methadone</mat-option>
+                        <mat-option value="4">Mirungi</mat-option>
+                        <mat-option value="5">Valium</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-3">
+                    <mat-form-field appearance="outline" style="width: 100%;">
+                      <mat-label>Njia ya kutumia</mat-label>
+                      <mat-select formControlName="usag" disableRipple>
+                        <mat-option value="1">Kuvuta</mat-option>
+                        <mat-option value="2">Kujidunga</mat-option>
+                        <mat-option value="3">Zote</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="col-md-3">
+                    <mat-form-field appearance="outline" style="width: 100%;">
+                      <mat-label>Mara ya mwisho kutumia</mat-label>
+                      <mat-select formControlName="lastUsg" disableRipple>
+                      <mat-option value="1">Ndani ya wiki</mat-option>
+                      <mat-option value="2">Wiki hadi mwezi</mat-option>
+                      <mat-option value="3">Zaid ya mwezi mmoja</mat-option>
+                    </mat-select>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="col-md-3">
+                    <mat-form-field style="width: 100%;" appearance="outline">
+                      <mat-label>Maambukizi unayoishi nayo</mat-label>
+                      <mat-select formControlName="deseas" multiple="">
+                          <mat-option *ngFor="let type of maambukizi" [value]="type.value">
+                              {{type.value}}</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+
+                </div>
+
+              <div class="card-bottom">
+                <button mat-raised-button color="primary" (click)="onClose()">Cancel</button> &nbsp;
+                <button mat-raised-button color="primary"  (click)="onEdit()">Edit</button>
+              </div>
+              </form>
+              </div>
+        </div>
+    </div>
+  </div>
+</div>
+

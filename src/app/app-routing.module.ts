@@ -30,6 +30,8 @@ import { RecdashboardComponent } from './pages/dashboard/recdashboard/recdashboa
 import { ViewCounselComponent } from './pages/view-counsel/view-counsel.component';
 import { ViewPatientsComponent } from './pages/view-patients/view-patients.component';
 import { ViewPsychologComponent } from './pages/view-psycholog/view-psycholog.component';
+import { ViewVtSignsComponent } from './pages/view-vt-signs/view-vt-signs.component';
+import { EditObservationComponent } from './pages/edit-observation/edit-observation.component';
 
 const routes: Routes = [
   {path:'',component:LoginComponent},
@@ -101,6 +103,10 @@ const routes: Routes = [
         component:EditReceptionComponent
       },
       {
+        path:'edit-observation',
+        component:EditObservationComponent
+      },
+      {
         path:'registrar',
         component:RegistrarComponent
       },
@@ -131,6 +137,10 @@ const routes: Routes = [
       {
         path:'viewPsychologist',
         component:ViewPsychologComponent
+      },
+      {
+        path:'viewVitals',
+        component:ViewVtSignsComponent
       },
     ]
   }

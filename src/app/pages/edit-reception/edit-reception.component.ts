@@ -37,9 +37,10 @@ export class EditReceptionComponent implements OnInit{
     this.EditForm = new FormGroup({
       patFName: new FormControl(null),
       patLName: new FormControl(null),
-      dob:new FormControl(null),
+      address:new FormControl(null),
+      gender:new FormControl(null),
       kinName: new FormControl(null),
-      gender: new FormControl(null),
+      phoneNumber: new FormControl(null),
       kinRelation: new FormControl(null),
       kinPhoneNumber: new FormControl(null),
       matCode:new FormControl(null)
@@ -52,9 +53,10 @@ export class EditReceptionComponent implements OnInit{
       this.EditForm = new FormGroup({
         patFName: new FormControl(resp.patFName),
         patLName: new FormControl(resp.patLName),
-        dob:new FormControl(resp.dob),
+        address:new FormControl(resp.address),
+        gender:new FormControl(resp.gender),
         kinName: new FormControl(resp.kinName),
-        gender: new FormControl(resp.gender),
+        phoneNumber: new FormControl(resp.phoneNumber),
         kinRelation: new FormControl(resp.kinRelation),
         kinPhoneNumber: new FormControl(resp.kinPhoneNumber),
         matCode:new FormControl(resp.matCode)

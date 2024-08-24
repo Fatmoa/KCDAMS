@@ -43,8 +43,6 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {FormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { EditReceptionComponent } from './pages/edit-reception/edit-reception.component';
-import { AddResultsComponent } from './pages/add-results/add-results.component';
-import { EditResultsComponent } from './pages/edit-results/edit-results.component';
 import { BarchartComponent } from './pages/dashboard/barchart/barchart.component';
 import { PiechartComponent } from './pages/dashboard/piechart/piechart.component';
 import { RegistrarComponent } from './pages/registrar/registrar.component';
@@ -63,6 +61,8 @@ import { ViewObservationComponent } from './pages/view-observation/view-observat
 import { ViewCounselComponent } from './pages/view-counsel/view-counsel.component';
 import { ViewPatientsComponent } from './pages/view-patients/view-patients.component';
 import { ViewPsychologComponent } from './pages/view-psycholog/view-psycholog.component';
+import { ViewVtSignsComponent } from './pages/view-vt-signs/view-vt-signs.component';
+import { EditObservationComponent } from './pages/edit-observation/edit-observation.component';
 
 
 @NgModule({
@@ -91,8 +91,6 @@ import { ViewPsychologComponent } from './pages/view-psycholog/view-psycholog.co
     NgoComponent,
     DrugsComponent,
     EditReceptionComponent,
-    AddResultsComponent,
-    EditResultsComponent,
     BarchartComponent,
     PiechartComponent,
     RegistrarComponent,
@@ -111,6 +109,8 @@ import { ViewPsychologComponent } from './pages/view-psycholog/view-psycholog.co
     ViewCounselComponent,
     ViewPatientsComponent,
     ViewPsychologComponent,
+    ViewVtSignsComponent,
+    EditObservationComponent,
 
 
   ],

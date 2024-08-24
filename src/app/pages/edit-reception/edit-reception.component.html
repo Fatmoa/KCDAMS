@@ -17,11 +17,9 @@
       </div>
     </div>
     <div class="content-body">
-      <section id="invoice-summary">
-        <!--Total Receivables -->
         <div class="card">
           <div class="card-header">
-            <h4 class="card-title">Registration</h4>
+            <h4 class="card-title">Edit Patient</h4>
             <a class="heading-elements-toggle"><i class="la la-ellipsis-h font-medium-3"></i></a>
           </div>
           <div class="card-content collapse show">
@@ -45,122 +43,55 @@
 
                   <div class="col-md-3">
                     <mat-form-field appearance="outline">
-                      <mat-label>DOB</mat-label>
-                      <input matInput  formControlName="dob"required>
+                      <mat-label>Phone</mat-label>
+                      <input matInput  formControlName="phoneNumber"required>
                     </mat-form-field>
                   </div>
 
                   <div class="col-md-3">
                     <mat-form-field appearance="outline">
-                      <mat-label>Kin Name</mat-label>
-                      <input matInput  formControlName="kinName" required>
+                      <mat-label>Address</mat-label>
+                      <input matInput  formControlName="address" required>
                     </mat-form-field>
                   </div>
 
                 </div>
                 <div class="row">
+                    <div class="col-md-3">
+                      <mat-form-field appearance="outline">
+                        <mat-label>Kin Name</mat-label>
+                        <input matInput  formControlName="kinName" required>
+                      </mat-form-field>
+                    </div>
                   <div class="col-md-3">
                     <mat-form-field appearance="outline">
                       <mat-label>Relationship</mat-label>
-                      <input matInput  formControlName="kinRelation" required>
+                      <mat-select matInput  formControlName="kinRelation" required>
+                      <mat-option value="Baba">Baba</mat-option>
+                      <mat-option value="Mama">Mama</mat-option>
+                      <mat-option value="Kaka">Kaka</mat-option>
+                      <mat-option value="Dada">Dada</mat-option>
+                      <mat-option value="Mjomba">Mjomba</mat-option>
+                      <mat-option value="Ami">Ami</mat-option>
+                      <mat-option value="Jirani">Jirani</mat-option>
+                      <mat-option value="Sheha">Sheha</mat-option>
+                      </mat-select>
                     </mat-form-field>
-                  </div>
+                    </div>
                   <div class="col-md-3">
                     <mat-form-field appearance="outline">
                       <mat-label>Kin number</mat-label>
-                      <input matInput placeholder="Jina kamili" formControlName="kinPhoneNumber" required>
+                      <input matInput  formControlName="kinPhoneNumber" required>
                     </mat-form-field>
                   </div>
-
-
-
-                  <div class="col-md-3">
-                    <mat-form-field appearance="outline">
-                      <mat-label>Gender</mat-label>
-                      <input matInput placeholder="gender" formControlName="gender" required>
-                    </mat-form-field>
                   </div>
-
-                  <!-- <div class="col-md-3">
-                    <mat-form-field appearance="outline">
-                      <mat-label>First Name</mat-label>
-                      <input matInput placeholder="Jina kamili" formControlName="firstName" required>
-                    </mat-form-field>
-                  </div> -->
-                </div>
-                <!-- <hr>
-                <div class="row">
-                  <div class="col-md-3">
-                    <mat-form-field appearance="outline">
-                      <mat-label>First Name</mat-label>
-                      <input matInput placeholder="Jina kamili" formControlName="firstName" required>
-                    </mat-form-field>
-                  </div>
-
-                  <div class="col-md-3">
-                    <mat-form-field appearance="outline">
-                      <mat-label>First Name</mat-label>
-                      <input matInput placeholder="Jina kamili" formControlName="firstName" required>
-                    </mat-form-field>
-                  </div>
-
-                  <div class="col-md-3">
-                    <mat-form-field appearance="outline">
-                      <mat-label>First Name</mat-label>
-                      <input matInput placeholder="Jina kamili" formControlName="firstName" required>
-                    </mat-form-field>
-                  </div>
-
-                  <div class="col-md-3">
-                    <mat-form-field appearance="outline">
-                      <mat-label>First Name</mat-label>
-                      <input matInput placeholder="Jina kamili" formControlName="firstName" required>
-                    </mat-form-field>
-                  </div>
-                </div> -->
-                <!-- <hr> -->
-                <!-- <div class="row">
-                  <div class="col-md-3">
-                    <mat-form-field appearance="outline">
-                      <mat-label>Jina la kwanza</mat-label>
-                      <input matInput  formControlName="fName" required>
-                    </mat-form-field>
-                  </div>
-
-
-
-                  <div class="col-md-3">
-                    <mat-form-field appearance="outline">
-                      <mat-label>Mahusiano</mat-label>
-                      <input matInput  formControlName="relation" required>
-                    </mat-form-field>
-                  </div>
-
-                  <div class="col-md-3">
-                    <mat-form-field appearance="outline">
-                      <mat-label>Nambari ya simu</mat-label>
-                      <input matInput   formControlName="pnum" required>
-                    </mat-form-field>
-                  </div>
-                </div> -->
-              </form>
-              <br><br>
-
               <div class="card-bottom">
                 <button mat-raised-button color="primary" (click)="onClose()">Cancel</button> &nbsp;
                 <button mat-raised-button color="primary"  (click)="onEdit()">Edit</button>
               </div>
-            </div>
-          </div>
-          <div class="card-content collapse show">
-            <div class="card-body overflow-hidden row">
-              <div class="col-md-9 col-sm-12 border-right-grey border-right-lighten-2">
-                <div id="invoice-total-recievables" class="height-20"></div>
+              </form>
               </div>
-            </div>
-          </div>
         </div>
-      </section>
     </div>
   </div>
 </div>

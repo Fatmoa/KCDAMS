@@ -12,7 +12,7 @@ import { ObservationService } from 'src/app/services/observation.service';
 })
 export class ObservationComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'name','gen', 'reg','kiname','kinrel','kinp','action'];
+  displayedColumns: string[] = ['id', 'des','Ldr', 'Lus','use','action'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -57,6 +57,10 @@ export class ObservationComponent implements OnInit {
 
    onEdit(row:any){
     this.router.navigateByUrl('/home/edit-observation')
+   }
+
+   onView(row:any){
+    this.router.navigate(['home/viewVitals'],{queryParams:{id:row.obId}})
    }
 
 

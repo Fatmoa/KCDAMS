@@ -19,10 +19,8 @@
     <div class="content-body">
       <form [formGroup]="ObsForm">
       <mat-stepper #stepper>
-
-        <!-- First step -->
-
-        <mat-step [stepControl]="ObsForm" errorMessage="Required.">
+t
+        <mat-step [stepControl]="ObsForm" >
           <p>MTUMIAJI WA MADAWA KWA NJIA YA KUVUTA NA KUJIDUNGA</p>
 
             <ng-template matStepLabel></ng-template>
@@ -40,18 +38,18 @@
             </div>
 
                <div class="col-md-3">
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" style="width: 100%;">
                 <mat-label>Njia ya kutumia</mat-label>
                 <mat-select formControlName="usag" disableRipple>
                   <mat-option value="1">Kuvuta</mat-option>
-                  <mat-option value="3">Kujidunga</mat-option>
-                  <mat-option value="4">Zote</mat-option>
+                  <mat-option value="2">Kujidunga</mat-option>
+                  <mat-option value="3">Zote</mat-option>
                 </mat-select>
               </mat-form-field>
             </div>
 
               <div class="col-md-3">
-                <mat-form-field appearance="outline">
+                <mat-form-field appearance="outline" style="width: 100%;">
                   <mat-label>Dawa ya mwisho kutumia</mat-label>
                   <mat-select formControlName="lastDrug" disableRipple>
                     <mat-option value="1">Heroin</mat-option>
@@ -63,7 +61,7 @@
                 </mat-form-field>
               </div>
               <div class="col-md-3">
-                <mat-form-field appearance="outline">
+                <mat-form-field appearance="outline" style="width: 100%;">
                   <mat-label>Mara ya mwisho kutumia</mat-label>
                   <mat-select formControlName="lastUsg" disableRipple>
                   <mat-option value="1">Ndani ya wiki</mat-option>
@@ -96,7 +94,7 @@
             <div class="col-md-4">
                 <mat-form-field appearance="outline" style="width: 100%;">
                   <mat-label>Mwenza anatumia huduma za methadone?</mat-label>
-                  <mat-select formControlName="" disableRipple>
+                  <mat-select formControlName="partner" disableRipple>
                   <mat-option value="1">Ndio</mat-option>
                   <mat-option value="2">Hapana</mat-option>
                   <mat-option value="3">Sina mwenza</mat-option>
@@ -105,133 +103,65 @@
               </div>
             </div>
             <br>
-            <div>
-
-              <button mat-button matStepperNext>Next</button>
-            </div>
-
-        </mat-step>
-
-        <mat-step [stepControl]="ObsForm" errorMessage="required">
-            <ng-template matStepLabel></ng-template>
-            <br>
             <div class="row">
-                <table class="table table-bordered">
-                  <thead>
-                    <th>S/N</th>
-                    <th>AINA YA ULEVI</th>
-                    <th>CHECK</th>
-                    <th>NJIA YA UTUMIAJI</th>
-                    <th>KILEVI KINACHOMSUMBUA ZAID</th>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>Methadone</td>
-                      <td>
-                        <section class="example-section">
-                          <mat-checkbox class="example-margin" [(ngModel)]="checked" ></mat-checkbox>
-                        </section>
-                      </td>
-                      <td><input type="number" style="width: 30%;" min="1" max="5"></td>
-                    <td><input type="number" min="1" max="3"></td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>Heroin</td>
-                      <td>
-                        <section class="example-section">
-                          <mat-checkbox class="example-margin" [(ngModel)]="checked" ></mat-checkbox>
-                        </section>
-                      </td>
-                      <td><input type="number" style="width: 30%;" min="1" max="5"></td>
-                      <td><input type="number" min="1" max="3"></td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>Valium</td>
-                      <td>
-                        <section class="example-section">
-                          <mat-checkbox class="example-margin" [(ngModel)]="checked"></mat-checkbox>
-                        </section>
-                      </td>
-                      <td><input type="number" style="width: 30%;" min="1" max="5"></td>
-                      <td><input type="number" min="1" max="3"></td>
-                    </tr>
-                    <tr>
-                      <td>4</td>
-                      <td>Cocaine</td>
-                      <td>
-                        <section class="example-section">
-                          <mat-checkbox class="example-margin" [(ngModel)]="checked"></mat-checkbox>
-                        </section>
-                      </td>
-                      <td><input type="number" style="width: 30%;" min="1" max="5"></td>
-                      <td><input type="number" min="1" max="3"></td>
-                    </tr>
-                    <tr>
-                      <td>5</td>
-                      <td>Mirungi</td>
-                      <td>
-                        <section class="example-section">
-                          <mat-checkbox class="example-margin" [(ngModel)]="checked"></mat-checkbox>
-                        </section>
-                      </td>
-                      <td><input type="number" style="width: 30%;" min="1" max="5"></td>
-                      <td><input type="number" min="1" max="3"></td>
-                    </tr>
-                    <tr>
-                      <td>6</td>
-                      <td>Bangi</td>
-                      <td>
-                        <section class="example-section">
-                          <mat-checkbox class="example-margin" [(ngModel)]="checked"></mat-checkbox>
-                        </section>
-                      </td>
-                      <td><input  type="number" style="width: 30%;" min="1" max="5"></td>
-                      <td><input type="number" min="1" max="3"></td>
-                    </tr>
-                    <tr>
-                  </tbody>
-                </table>
+              <div class="col-md-4">
+                <mat-form-field appearance="outline" style="width: 100%;">
+                  <mat-label>Niddle marks</mat-label>
+                  <mat-select disableRipple  placeholder="Alama za sindano" formControlName="niddle">
+                    <mat-option value="1">Ndio</mat-option>
+                    <mat-option value="2">Hapana</mat-option>
+
+                  </mat-select>
+                </mat-form-field>
               </div>
-              <div>
-                <div>
-                  <tr>
-                    <table class="table table-bordered">
-                      <thead>
-                        <th>NJIA YA UTUMIAJI</th>
-                        <th>KILEVI KINACHOMSUMBUA</th>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>
-                            1. Kunywa
-                            2. Kunusa
-                            3. Kuvuta
-                            4. Kujidunga
-                          </td>
-                          <td>
-                            1. Dawa kutumia
-                            2. Dawa ya pili
-                            3. Dawa ya tatu
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </tr>
+              <div class="col-md-4">
+              <mat-form-field appearance="outline" style="width: 100%;">
+                <mat-label>Venous Scarring</mat-label>
+                <mat-select disableRipple  placeholder="kovu kwenye mishipa" formControlName="venous" >
+                  <mat-option value="1">Ndio</mat-option>
+                  <mat-option value="2">Hapana</mat-option>
+                </mat-select>
+              </mat-form-field>
+              </div>
+              <div class="col-md-4">
+              <mat-form-field appearance="outline" style="width: 100%;">
+                <mat-label>Phlebitis</mat-label>
+                <mat-select disableRipple  placeholder="kidonda/uvimbe kweny mishipa" formControlName="phlebitis">
+                  <mat-option value="1">Ndio</mat-option>
+                  <mat-option value="2">Hapana</mat-option>
+                </mat-select>
+              </mat-form-field>
+              </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <mat-form-field style="width: 100%;" appearance="outline">
+                    <mat-label>Needle marks place:</mat-label>
+                    <input matInput placeholder="Eneo la alama za sindano" formControlName="pl_niddle" >
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                  <mat-form-field style="width: 100%;" appearance="outline">
+                    <mat-label>Venous scarring place:</mat-label>
+                    <input matInput placeholder="Eneo la kovu" formControlName="pl_venous" >
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                  <mat-form-field style="width: 100%;" appearance="outline">
+                    <mat-label>Phlebitis place:</mat-label>
+                    <input matInput placeholder="Eneo la kidonda/uvimbe" formControlName="pl_phlebitis" >
+                  </mat-form-field>
                 </div>
               </div>
-
             <div>
-              <button mat-button matStepperPrevious>Back</button>
+
               <button mat-button matStepperNext>Next</button>
             </div>
 
         </mat-step>
 
         <mat-step [stepControl]="ObsForm" errorMessage="Required">
-          <p>VITAL SIGN AND MEASUREMENTS</p>
+          <p>MEASUREMENTS</p>
             <ng-template matStepLabel></ng-template>
             <br>
             <div class="row">
