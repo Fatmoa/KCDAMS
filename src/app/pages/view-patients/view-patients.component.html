@@ -29,8 +29,7 @@
    <div class="row">
      <div class="col-lg-4 col-md-4 d-flex justify-content-around">
     <div class="patient-img-name text-center">
-    <img src="../../../assets/app-assets/images/portrait/small/hosp.jpg"
-     class="card-img-top mb-1 patient-img img-fluid rounded-circle">
+    <img [src]="imageSource1" class="card-img-top mb-1 patient-img img-fluid rounded-circle">
    <h4> <b> {{receptions.patFName + " " + receptions.patLName}}</b></h4>
     </div>
      </div>
@@ -99,9 +98,7 @@
      <div class="card-content mx-2">
     <ul class="list-unstyled text-white">
    <li><b>Cow Name :</b> <div class="patient-info-heading"></div>{{receptions.cowName}}</li>
-   <li><b>Ngo Name :</b> <div class="patient-info-heading"></div>{{receptions.ngo}}
-    <span *ngIf="receptions.ngo== 'ZAYADESA'">ZAYADESA</span>
-  </li>
+   <li><b>Ngo Name :</b> <div class="patient-info-heading"></div>{{receptions.ngo}} </li>
    <li><b>Phone:</b> <div class="patient-info-heading"></div>{{receptions.cowPhone}}</li>
     </ul>
      </div>

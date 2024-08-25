@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DistrictService } from 'src/app/services/district.service';
+import { ImageService } from 'src/app/services/image.service';
 import { ReceptionService } from 'src/app/services/reception.service';
 import Swal from 'sweetalert2';
 
@@ -26,17 +27,16 @@ export class AddreceptionComponent implements OnInit {
     private districtService: DistrictService,
     private receptionService: ReceptionService,
     private ngoService: NgoService,
+    private receptionImageService:ImageService
   ) { }
 
   Selectfile1: File = null!;
   onImageUpload1(event: any) {
-    this.Selectfile1 = event.target.files[0];
+    // this.Selectfile1 = event.target.files[0];
+    if (event.target.files.length > 0) {
+      this.selectedFile = event.target.files[0];
+    }
   }
-
-  // const form1 = new FormData();
-  //  form1.append('imageFile', this.Selectfile1, this.Selectfile1.name);
-  // this.houseImageService.addHouseImage(resp.mat_code, form1).subscribe((output: any) => {});
-
 
   ngOnInit(): void {
 
@@ -95,6 +95,7 @@ export class AddreceptionComponent implements OnInit {
       const values2 = { ...values, dob }
       this.receptionService.addReception(values2).subscribe((resp: any) => {
         console.log(resp);
+       this.receptionImageService.uploadImage(resp.matCode, this.selectedFile).subscribe((output: any) => {});
         this.alert();
         this.reload();
       })

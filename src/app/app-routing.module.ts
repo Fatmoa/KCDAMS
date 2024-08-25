@@ -6,7 +6,6 @@ import { MainLayoutComponent } from './layouts/main-layout/main-layout.component
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ZoneComponent } from './pages/zone/zone.component';
 import { NurseComponent } from './pages/nurse/nurse.component';
-import { LabComponent } from './pages/lab/lab.component';
 import { SocialWorkerComponent } from './pages/social-worker/social-worker.component';
 import { PsychologistComponent } from './pages/psychologist/psychologist.component';
 import { RegionComponent } from './pages/region/region.component';
@@ -17,7 +16,6 @@ import { UserMgtComponent } from './pages/user-mgt/user-mgt.component';
 import { DoctorComponent } from './pages/doctor/doctor.component';
 import { AddreceptionComponent } from './pages/addreception/addreception.component';
 import { AddObservationComponent } from './pages/add-observation/add-observation.component';
-import { PatientsInfoComponent } from './pages/patients-info/patients-info.component';
 import { NgoComponent } from './pages/ngo/ngo.component';
 import { DrugsComponent } from './pages/drugs/drugs.component';
 import { EditReceptionComponent } from './pages/edit-reception/edit-reception.component';
@@ -32,6 +30,7 @@ import { ViewPatientsComponent } from './pages/view-patients/view-patients.compo
 import { ViewPsychologComponent } from './pages/view-psycholog/view-psycholog.component';
 import { ViewVtSignsComponent } from './pages/view-vt-signs/view-vt-signs.component';
 import { EditObservationComponent } from './pages/edit-observation/edit-observation.component';
+import { ClinicComponent } from './pages/clinic/clinic.component';
 
 const routes: Routes = [
   {path:'',component:LoginComponent},
@@ -41,7 +40,6 @@ const routes: Routes = [
       {path:'recdashboard', component:RecdashboardComponent,},
       {path:'receptions',component:ReceptionsComponent},
       { path:'nurse',component:NurseComponent},
-      {path:'lab',component:LabComponent},
       {
         path:'social_worker',
         component:SocialWorkerComponent
@@ -87,10 +85,6 @@ const routes: Routes = [
         component:AddObservationComponent
       },
       {
-        path:'patients-info',
-        component:PatientsInfoComponent
-      },
-      {
         path:'ngo',
         component:NgoComponent
       },
@@ -105,6 +99,10 @@ const routes: Routes = [
       {
         path:'edit-observation',
         component:EditObservationComponent
+      },
+      {
+        path:'clinic',
+        component:ClinicComponent
       },
       {
         path:'registrar',

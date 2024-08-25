@@ -22,7 +22,6 @@ import { ShehiaComponent } from './pages/shehia/shehia.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import { NurseComponent } from './pages/nurse/nurse.component';
-import { LabComponent } from './pages/lab/lab.component';
 import { SocialWorkerComponent } from './pages/social-worker/social-worker.component';
 import { PsychologistComponent } from './pages/psychologist/psychologist.component';
 import { RoleComponent } from './pages/role/role.component';
@@ -36,7 +35,6 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
 import {MatRippleModule} from '@angular/material/core';
-import { PatientsInfoComponent } from './pages/patients-info/patients-info.component';
 import { NgoComponent } from './pages/ngo/ngo.component';
 import { DrugsComponent } from './pages/drugs/drugs.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
@@ -63,6 +61,7 @@ import { ViewPatientsComponent } from './pages/view-patients/view-patients.compo
 import { ViewPsychologComponent } from './pages/view-psycholog/view-psycholog.component';
 import { ViewVtSignsComponent } from './pages/view-vt-signs/view-vt-signs.component';
 import { EditObservationComponent } from './pages/edit-observation/edit-observation.component';
+import { ClinicComponent } from './pages/clinic/clinic.component';
 
 
 @NgModule({
@@ -78,7 +77,6 @@ import { EditObservationComponent } from './pages/edit-observation/edit-observat
     DistrictComponent,
     ShehiaComponent,
     NurseComponent,
-    LabComponent,
     SocialWorkerComponent,
     PsychologistComponent,
     RoleComponent,
@@ -87,7 +85,6 @@ import { EditObservationComponent } from './pages/edit-observation/edit-observat
     ReceptionsComponent,
     AddreceptionComponent,
     AddObservationComponent,
-    PatientsInfoComponent,
     NgoComponent,
     DrugsComponent,
     EditReceptionComponent,
@@ -111,6 +108,7 @@ import { EditObservationComponent } from './pages/edit-observation/edit-observat
     ViewPsychologComponent,
     ViewVtSignsComponent,
     EditObservationComponent,
+    ClinicComponent,
 
 
   ],
